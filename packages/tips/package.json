@@ -1,0 +1,31 @@
+{
+  "name": "@jyb/ui-tips",
+  "version": "0.1.0",
+  "description": "公共toast",
+  "main": "dist/tips.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev node ../../scripts/build.js",
+    "build": "cross-env NODE_ENV=production node ../../scripts/build.js",
+    "test": "node ../../scripts/test.js",
+    "test:cover": "cross-env NODE_ENV=cover node ../../scripts/test.js"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "tips",
+    "ui"
+  ],
+  "libDefine": {
+    "moduleName": "Tips",
+    "devDest": "dist/tips.dev.js",
+    "prodDest": "dist/tips.js"
+  },
+  "author": "",
+  "license": "MIT"
+}

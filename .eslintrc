@@ -1,0 +1,8 @@
+{
+  "extends": "@jyb/eslint-config-jyb",
+  "rules": {
+    "comma-dangle": "off",
+    "no-plusplus": "off",
+    "no-console": "off"
+  }
+}
