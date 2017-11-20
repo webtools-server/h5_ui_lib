@@ -1,0 +1,1 @@
+<div et="click:close" class="ui-popup__fn-button ui-popup__fn-button--left"><i class="ui-icon-close"></i></div>{{=it.title}}<div class="ui-popup__fn-button ui-popup__fn-button--hl">确定</div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>license-select</title>
+  <link href="../node_modules/@jyb/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
+  <script>
+    (function(doc, win) {
+      var basicWidth = window.basicWidth || 750;
+      var minWidth = 320;
+      var htmlElement = doc.documentElement;
+      var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+      var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          window.rootFontSize = 100 * (clientWidth / basicWidth);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+      };
+      recalc();
+      if (!win.addEventListener) return;
+      win.addEventListener('resize', recalc, false);
+    })(document, window);
+  </script> 
+</head>
+
+<body>
+  <div class="ui-btn" onclick=showSelect()>点我</div>
+  <script src="../../../node_modules/zepto/dist/zepto.min.js"></script>  
+  <script src="../dist/bundle.js"></script>
+  <script>
+    function showSelect() {
+      var provinces = [
+        { full:'河北', abbr:'冀',},
+        { full:'山西', abbr:'晋',},
+        { full:'辽宁', abbr:'辽',},
+        { full:'吉林', abbr:'吉',},
+        { full:'黑龙', abbr:'黑',},
+        { full:'江苏', abbr:'苏',},
+        { full:'浙江', abbr:'浙',},
+        { full:'安徽', abbr:'皖',},
+        { full:'福建', abbr:'闽',},
+        { full:'江西', abbr:'赣',},
+        { full:'山东', abbr:'鲁',},
+        { full:'河南', abbr:'豫',},
+        { full:'湖北', abbr:'鄂',},
+        { full:'湖南', abbr:'湘',},
+        { full:'广东', abbr:'粤',},
+        { full:'海南', abbr:'琼',},
+        { full:'四川', abbr:'川',},
+        { full:'贵州', abbr:'黔',},
+        { full:'云南', abbr:'滇',},
+        { full:'陕西', abbr:'陕',},
+        { full:'甘肃', abbr:'甘',},
+        { full:'青海', abbr:'青',},
+        { full:'台湾', abbr:'台',},
+      ].map((i, idx) => { i.val =idx; return i;})
+             
+      var select = new LicenseSelect({
+        data: provinces,
+        selectedVal: null,
+        onChange: function(i) {
+          console.log(i);
+        },
+      });
+
+      select.show()
+    }
+  </script>
+</body>
+
+</html>

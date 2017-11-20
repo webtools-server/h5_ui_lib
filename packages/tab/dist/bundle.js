@@ -100,10 +100,12 @@ var noop = function noop() {};
 var qsa = 'querySelectorAll';
 var qs = 'querySelector';
 var selectors = {
-  el: '.mod-tab',
-  tabItem: '.mod-tab-bar .tab-item',
-  tabContent: '.mod-tab-panel .tab-content'
+  el: '.ui-tab',
+  tabItem: '.ui-tab__tab-item',
+  tabContent: '.ui-tab__tab-content'
 };
+
+var activeClass = 'ui-tab__tab-item--active';
 
 var defaultOptions = {
   onChange: noop,
@@ -158,9 +160,9 @@ var Tab = function () {
     value: function _onTab(index, item) {
       item = item || this.tabItems[index];
       [].concat(toConsumableArray(this.tabItems)).forEach(function (i) {
-        i.classList.remove('active');
+        i.classList.remove(activeClass);
       });
-      item.classList.add('active');
+      item.classList.add(activeClass);
 
       [].concat(toConsumableArray(this.tabContents)).forEach(function (i) {
         i.style.display = 'none';

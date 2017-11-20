@@ -12,7 +12,19 @@ npm install @jyb/ui-tips --save
 
 ```javascript
 import tips from '@jyb/ui-tips'
-import '@jyb/ui-tips/dist/bundle.scss'
+```
+
+```scss
+@import '~@jyb/h5_ui_css/src/style/widget/overlay';
+@import '~@jyb/h5_ui_css/src/style/widget/toast';
+```
+引入所有ui规范
+```html
+  <link href="ui.min.css" rel="stylesheet"></link>
+```
+或者
+```scss
+@import '~@jyb/h5_ui_css/dist/style/ui;
 ```
 
 ## 例子

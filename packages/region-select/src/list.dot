@@ -1,0 +1,2 @@
+<ul style="width:{{=it.width}}" class="ui-region-select__list">  
+</ul>

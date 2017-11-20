@@ -19,7 +19,7 @@ var isAndroid = function isAndroid() {
 
 function anonymous(it
 /**/) {
-  var out = '<div id="bubble"> <div class="mod-spinner"> <div class="spinner-wrap"><span class="' + it.icon + '"></span><p class="text" id="bubble-text">' + it.text + '</p> </div> </div></div>';return out;
+  var out = '<div class="ui-toast"> <div class="ui-toast__content"> <div class="ui-spinner"><span class="' + it.icon + '"></span><p class="ui-toast__text" id="bubble-text">' + it.text + '</p> </div> </div></div>';return out;
 }
 
 var classCallCheck = function (instance, Constructor) {
@@ -80,7 +80,7 @@ var Tips = function () {
     };
 
     this.iconConf = {
-      loading: isAndroid() ? 'rotate-svg' : 'rotate-icon',
+      loading: isAndroid() ? 'ui-spinner__icon ui-spinner__icon--svg' : 'ui-spinner__icon ui-spinner__icon--anim',
       none: ''
     };
   }

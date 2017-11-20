@@ -19,13 +19,13 @@ const defaultOptions = {
   onDispose: noop,
   elementCls: {
     el: 'dialogNode',
-    mask: 'overlay',
-    wrap: 'mod-dialog',
-    close: 'close-btn',
-    head: 'dialog-title',
-    body: 'dialog-content',
-    foot: 'dialog-btn-wrap',
-    btn: 'dialog-btn'
+    mask: 'ui-overlay',
+    wrap: 'ui-dialog',
+    close: 'ui-dialog__fn-wrap',
+    head: 'ui-dialog__title',
+    body: 'ui-dialog__content',
+    foot: 'ui-dialog__footer',
+    btn: 'ui-dialog__btn'
   }
 };
 

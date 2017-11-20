@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tab</title>
-  <link href="../../../node_modules/@jyb/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
+  <link href="../node_modules/@jyb/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
   <script>
     (function(doc, win) {
       var basicWidth = window.basicWidth || 750;
@@ -28,21 +28,21 @@
 </head>
 
 <body>
-  <div class="mod-tab">
-    <div class="mod-tab-bar">
-      <div class="tab-item">tab1</div>
-      <div class="tab-item">tab2</div>
-      <div class="tab-item">tab3</div>
-      <div class="tab-item">tab4</div>
+  <div class="ui-tab">
+    <div class="ui-tab__bar">
+      <div class="ui-tab__tab-item">tab1</div>
+      <div class="ui-tab__tab-item">tab2</div>
+      <div class="ui-tab__tab-item">tab3</div>
+      <div class="ui-tab__tab-item">tab4</div>
     </div>
-    <div class="mod-tab-panel">
-      <div class="tab-content ui-d-n">content1</div>
-      <div class="tab-content ui-d-n">content2</div>
-      <div class="tab-content ui-d-n">content3</div>
-      <div class="tab-content ui-d-n">content4</div>
+    <div>
+      <div class="ui-tab__tab-content ui-d-n">content1</div>
+      <div class="ui-tab__tab-content ui-d-n">content2</div>
+      <div class="ui-tab__tab-content ui-d-n">content3</div>
+      <div class="ui-tab__tab-content ui-d-n">content4</div>
     </div>
   </div>
-  <script src="../dist/bundle.dev.js"></script>
+  <script src="../dist/bundle.js"></script>
   <script>
     new Tab({
       onChange: function(index) { console.log(index); },

@@ -1,11 +1,5 @@
 # 例子
 
-## 页面元素
-
-```html
-<a id="default-dialog" class="btn-primary" href="javascript:;">dialog</a>
-```
-
 ## 样式，lang=scss
 
 ### 全局样式文件
@@ -14,8 +8,10 @@
 ```
 
 ### 单个组件样式
-```javascript
-import '@jyb/ui-dialog/dist/bundle.scss';
+```scss
+@import '~@jyb/h5_ui_css/src/style/widget/overlay';
+@import '~@jyb/h5_ui_css/src/style/widget/dialog';
+@import '~@jyb/h5_ui_css/src/style/widget/icon';
 ```
 
 ## 调用

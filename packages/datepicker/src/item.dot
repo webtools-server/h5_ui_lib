@@ -1,0 +1,3 @@
+{{~it.list :item:index}}
+  <div class="ui-picker__list-item" data-id="{{=item.value}}">{{=item.label}}</div>
+{{~}}

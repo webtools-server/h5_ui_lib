@@ -1,0 +1,16 @@
+<div class="ui-bank-select__list">
+  {{~it.list :item:index}}
+  <div et="click:select" class="ui-bank-select__list-item {{?item.disabled}}ui-bank-select__list-item--disabled{{?}}" data-id={{=item.bankCode}}>
+    <div class="ui-icon-wrap">
+      <img class="ui-icon-wrap__icon " src="{{=item.bankImg}}" />
+      <div class="ui-icon-wrap__text">
+        <p>{{=item.text1}}</p>
+        {{?item.text2}} 
+        <p class="ui-text ui-text--intro">{{=item.text2}}</p>
+        {{?}}
+      </div>      
+    </div>
+    <div class="ui-info-item__desc-right"><i {{?item.icon}}class="{{=item.icon}}"{{?}}></i></div>
+  </div>
+  {{~}}
+</div>

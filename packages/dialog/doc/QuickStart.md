@@ -14,6 +14,22 @@ npm install @jyb/ui-dialog --save
 import Dialog from '@jyb/ui-dialog'
 ```
 
+引入单个组件的样式
+```scss
+@import '~@jyb/h5_ui_css/src/style/widget/overlay';
+@import '~@jyb/h5_ui_css/src/style/widget/dialog';
+@import '~@jyb/h5_ui_css/src/style/widget/icon';
+```
+
+引入所有ui规范
+```html
+  <link href="ui.min.css" rel="stylesheet"></link>
+```
+或者
+```scss
+@import '~@jyb/h5_ui_css/dist/style/ui;
+```
+
 ### 调用
 
 ```javascript

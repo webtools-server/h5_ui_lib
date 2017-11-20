@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>popup</title>
+  <link href="../node_modules/@jyb/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
+  <script>
+    (function(doc, win) {
+      var basicWidth = window.basicWidth || 750;
+      var minWidth = 320;
+      var htmlElement = doc.documentElement;
+      var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+      var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          window.rootFontSize = 100 * (clientWidth / basicWidth);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+      };
+      recalc();
+      if (!win.addEventListener) return;
+      win.addEventListener('resize', recalc, false);
+    })(document, window);
+  </script>    
+</head>
+
+<body>
+  <div class="ui-btn" onclick="showPopup()">点我</div>
+  <script src="../../../node_modules/zepto/dist/zepto.min.js"></script>  
+  <script src="../dist/bundle.js"></script>
+  <script>
+    var showPopup = function () {
+      new Popup({
+        showClose: true,
+        container: 'body',
+        content: 'test'
+      }).show();
+    }
+  </script>
+</body>
+
+</html>

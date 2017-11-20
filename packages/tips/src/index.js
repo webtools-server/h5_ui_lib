@@ -13,7 +13,7 @@ class Tips {
     };
 
     this.iconConf = {
-      loading: isAndroid() ? 'rotate-svg' : 'rotate-icon',
+      loading: isAndroid() ? 'ui-spinner__icon ui-spinner__icon--svg' : 'ui-spinner__icon ui-spinner__icon--anim',
       none: ''
     };
   }

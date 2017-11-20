@@ -26,14 +26,14 @@ const defaultOptions = {
   onShow: function() {}, // show调用
   onDispose: function() {}, // dispose调用
   elementCls: { // 元素class
-    el: 'mod-dialog',
-    mask: 'overlay',
-    wrap: 'dialog-wrap',
-    close: 'close-btn',
-    head: 'dialog-head',
-    body: 'dialog-body',
-    foot: 'dialog-foot',
-    btn: 'dialog-btn'
+    el: 'dialogNode',
+    mask: 'ui-overlay',
+    wrap: 'ui-dialog',
+    close: 'ui-dialog__fn-wrap',
+    head: 'ui-dialog__title',
+    body: 'ui-dialog__content',
+    foot: 'ui-dialog__footer',
+    btn: 'ui-dialog__btn'
   }
 };
 ```

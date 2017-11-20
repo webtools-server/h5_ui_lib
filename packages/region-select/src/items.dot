@@ -1,0 +1,3 @@
+{{~it.list :item:index}}
+  <li class="ui-region-select__list-item" data-id="{{=item.value}}">{{=item.label}}</li>
+{{~}}

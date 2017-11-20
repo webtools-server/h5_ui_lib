@@ -30,6 +30,9 @@
   },
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "@jyb/h5_ui_css": "^0.1.0"
+  },
   "devDependencies": {
     "fs-extra": "^4.0.2"
   }

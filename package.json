@@ -19,6 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "@jyb/eslint-config-jyb": "^1.0.1",
+    "autoprefixer": "^7.1.6",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-latest": "^6.24.1",
@@ -32,17 +33,17 @@
     "karma-rollup-plugin": "^0.2.4",
     "lerna": "^2.1.0",
     "mocha": "^3.4.2",
+    "postcss": "^6.0.14",
     "rollup": "^0.43.0",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-image": "^1.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-sass": "^0.5.3",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.0.0",
     "should": "^11.2.1",
     "zepto": "^1.2.0"
-  },
-  "dependencies": {
-    "@jyb/h5_ui_css": "^0.1.0"
   }
 }

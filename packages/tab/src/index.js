@@ -6,10 +6,12 @@ const noop = function () {};
 const qsa = 'querySelectorAll';
 const qs = 'querySelector';
 const selectors = {
-  el: '.mod-tab',
-  tabItem: '.mod-tab-bar .tab-item',
-  tabContent: '.mod-tab-panel .tab-content',
+  el: '.ui-tab',
+  tabItem: '.ui-tab__tab-item',
+  tabContent: '.ui-tab__tab-content',
 };
+
+const activeClass = 'ui-tab__tab-item--active';
 
 const defaultOptions = {
   onChange: noop,
@@ -51,8 +53,8 @@ class Tab {
 
   _onTab(index, item) {
     item = item || this.tabItems[index];
-    [...this.tabItems].forEach((i) => { i.classList.remove('active'); });
-    item.classList.add('active');
+    [...this.tabItems].forEach((i) => { i.classList.remove(activeClass); });
+    item.classList.add(activeClass);
 
     [...this.tabContents].forEach((i) => { i.style.display = 'none'; });
     this.tabContents[index].style.display = 'block';

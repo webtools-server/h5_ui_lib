@@ -26,6 +26,9 @@
     "devDest": "dist/tips.dev.js",
     "prodDest": "dist/tips.js"
   },
+  "dependencies": {
+    "@jyb/h5_ui_css": "^0.1.0"
+  },
   "author": "",
   "license": "MIT"
 }

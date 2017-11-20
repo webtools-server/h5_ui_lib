@@ -1,0 +1,7 @@
+<div class="ui-license-select__list">
+  {{~it.list :item:index}}
+  <div et="click:select" class="ui-license-select__list-item {{?item.val == it.selected}}ui-license-select__list-item--selected{{?}}" data-id={{=item.val}}>{{=item.abbr}}
+    <span class="ui-license-select__sub-text">{{=item.full}}</span>
+  </div>
+  {{~}}
+</div>
