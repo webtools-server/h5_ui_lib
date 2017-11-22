@@ -3,7 +3,7 @@
 ## 安装
 
 ```shell
-npm install @jyb/bankSelect --save
+npm install @jyb/ui-bank-select --save
 ```
 
 ## 使用
@@ -11,25 +11,27 @@ npm install @jyb/bankSelect --save
 ### 引入
 
 ```javascript
-import Picker from '@jyb/bankSelect';
+import BankSelect from '@jyb/ui-bank-select';
 ```
 引入单个组件的样式
 ```scss
-@import '~jyb/h5_ui_css/dist/style/widget/overlay';
-@import '~jyb/h5_ui_css/dist/style/widget/popup';
+@import '~@jyb/h5_ui_css/dist/style/widget/overlay';
+@import '~@jyb/h5_ui_css/dist/style/widget/popup';
 @import '~@jyb/h5_ui_css/dist/style/widget/icon';
 @import '~@jyb/h5_ui_css/dist/style/widget/bank-select';
 ```
 引入所有ui规范
 ```html
-  <link href="ui.min.css" rel="stylesheet"></link>
+  <link href="path/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
 ```
-或者
+或者在scss中引入
 ```scss
 @import '~@jyb/h5_ui_css/dist/style/ui;
 ```
 
 ## 例子
+
+<a href="../demo/index.html" target="_blank">demo</a>
 
 ```javascript 
 var banks = [

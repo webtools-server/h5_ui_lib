@@ -4,11 +4,14 @@
 import extend from '@jyb/lib-extend';
 import Popup from '@jyb/ui-popup';
 import tpl from './index.dot';
+import titleTpl from './title.dot';
+import CouponItem from './couponItem';
 import { findIndex } from '../../../utils/util';
 
 const classes = {
+  icon: 'ui-coupon-item__icon',
   selected: 'ui-icon-agree--checked',
-  disabled: 'ui-bank-select__list-item--disabled',
+  unselected: 'ui-icon-agree--unchecked',
 };
 
 const defaultOptions = {
@@ -16,44 +19,42 @@ const defaultOptions = {
   data: [],
   selectedVal: null,
   onChange: $.noop,
+  onHelp: $.noop,
+  isShowHelp: false,
+  title: '使用红包/加息券',
+  notUseDesc: '不使用，就是任性',
   popup: {
     container: 'body',
-    title: '选择银行卡',
+    title: titleTpl({ title: '使用红包/加息券', isShowHelp: 'false' }),
     showClose: true,
     classes: {
-      wrap: 'ui-bank-select',
+      wrap: 'ui-coupon-select',
       mask: 'ui-overlay--hidden',
-      title: 'ui-bank-select__title',
-      content: 'ui-bank-select__content',
+      title: 'ui-coupon-select__title ui-popup__title--noborder',
+      content: 'ui-coupon-select__content',
     }
   }
 };
 
-class LicenseSelect {
+class CouponSelect {
   constructor(options) {
     this.options = extend(true, defaultOptions, options);
     this._init();
   }
 
   _init() {
-    this.data = this.options.data;
-    this.data.push({
-      bankImg: BankIcon.src,
-      text1: '添加新的银行卡',
-      icon: 'ui-icon-arrow-right',
-    });
+    this.data = this.options.data.map(i => new CouponItem(i));
 
     // 设置选中
-    const selectedIndex = findIndex(this.data, item => item.bankCode === this.options.selectedVal);
-    const currentBank = selectedIndex > -1 ? this.data[selectedIndex] : null;
-    if (currentBank) {
-      currentBank.icon = classes.selected;
-      this.currentSelect = currentBank.bankCode;
-    }
+    this.currentSelectVal = this.options.selectedVal || 0;
+    const selectedIndex = findIndex(this.data, item => item.cid === this.options.selectedVal);
+    this.currentSelectIndex = selectedIndex > -1 ? selectedIndex : this.data.length;
 
+    this.options.popup.title = titleTpl({ title: this.options.title, isShowHelp: this.options.isShowHelp });
     this.options.popup.content = this.options.tpl({
       list: this.data,
       selected: this.options.selectedVal,
+      notUseDesc: this.options.notUseDesc,
     });
 
     this.popup = new Popup(this.options.popup);
@@ -61,29 +62,31 @@ class LicenseSelect {
   }
 
   _bindEvent() {
-    this.popup.registerHandler('select', this._select.bind(this));
+    this.popup.registerHandler('change', this._onClick.bind(this));
+    this.popup.registerHandler('help', this._onHelp.bind(this));
   }
 
-  _select(node) {
-    if (node.hasClass(classes.disabled)) {
+  _onClick(node) {
+    const index = node.index();
+    if (index !== this.data.length && index === this.currentSelectIndex) {
       return;
     }
 
-    const bankCode = node.attr('data-id');
-    if (bankCode === this.currentSelect) {
-      return;
-    }
-
-    if (node.index() === this.data.length - 1) {
-      this.options.onAddCard();
+    this.currentSelectIndex = index;
+    node.siblings().find(`.${classes.icon}`).removeClass(classes.selected);
+    if (index === this.data.length) {
+      this.currentSelectVal = 0;
     } else {
-      node.find('i').addClass(classes.selected);
-      node.siblings().find('i').removeClass(classes.selected);
-      this.currentSelect = bankCode;
-      this.options.onChange(bankCode);
+      node.find(`.${classes.icon}`).addClass(classes.selected);
+      this.currentSelectVal = this.data[index].cid;
     }
 
+    this.options.onChange(this.currentSelectVal);
     this.hide();
+  }
+
+  _onHelp() {
+    this.options.onHelp.call(this);
   }
 
   hide() {
@@ -95,4 +98,4 @@ class LicenseSelect {
   }
 }
 
-export default LicenseSelect;
+export default CouponSelect;

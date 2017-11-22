@@ -1,0 +1,24 @@
+<div class="ui-coupon-select__list">
+  {{~it.list :item:index}}
+  <div class="ui-coupon-item" et="click:change">
+    <div class="ui-coupon-item__up">
+      <div class="ui-coupon-item__up-left">
+        <span class="ui-coupon-item__value {{?('' + item.value).length > 3}}ui-coupon-item__value--small{{?}}">{{=item.value}}</span><span class="ui-coupon-item__unit">{{=item.unit}}</span>
+      </div>
+      <div class="ui-coupon-item__up-right">
+        <div class="ui-coupon-item__title">{{=item.name}}</div>
+        {{?item.useInfo}}
+        <div class="ui-coupon-item__useinfo">{{=item.useInfo}}</div>
+        {{?}}
+        <div class="ui-coupon-item__usage">{{=item.usage}}</div>
+      </div>
+    </div>
+    <div class="ui-cutting-line"></div>
+    <div class="ui-coupon-item__down">
+      <p class="ui-coupon-item__valid">有效期至{{=item.expired_time}}</p>
+      <i class="ui-coupon-item__icon ui-icon-agree--unchecked {{?it.selected == item.cid}}ui-icon-agree--checked{{?}}"></i>
+    </div>
+  </div>
+  {{~}}
+  <div class="ui-btn ui-coupon-select__notuse" et="click:change">{{=it.notUseDesc}}</div>
+</div>

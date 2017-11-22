@@ -1,7 +1,7 @@
 # API
 
 ```javascript
-import Picker from '@jyb/ui-bank-select'
+import BankSelect from '@jyb/ui-bank-select'
 ```
 
 ## 初始化

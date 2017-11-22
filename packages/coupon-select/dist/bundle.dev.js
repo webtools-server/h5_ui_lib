@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
-	(global.LicenseSelect = factory());
+	(global.CouponSelect = factory());
 }(this, (function () { 'use strict';
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -301,21 +301,102 @@ var bundle = createCommonjsModule(function (module, exports) {
 
 function anonymous(it
 /**/) {
-  var out = '<div class="ui-license-select__list"> ';var arr1 = it.list;if (arr1) {
+  var out = '<div class="ui-coupon-select__list"> ';var arr1 = it.list;if (arr1) {
     var item,
         index = -1,
         l1 = arr1.length - 1;while (index < l1) {
-      item = arr1[index += 1];out += ' <div et="click:select" class="ui-license-select__list-item ';if (item.val == it.selected) {
-        out += 'ui-license-select__list-item--selected';
-      }out += '" data-id=' + item.val + '>' + item.abbr + ' <span class="ui-license-select__sub-text">' + item.full + '</span> </div> ';
+      item = arr1[index += 1];out += ' <div class="ui-coupon-item" et="click:change"> <div class="ui-coupon-item__up"> <div class="ui-coupon-item__up-left"> <span class="ui-coupon-item__value ';if (('' + item.value).length > 3) {
+        out += 'ui-coupon-item__value--small';
+      }out += '">' + item.value + '</span><span class="ui-coupon-item__unit">' + item.unit + '</span> </div> <div class="ui-coupon-item__up-right"> <div class="ui-coupon-item__title">' + item.name + '</div> ';if (item.useInfo) {
+        out += ' <div class="ui-coupon-item__useinfo">' + item.useInfo + '</div> ';
+      }out += ' <div class="ui-coupon-item__usage">' + item.usage + '</div> </div> </div> <div class="ui-cutting-line"></div> <div class="ui-coupon-item__down"> <p class="ui-coupon-item__valid">有效期至' + item.expired_time + '</p> <i class="ui-coupon-item__icon ui-icon-agree--unchecked ';if (it.selected == item.cid) {
+        out += 'ui-icon-agree--checked';
+      }out += '"></i> </div> </div> ';
     }
-  }out += '</div>';return out;
+  }out += ' <div class="ui-btn ui-coupon-select__notuse" et="click:change">' + it.notUseDesc + '</div></div>';return out;
 }
 
 function anonymous$1(it
 /**/) {
-  var out = '<div et="click:close" class="ui-popup__fn-button ui-popup__fn-button--left"><i class="ui-icon-close"></i></div><div>选择车牌号</div><div et="click:confirm" class="ui-popup__fn-button ui-popup__fn-button--hl">确定</div>';return out;
+  var out = '';if (it.isShowHelp) {
+    out += '<div class="ui-popup__fn-button ui-popup__fn-button--left" et="click:help"><i class="ui-icon-help"></i></div>';
+  }out += '<div>' + it.title + '</div>';return out;
 }
+
+var couponMap = {
+  5: {
+    value: function value() {
+      return this.detail.value / 10;
+    },
+
+    unit: '折',
+    useInfo: function useInfo() {
+      return '\u5DF2\u62B5\u6263' + (this.detail.total_max_cnt - this.detail.total_remain_cnt) + '\u6B21,\u5269\u4F59' + this.detail.total_remain_cnt + '\u6B21';
+    }
+  },
+  4: {
+    value: function value() {
+      return Math.floor(this.detail.remain_amt / 100);
+    },
+
+    unit: '元',
+    useInfo: function useInfo() {
+      var used = ((this.detail.total_amt - this.detail.remain_amt) / 100).toFixed(2);
+      var rest = (this.detail.remain_amt / 100).toFixed(2);
+      return '\u5DF2\u4F7F\u7528' + used + '\u5143,\u5269\u4F59' + rest + '\u5143';
+    }
+  },
+  default: {
+    value: function value() {
+      return this.amount / 100;
+    },
+
+    unit: '元',
+    useInfo: function useInfo() {
+      return '\u6EE1' + (this.amountVal ? parseInt(this.amountVal / 100, 10) : 0) + '\u5143\u53EF\u7528';
+    }
+  }
+};
+
+var CouponItem = function () {
+  function CouponItem(options) {
+    classCallCheck(this, CouponItem);
+
+    $.extend(this, options);
+    this.currentValue = couponMap[this.type_id] || couponMap.default;
+  }
+
+  createClass(CouponItem, [{
+    key: 'unit',
+    get: function get$$1() {
+      return this.currentValue.unit;
+    },
+    set: function set$$1(val) {
+      this.currentValue.unit = val;
+    }
+  }, {
+    key: 'value',
+    get: function get$$1() {
+      return this.currentValue.value.call(this);
+    }
+
+    // set value(val) {
+    //   return;
+    // }
+
+  }, {
+    key: 'useInfo',
+    get: function get$$1() {
+      return this.currentValue.useInfo.call(this);
+    }
+
+    // set useInfo(val) {
+    //   return;
+    // }
+
+  }]);
+  return CouponItem;
+}();
 
 function findIndex(array, predicate) {
   var index = -1;
@@ -331,10 +412,12 @@ function findIndex(array, predicate) {
 }
 
 /**
- * 车牌选择器
+ * 红包选择器
  */
 var classes = {
-  selected: 'ui-license-select__list-item--selected'
+  icon: 'ui-coupon-item__icon',
+  selected: 'ui-icon-agree--checked',
+  unselected: 'ui-icon-agree--unchecked'
 };
 
 var defaultOptions = {
@@ -342,66 +425,87 @@ var defaultOptions = {
   data: [],
   selectedVal: null,
   onChange: $.noop,
+  onHelp: $.noop,
+  isShowHelp: false,
+  title: '使用红包/加息券',
+  notUseDesc: '不使用，就是任性',
   popup: {
     container: 'body',
-    title: anonymous$1(),
+    title: anonymous$1({ title: '使用红包/加息券', isShowHelp: 'false' }),
+    showClose: true,
     classes: {
-      wrap: 'ui-license-select',
+      wrap: 'ui-coupon-select',
       mask: 'ui-overlay--hidden',
-      title: 'ui-license-select__title',
-      content: 'ui-license-select__content'
+      title: 'ui-coupon-select__title ui-popup__title--noborder',
+      content: 'ui-coupon-select__content'
     }
   }
 };
 
-var LicenseSelect = function () {
-  function LicenseSelect(options) {
-    classCallCheck(this, LicenseSelect);
+var CouponSelect = function () {
+  function CouponSelect(options) {
+    classCallCheck(this, CouponSelect);
 
     this.options = extend(true, defaultOptions, options);
     this._init();
   }
 
-  createClass(LicenseSelect, [{
+  createClass(CouponSelect, [{
     key: '_init',
     value: function _init() {
       var _this = this;
 
-      this.data = this.options.data;
+      this.data = this.options.data.map(function (i) {
+        return new CouponItem(i);
+      });
+
+      // 设置选中
+      this.currentSelectVal = this.options.selectedVal || 0;
+      var selectedIndex = findIndex(this.data, function (item) {
+        return item.cid === _this.options.selectedVal;
+      });
+      this.currentSelectIndex = selectedIndex > -1 ? selectedIndex : this.data.length;
+
+      this.options.popup.title = anonymous$1({ title: this.options.title, isShowHelp: this.options.isShowHelp });
       this.options.popup.content = this.options.tpl({
         list: this.data,
-        selected: this.options.selectedVal
+        selected: this.options.selectedVal,
+        notUseDesc: this.options.notUseDesc
       });
+
       this.popup = new bundle(this.options.popup);
-
-      var selectedIndex = findIndex(this.data, function (item) {
-        return item.val === _this.options.selectedVal;
-      });
-      this.currentSelect = selectedIndex > -1 ? this.data[selectedIndex] : null;
-
       this._bindEvent();
     }
   }, {
     key: '_bindEvent',
     value: function _bindEvent() {
-      this.popup.registerHandler('select', this._select.bind(this));
-      this.popup.registerHandler('confirm', this._confirm.bind(this));
+      this.popup.registerHandler('change', this._onClick.bind(this));
+      this.popup.registerHandler('help', this._onHelp.bind(this));
     }
   }, {
-    key: '_select',
-    value: function _select(node) {
-      if (node.hasClass(classes.selected)) {
+    key: '_onClick',
+    value: function _onClick(node) {
+      var index = node.index();
+      if (index !== this.data.length && index === this.currentSelectIndex) {
         return;
       }
 
-      node.addClass(classes.selected).siblings().removeClass(classes.selected);
-      this.currentSelect = this.data[node.index()];
+      this.currentSelectIndex = index;
+      node.siblings().find('.' + classes.icon).removeClass(classes.selected);
+      if (index === this.data.length) {
+        this.currentSelectVal = 0;
+      } else {
+        node.find('.' + classes.icon).addClass(classes.selected);
+        this.currentSelectVal = this.data[index].cid;
+      }
+
+      this.options.onChange(this.currentSelectVal);
+      this.hide();
     }
   }, {
-    key: '_confirm',
-    value: function _confirm() {
-      this.options.onChange(this.currentSelect);
-      this.hide();
+    key: '_onHelp',
+    value: function _onHelp() {
+      this.options.onHelp.call(this);
     }
   }, {
     key: 'hide',
@@ -414,9 +518,10 @@ var LicenseSelect = function () {
       this.popup.show();
     }
   }]);
-  return LicenseSelect;
+  return CouponSelect;
 }();
 
-return LicenseSelect;
+return CouponSelect;
 
 })));
+//# sourceMappingURL=bundle.dev.js.map

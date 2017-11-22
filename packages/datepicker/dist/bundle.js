@@ -169,6 +169,11 @@ var bundle = createCommonjsModule(function (module, exports) {
       popupShow: 'ui-popup--show'
     };
 
+    // 浮层高度由内容决定，最高时距离屏幕顶端296px，标题高度为104px
+    function calcContentHeight() {
+      return window.innerHeight - (296 + 104) / 2 + 'px';
+    }
+
     var Popup = function () {
       /**
        * Create a Popup
@@ -190,6 +195,7 @@ var bundle = createCommonjsModule(function (module, exports) {
         value: function _init() {
           this.evtHandler = {};
           this.$el = $(anonymous(this.options));
+          this.$el.find(selectors.content).css('max-height', calcContentHeight());
           this._bindEvent();
         }
 

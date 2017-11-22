@@ -23,9 +23,9 @@ import Dialog from '@jyb/ui-dialog'
 
 引入所有ui规范
 ```html
-  <link href="ui.min.css" rel="stylesheet"></link>
+  <link href="path/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
 ```
-或者
+或者在scss中引入
 ```scss
 @import '~@jyb/h5_ui_css/dist/style/ui;
 ```
@@ -63,6 +63,10 @@ const dialog = new Dialog({
 
 dialog.show();
 ```
+
+### 例子
+
+<a href="../demo/index.html" target="_blank">demo</a>
 
 
 

@@ -3,7 +3,7 @@
 ## 安装
 
 ```shell
-npm install @jyb/licenseSelect --save
+npm install @jyb/license-select --save
 ```
 
 ## 使用
@@ -11,25 +11,27 @@ npm install @jyb/licenseSelect --save
 ### 引入
 
 ```javascript
-import Picker from '@jyb/licenseSelect';
+import LicenseSelect from '@jyb/license-select';
 ```
 引入单个组件的样式
 ```scss
-@import '~jyb/h5_ui_css/dist/style/widget/overlay';
-@import '~jyb/h5_ui_css/dist/style/widget/popup';
+@import '~@jyb/h5_ui_css/dist/style/widget/overlay';
+@import '~@jyb/h5_ui_css/dist/style/widget/popup';
 @import '~@jyb/h5_ui_css/dist/style/widget/icon';
 @import '~@jyb/h5_ui_css/dist/style/widget/license-select';
 ```
 引入所有ui规范
 ```html
-  <link href="ui.min.css" rel="stylesheet"></link>
+  <link href="path/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
 ```
-或者
+或者在scss中引入
 ```scss
 @import '~@jyb/h5_ui_css/dist/style/ui;
 ```
 
 ## 例子
+
+<a href="../demo/index.html" target="_blank">demo</a>
 
 ```javascript 
 var provinces = [
