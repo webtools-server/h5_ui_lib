@@ -8,6 +8,7 @@ import Popup from './packages/popup';
 import RegionSelect from './packages/region-select';
 import Tab from './packages/tab';
 import Tips from './packages/tips';
+import MoreCategory from './packages/more-category';
 
 export default {
   BankSelect,
@@ -19,5 +20,6 @@ export default {
   Popup,
   RegionSelect,
   Tab,
-  Tips
+  Tips,
+  MoreCategory
 };
