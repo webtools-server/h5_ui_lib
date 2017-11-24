@@ -21,91 +21,6 @@ const dot = require('./plugin/dot');
 
 const cwd = process.cwd();
 
-// env
-const isProd = process.env.NODE_ENV === 'production';
-const isMin = process.env.NODE_ENV === 'min';
-
-// 获取package libDefine字段
-const libDefine = getLibDefine();
-
-if (libDefine) {
-  const rollupConfig = {
-    entry: path.join(cwd, 'src/index.js'),
-    plugins: [
-      resolve(),
-      commonjs(),
-      eslint({
-        include: path.join(cwd, 'src/**/**.js'),
-        exclude: []
-      }),
-      dot({
-        include: ['**/*.dot', '**/*.tpl'],
-        exclude: ['**/index.html'],
-        templateSettings: { selfcontained: true }
-      }),
-      image(),
-      // sass({
-      //   output: 'bundle.css',
-      //   processor: css => postcss([autoprefixer])
-      //     .process(css)
-      //     .then(result => result.css),
-      //   options: {
-      //     importer: function(url, file, done) {
-      //       if (url.startsWith('~')) {
-      //         const newUrl = path.join(cwd, 'node_modules', url.substring(1));
-      //         done({ file: newUrl });
-      //       } else {
-      //         done({ file: url });
-      //       }
-      //     }
-      //   }
-      // }),
-      babel({
-        exclude: path.join(cwd, 'node_modules/**')
-      }),
-      (isMin && uglify())
-    ]
-  };
-
-  const destFile = {
-    production: path.join(cwd, libDefine.prodDest || ''),
-    dev: path.join(cwd, libDefine.devDest || ''),
-    min: path.join(cwd, libDefine.minDest || '')
-  };
-  const outputConfig = {
-    format: 'umd',
-    moduleName: libDefine.moduleName,
-    dest: destFile[process.env.NODE_ENV] || path.join(cwd, 'dist/bundle.js'),
-    sourceMap: !(isProd || isMin)
-  };
-
-  // function copyNodeModules(modules) {
-  //   modules.forEach(m => {
-  //     m.copy(path.join(cwd, 'node_modules')
-  //   })
-  //   fs.copy(path.join(cwd, 'src/index.scss'), path.join(cwd, 'dist/bundle.scss'))
-  //     .then(() => console.log('copy scss ok'))
-  //     .catch(err => console.error(`copy scss err ${err.toString()}`));
-  // }
-
-
-  if (isProd || isMin) {
-    rollup.rollup(rollupConfig).then((bundle) => {
-      bundle.write(outputConfig);
-    });
-
-    extractNodeModule().forEach(copyModuleToDemo);
-
-    // fs.copy(path.join(cwd, 'src/index.scss'), path.join(cwd, 'dist/bundle.scss'))
-    //   .then(() => console.log('copy scss ok'))
-    //   .catch(err => console.error(`copy scss err ${err.toString()}`));
-  } else {
-    rollupWatch(rollup, Object.assign({}, rollupConfig, outputConfig)).on('event', (ev) => {
-      console.log(ev);
-    });
-  }
-}
-
 function copyModuleToDemo(modulePath) {
   const fileName = modulePath.split(path.sep)[modulePath.split(path.sep).length - 1];
   fs.copy(modulePath, path.join(cwd, `demo/${fileName}`))
@@ -125,3 +40,105 @@ function extractNodeModule() {
   });
 }
 
+if (process.argv.indexOf('--entry') > -1) {
+  rollup.rollup({
+    entry: path.join(cwd, './index.js'),
+    plugins: [
+      resolve(),
+      commonjs(),
+      // uglify(),
+    ],
+  }).then((bundle) => {
+    bundle.write({
+      format: 'umd',
+      moduleName: 'UI',
+      dest: path.join(cwd, './dist/index.js'),
+      sourceMap: true,
+    });
+  });
+} else {
+// env
+  const isProd = process.env.NODE_ENV === 'production';
+  const isMin = process.env.NODE_ENV === 'min';
+
+  // 获取package libDefine字段
+  const libDefine = getLibDefine();
+
+  if (libDefine) {
+    const rollupConfig = {
+      entry: path.join(cwd, 'src/index.js'),
+      plugins: [
+        resolve(),
+        commonjs(),
+        eslint({
+          include: path.join(cwd, 'src/**/**.js'),
+          exclude: []
+        }),
+        dot({
+          include: ['**/*.dot', '**/*.tpl'],
+          exclude: ['**/index.html'],
+          templateSettings: { selfcontained: true }
+        }),
+        image(),
+        // sass({
+        //   output: 'bundle.css',
+        //   processor: css => postcss([autoprefixer])
+        //     .process(css)
+        //     .then(result => result.css),
+        //   options: {
+        //     importer: function(url, file, done) {
+        //       if (url.startsWith('~')) {
+        //         const newUrl = path.join(cwd, 'node_modules', url.substring(1));
+        //         done({ file: newUrl });
+        //       } else {
+        //         done({ file: url });
+        //       }
+        //     }
+        //   }
+        // }),
+        babel({
+          exclude: path.join(cwd, 'node_modules/**')
+        }),
+        (isMin && uglify())
+      ]
+    };
+
+    const destFile = {
+      production: path.join(cwd, libDefine.prodDest || ''),
+      dev: path.join(cwd, libDefine.devDest || ''),
+      min: path.join(cwd, libDefine.minDest || '')
+    };
+    const outputConfig = {
+      format: 'umd',
+      moduleName: libDefine.moduleName,
+      dest: destFile[process.env.NODE_ENV] || path.join(cwd, 'dist/bundle.js'),
+      sourceMap: !(isProd || isMin)
+    };
+
+    // function copyNodeModules(modules) {
+    //   modules.forEach(m => {
+    //     m.copy(path.join(cwd, 'node_modules')
+    //   })
+    //   fs.copy(path.join(cwd, 'src/index.scss'), path.join(cwd, 'dist/bundle.scss'))
+    //     .then(() => console.log('copy scss ok'))
+    //     .catch(err => console.error(`copy scss err ${err.toString()}`));
+    // }
+
+
+    if (isProd || isMin) {
+      rollup.rollup(rollupConfig).then((bundle) => {
+        bundle.write(outputConfig);
+      });
+
+      extractNodeModule().forEach(copyModuleToDemo);
+
+    // fs.copy(path.join(cwd, 'src/index.scss'), path.join(cwd, 'dist/bundle.scss'))
+    //   .then(() => console.log('copy scss ok'))
+    //   .catch(err => console.error(`copy scss err ${err.toString()}`));
+    } else {
+      rollupWatch(rollup, Object.assign({}, rollupConfig, outputConfig)).on('event', (ev) => {
+        console.log(ev);
+      });
+    }
+  }
+}
