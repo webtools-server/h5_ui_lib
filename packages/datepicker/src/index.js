@@ -224,11 +224,17 @@ const generageDate = (cronFmt, start, end) => {
   return date 
 }
 
+const today = function () {
+  var today = new Date();
+  return [today.getFullYear(), today.getMonth() + 1, today.getDate()]
+}
+
 const defaults = {
   onChange: $.noop,
   onConfirm: $.noop,
   start: '1970-01-01',
   end: '2018-01-01',
+  defaultValue: today(),
   cron: '* * *',
   depth: 3,
   offset: 4,

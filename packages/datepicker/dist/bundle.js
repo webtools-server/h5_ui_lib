@@ -908,11 +908,17 @@ var generageDate = function generageDate(cronFmt, start, end) {
   return date;
 };
 
+var today = function today() {
+  var today = new Date();
+  return [today.getFullYear(), today.getMonth() + 1, today.getDate()];
+};
+
 var defaults = {
   onChange: $.noop,
   onConfirm: $.noop,
   start: '1970-01-01',
   end: '2018-01-01',
+  defaultValue: today(),
   cron: '* * *',
   depth: 3,
   offset: 4

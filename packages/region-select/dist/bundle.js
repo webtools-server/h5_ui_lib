@@ -590,12 +590,13 @@ var RegionSelect = function () {
             } else {
               that.options.getLevelData(level, item, function (children) {
                 if (!isDefault) {
-                  if (!children || children.length === 0) {
+                  if (level === that.options.depth - 1 || !children || children.length === 0) {
                     that.options.onChange(that.result);
                     that.hide();
                     return;
                   } else {
                     item.children = children;
+                    that.chosenInst.jumpTo(level + 1);
                     that._addSelect(item.children, level + 1);
                   }
                 } else {

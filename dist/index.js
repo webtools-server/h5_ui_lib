@@ -1894,11 +1894,17 @@ var generageDate = function generageDate(cronFmt, start, end) {
   return date;
 };
 
+var today = function today() {
+  var today = new Date();
+  return [today.getFullYear(), today.getMonth() + 1, today.getDate()];
+};
+
 var defaults = {
   onChange: $.noop,
   onConfirm: $.noop,
   start: '1970-01-01',
   end: '2018-01-01',
+  defaultValue: today(),
   cron: '* * *',
   depth: 3,
   offset: 4
@@ -3969,12 +3975,13 @@ var RegionSelect = function () {
             } else {
               that.options.getLevelData(level, item, function (children) {
                 if (!isDefault) {
-                  if (!children || children.length === 0) {
+                  if (level === that.options.depth - 1 || !children || children.length === 0) {
                     that.options.onChange(that.result);
                     that.hide();
                     return;
                   } else {
                     item.children = children;
+                    that.chosenInst.jumpTo(level + 1);
                     that._addSelect(item.children, level + 1);
                   }
                 } else {
