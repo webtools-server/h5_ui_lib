@@ -57,10 +57,10 @@ function noop() {}
 
 var defaultOptions = {
   container: 'body',
-  title: '标题', // 标题内容
+  title: '', // 标题内容
   visible: true, // 默认显示
   showClose: true, // 是否显示close按钮
-  content: '内容', // 显示的内容
+  content: '', // 显示的内容
   btns: [], // 按钮列表{ text: '', callback: function(){}, css:'' }
   mask: true, // 是否显示mask
   onClose: noop,

@@ -91,6 +91,7 @@ class Scroll {
   }
 
   _onMove(e) {
+    e.preventDefault();
     this.startTime = Date.now();
     const y = getOffsetY(e);
     this.points.push({ time: Date.now(), offset: y });

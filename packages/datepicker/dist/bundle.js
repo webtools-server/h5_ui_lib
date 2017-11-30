@@ -383,6 +383,7 @@ var Scroll = function () {
   }, {
     key: '_onMove',
     value: function _onMove(e) {
+      e.preventDefault();
       this.startTime = Date.now();
       var y = getOffsetY$1(e);
       this.points.push({ time: Date.now(), offset: y });

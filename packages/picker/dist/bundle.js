@@ -406,6 +406,7 @@ var Picker = function () {
   }, {
     key: '_onMove',
     value: function _onMove(e) {
+      e.preventDefault();
       this.startTime = Date.now();
       var y = getOffsetY(e);
       this.points.push({ time: Date.now(), offset: y });
