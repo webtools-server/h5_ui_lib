@@ -28,8 +28,9 @@
     "minDest": "dist/bundle.min.js",
     "prodDest": "dist/bundle.js"
   },
-  "dependencies": {
-    "@jyb/h5_ui_css": "^0.1.0"
+  "devDependencies": {
+    "@jyb/h5_ui_css": "^0.1.0",
+    "@jyb/lib-dialog": "^1.0.9"
   },
   "author": "",
   "license": "MIT"
