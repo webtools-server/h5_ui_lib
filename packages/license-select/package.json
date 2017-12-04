@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-license-select",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -31,7 +31,7 @@
   "dependencies": {
     "@jyb/h5_ui_css": "^0.1.0",
     "@jyb/lib-extend": "^0.1.9",
-    "@jyb/ui-popup": "^0.1.2"
+    "@jyb/ui-popup": "^0.1.4"
   },
   "author": "",
   "license": "MIT"
