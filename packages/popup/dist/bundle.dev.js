@@ -4,6 +4,20 @@
 	(global.Popup = factory());
 }(this, (function () { 'use strict';
 
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+
+
+
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var extend = createCommonjsModule(function (module, exports) {
+!function(o,t){module.exports=t();}(commonjsGlobal,function(){"use strict";function o(o){return Array.isArray(o)}function t(o){if(!o||"[object Object]"!==e.call(o))return!1;var t=n.call(o,"constructor"),r=o.constructor&&o.constructor.prototype&&n.call(o.constructor.prototype,"isPrototypeOf");if(o.constructor&&!t&&!r)return!1;var i=void 0;for(i in o);return void 0===i||n.call(o,i)}function r(){var n=void 0,e=void 0,c=void 0,f=void 0,u=void 0,y=void 0,p=arguments[0],l=1,d=!1,s=arguments.length;for("boolean"==typeof p&&(d=p,p=arguments[1]||{},l=2),(null==p||"object"!==(void 0===p?"undefined":i(p))&&"function"!=typeof p)&&(p={});l<s;++l)if(null!=(n=arguments[l]))for(e in n)c=p[e],p!==(f=n[e])&&(d&&f&&(t(f)||(u=o(f)))?(u?(u=!1,y=c&&o(c)?c:[]):y=c&&t(c)?c:{},p[e]=r(d,y,f)):void 0!==f&&(p[e]=f));return p}var n=Object.prototype.hasOwnProperty,e=Object.prototype.toString,i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};return r});
+});
+
 function anonymous(it
 /**/) {
   var out = '<div class="' + it.classes.wrap + '"> <div class="ui-overlay ' + it.classes.mask + '"></div> <div class="ui-popup"> <div class="ui-popup__title ' + it.classes.title + '">';if (it.title) {
@@ -39,37 +53,19 @@ var createClass = function () {
   };
 }();
 
-
-
-
-
-
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
 /**
  * popup 浮层
  */
 var defaultOptions = {
   container: '#container',
   fixedElement: '',
+  title: '',
+  content: '',
   onShow: $.noop,
   onHide: $.noop,
   classes: {
     wrap: '',
-    mask: '',
+    mask: 'ui-overlay--hidden',
     title: '',
     content: '',
     footer: '',
@@ -90,6 +86,11 @@ var modifyClasses = {
   popupShow: 'ui-popup--show'
 };
 
+// 浮层高度由内容决定，最高时距离屏幕顶端296px，标题高度为104px
+function calcContentHeight() {
+  return window.innerHeight - (296 + 104) / 2 + 'px';
+}
+
 var Popup = function () {
   /**
    * Create a Popup
@@ -98,7 +99,7 @@ var Popup = function () {
   function Popup(options) {
     classCallCheck(this, Popup);
 
-    this.options = _extends(defaultOptions, options);
+    this.options = extend(defaultOptions, options);
     this._init();
   }
 
@@ -112,6 +113,7 @@ var Popup = function () {
     value: function _init() {
       this.evtHandler = {};
       this.$el = $(anonymous(this.options));
+      this.$el.find(selectors.content).css('max-height', calcContentHeight());
       this._bindEvent();
     }
 
@@ -158,7 +160,7 @@ var Popup = function () {
       var _this2 = this;
 
       this.enableDocMove();
-      this.$el.find(selectors.mask).removeClass(modifyClasses.overlayhidden);
+      this.$el.find(selectors.mask).addClass(modifyClasses.overlayhidden);
       this.$el.find(selectors.el).removeClass(modifyClasses.popupShow).one('webkitTransitionEnd', function () {
         _this2.$el.remove();
         _this2.options.onHide && _this2.options.onHide();
@@ -173,7 +175,7 @@ var Popup = function () {
       $(this.options.container).append(this.$el);
       setTimeout(function () {
         _this3.$el.find(selectors.el).addClass(modifyClasses.popupShow);
-        _this3.$el.find(selectors.mask).addClass(modifyClasses.overlayhidden);
+        _this3.$el.find(selectors.mask).removeClass(modifyClasses.overlayhidden);
         _this3.options.onShow && _this3.options.onShow();
       });
     }
@@ -185,6 +187,13 @@ var Popup = function () {
       }
 
       this.evtHandler[name] = handler;
+    }
+  }, {
+    key: 'updateContent',
+    value: function updateContent(content) {
+      this.options.content = content;
+      this.$el.find(selectors.content).html(content);
+      return this;
     }
   }, {
     key: 'enableDocMove',

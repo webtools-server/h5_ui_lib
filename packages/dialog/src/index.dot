@@ -7,7 +7,7 @@
     <div class="{{=it.elementCls.head}}">
       {{=it.title}}
       {{? it.showClose}}
-      <span class="{{=it.elementCls.close}}" et="click:closeDialog"><i class="ui-icon-close"></i></span>
+      <span class="{{=it.elementCls.close}}" et="click:closeDialog"><i class="ui-icon-close--small"></i></span>
       {{?}}
     </div>
     {{?}}

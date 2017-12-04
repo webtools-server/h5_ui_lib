@@ -35,8 +35,8 @@
     var dialogContent_1 = `<p>注意文字大小（17px和13px为主），颜色（主要有#ff6e34, #333333, #999999, #cccccc），段落文字的行间距, 不同区块之间的间距</p>`;
     var dialog = new Dialog({
       titleBorder: false,     // 是否显示标题边线
-      title: '<p>弹窗标题</p><span class="ui-dialog__fn-wrap"><i class="ui-icon-help"></i></span>', 
-      showClose: false,       // 是否显示close按钮
+      title: '弹窗标题', 
+      showClose: true,       // 是否显示close按钮
       content: dialogContent_1, // 显示的内容
       btns: [ 
         { text: '确定', callback: function () { dialog.close() } },

@@ -10,7 +10,7 @@ function anonymous(it
     out += ' <div class="' + it.elementCls.mask + '"></div> ';
   }out += ' <div class="' + it.elementCls.wrap + '" style="position:absolute;top:' + it.top + 'px;"> ';if (it.title) {
     out += ' <div class="' + it.elementCls.head + '"> ' + it.title + ' ';if (it.showClose) {
-      out += ' <span class="' + it.elementCls.close + '" et="click:closeDialog"><i class="ui-icon-close"></i></span> ';
+      out += ' <span class="' + it.elementCls.close + '" et="click:closeDialog"><i class="ui-icon-close--small"></i></span> ';
     }out += ' </div> ';
   }out += ' ';if (it.content) {
     out += ' <div class="' + it.elementCls.body + '">' + it.content + '</div> ';

@@ -10,7 +10,7 @@ function anonymous(it
     out += ' <div class="' + it.elementCls.mask + '"></div> ';
   }out += ' <div class="' + it.elementCls.wrap + '" style="position:absolute;top:' + it.top + 'px;"> ';if (it.title) {
     out += ' <div class="' + it.elementCls.head + '"> ' + it.title + ' ';if (it.showClose) {
-      out += ' <span class="' + it.elementCls.close + '" et="click:closeDialog"><i class="ui-icon-close"></i></span> ';
+      out += ' <span class="' + it.elementCls.close + '" et="click:closeDialog"><i class="ui-icon-close--small"></i></span> ';
     }out += ' </div> ';
   }out += ' ';if (it.content) {
     out += ' <div class="' + it.elementCls.body + '">' + it.content + '</div> ';
@@ -57,10 +57,10 @@ function noop() {}
 
 var defaultOptions = {
   container: 'body',
-  title: '标题', // 标题内容
+  title: '', // 标题内容
   visible: true, // 默认显示
   showClose: true, // 是否显示close按钮
-  content: '内容', // 显示的内容
+  content: '', // 显示的内容
   btns: [], // 按钮列表{ text: '', callback: function(){}, css:'' }
   mask: true, // 是否显示mask
   onClose: noop,
@@ -68,13 +68,13 @@ var defaultOptions = {
   onDispose: noop,
   elementCls: {
     el: 'dialogNode',
-    mask: 'overlay',
-    wrap: 'mod-dialog',
-    close: 'close-btn',
-    head: 'dialog-title',
-    body: 'dialog-content',
-    foot: 'dialog-btn-wrap',
-    btn: 'dialog-btn'
+    mask: 'ui-overlay',
+    wrap: 'ui-dialog',
+    close: 'ui-dialog__fn-wrap',
+    head: 'ui-dialog__title',
+    body: 'ui-dialog__content',
+    foot: 'ui-dialog__footer',
+    btn: 'ui-dialog__btn'
   }
 };
 
