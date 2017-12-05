@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-dialog",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
