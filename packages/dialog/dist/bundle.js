@@ -349,7 +349,7 @@ var defaultOptions = {
     el: 'dialogNode',
     mask: 'ui-overlay',
     wrap: 'ui-dialog',
-    close: 'ui-dialog__fn-wrap',
+    close: 'ui-dialog__fn-wrap ui-dialog__fn-wrap--close',
     head: 'ui-dialog__title',
     body: 'ui-dialog__content',
     foot: 'ui-dialog__footer',
@@ -362,14 +362,7 @@ var Dialog = function (_LibDialog) {
 
   function Dialog(options) {
     classCallCheck(this, Dialog);
-
-    var opt = $.extend(true, {}, defaultOptions, options);
-    if (opt.showClose) {
-      opt.showClose = false;
-      opt.title += '<span class="ui-dialog__fn-wrap" et="click:closeDialog"><i class="ui-icon-close--small"></i></span>';
-    }
-
-    return possibleConstructorReturn(this, (Dialog.__proto__ || Object.getPrototypeOf(Dialog)).call(this, opt));
+    return possibleConstructorReturn(this, (Dialog.__proto__ || Object.getPrototypeOf(Dialog)).call(this, $.extend(true, {}, defaultOptions, options)));
   }
 
   return Dialog;

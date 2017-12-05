@@ -22,7 +22,7 @@ const defaultOptions = {
     el: 'dialogNode',
     mask: 'ui-overlay',
     wrap: 'ui-dialog',
-    close: 'ui-dialog__fn-wrap',
+    close: 'ui-dialog__fn-wrap ui-dialog__fn-wrap--close',
     head: 'ui-dialog__title',
     body: 'ui-dialog__content',
     foot: 'ui-dialog__footer',
@@ -32,13 +32,7 @@ const defaultOptions = {
 
 class Dialog extends LibDialog {
   constructor(options) {
-    const opt = $.extend(true, {}, defaultOptions, options);
-    if (opt.showClose) {
-      opt.showClose = false;
-      opt.title += '<span class="ui-dialog__fn-wrap" et="click:closeDialog"><i class="ui-icon-close--small"></i></span>';
-    }
-
-    super(opt);
+    super($.extend(true, {}, defaultOptions, options));
   }
 }
 
