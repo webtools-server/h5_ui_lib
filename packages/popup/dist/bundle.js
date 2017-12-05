@@ -99,7 +99,7 @@ var Popup = function () {
   function Popup(options) {
     classCallCheck(this, Popup);
 
-    this.options = extend(defaultOptions, options);
+    this.options = extend(true, defaultOptions, options);
     this._init();
   }
 

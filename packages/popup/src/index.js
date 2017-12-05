@@ -45,7 +45,7 @@ class Popup {
    * @param {object} options 配置项
    */
   constructor(options) {
-    this.options = extend(defaultOptions, options);
+    this.options = extend(true, defaultOptions, options);
     this._init();
   }
 
