@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-region-select",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "地区选择列表",
   "main": "dist/bundle.js",
   "scripts": {
@@ -31,7 +31,7 @@
   "dependencies": {
     "@jyb/h5_ui_css": "^0.1.0",
     "@jyb/lib-extend": "^0.1.9",
-    "@jyb/ui-popup": "^0.1.4"
+    "@jyb/ui-popup": "^0.1.6"
   },
   "author": "",
   "license": "MIT"
