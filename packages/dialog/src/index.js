@@ -32,7 +32,13 @@ const defaultOptions = {
 
 class Dialog extends LibDialog {
   constructor(options) {
-    super($.extend(true, {}, defaultOptions, options));
+    const opt = $.extend(true, {}, defaultOptions, options);
+    if (opt.showClose) {
+      opt.showClose = false;
+      opt.title += '<span class="ui-dialog__fn-wrap" et="click:closeDialog"><i class="ui-icon-close--small"></i></span>';
+    }
+
+    super(opt);
   }
 }
 
