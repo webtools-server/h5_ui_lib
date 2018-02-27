@@ -12,6 +12,7 @@ const commonjs = require('rollup-plugin-commonjs');
 const eslint = require('rollup-plugin-eslint');
 const fs = require('fs-extra');
 const image = require('rollup-plugin-image');
+const vue = require('rollup-plugin-vue');
 const getLibDefine = require('./get_define');
 const dot = require('./plugin/dot');
 
@@ -68,6 +69,7 @@ if (process.argv.indexOf('--entry') > -1) {
     const rollupConfig = {
       entry: path.join(cwd, 'src/index.js'),
       plugins: [
+        vue(),
         resolve(),
         commonjs(),
         eslint({
@@ -100,7 +102,11 @@ if (process.argv.indexOf('--entry') > -1) {
           exclude: path.join(cwd, 'node_modules/**')
         }),
         (isMin && uglify())
-      ]
+      ],
+      external: ['vue'],
+      globals: {
+        vue: 'Vue'
+      }
     };
 
     const destFile = {
@@ -115,26 +121,12 @@ if (process.argv.indexOf('--entry') > -1) {
       sourceMap: !(isProd || isMin)
     };
 
-    // function copyNodeModules(modules) {
-    //   modules.forEach(m => {
-    //     m.copy(path.join(cwd, 'node_modules')
-    //   })
-    //   fs.copy(path.join(cwd, 'src/index.scss'), path.join(cwd, 'dist/bundle.scss'))
-    //     .then(() => console.log('copy scss ok'))
-    //     .catch(err => console.error(`copy scss err ${err.toString()}`));
-    // }
-
-
     if (isProd || isMin) {
       rollup.rollup(rollupConfig).then((bundle) => {
         bundle.write(outputConfig);
       });
 
       extractNodeModule().forEach(copyModuleToDemo);
-
-    // fs.copy(path.join(cwd, 'src/index.scss'), path.join(cwd, 'dist/bundle.scss'))
-    //   .then(() => console.log('copy scss ok'))
-    //   .catch(err => console.error(`copy scss err ${err.toString()}`));
     } else {
       rollupWatch(rollup, Object.assign({}, rollupConfig, outputConfig)).on('event', (ev) => {
         console.log(ev);

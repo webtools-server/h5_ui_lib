@@ -46,6 +46,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sass": "^0.5.3",
     "rollup-plugin-uglify": "^2.0.1",
+    "rollup-plugin-vue": "^3.0.0",
     "rollup-watch": "^4.0.0",
     "should": "^11.2.1",
     "zepto": "^1.2.0"

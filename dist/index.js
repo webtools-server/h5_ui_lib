@@ -2275,7 +2275,7 @@ var defaultOptions = {
     el: 'dialogNode',
     mask: 'ui-overlay',
     wrap: 'ui-dialog',
-    close: 'ui-dialog__fn-wrap',
+    close: 'ui-dialog__fn-wrap ui-dialog__fn-wrap--close',
     head: 'ui-dialog__title',
     body: 'ui-dialog__content',
     foot: 'ui-dialog__footer',
