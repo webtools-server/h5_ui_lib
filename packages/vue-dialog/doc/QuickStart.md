@@ -44,6 +44,7 @@ new Vue({
 ```
 
 ## 例子
+<a href="../demo/index.html" target="_blank">demo</a>
 ```html
 <div id="container">
   <div class="ui-btn" @click="isShowDialog = true">点我</div>

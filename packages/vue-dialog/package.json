@@ -29,7 +29,7 @@
     "prodDest": "dist/bundle.js"
   },
   "devDependencies": {
-    "@jyb/h5_ui_css": "^0.1.0",
+    "@jyb/h5_ui_css": "^0.1.16",
     "@jyb/ui-vue-overlay": "^0.1.1",
     "vue": "^2.5.13"
   },

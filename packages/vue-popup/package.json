@@ -1,6 +1,6 @@
 {
-  "name": "@jyb/ui-popup",
-  "version": "0.1.6",
+  "name": "@jyb/ui-vue-popup",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "files": [
     "src",
-    "dist"
+    "dist/*.js"
   ],
   "repository": {
     "type": "git",
@@ -23,15 +23,16 @@
     "lib"
   ],
   "libDefine": {
-    "moduleName": "Popup",
+    "moduleName": "UIVuePopup",
     "devDest": "dist/bundle.dev.js",
     "minDest": "dist/bundle.min.js",
     "prodDest": "dist/bundle.js"
   },
   "devDependencies": {
-    "@jyb/h5_ui_css": "^0.1.0",
-    "@jyb/lib-extend": "^0.1.9"
-  },
-  "author": "",
+    "@jyb/h5_ui_css": "^0.1.17",
+    "@jyb/ui-vue-overlay": "^0.1.1",
+    "vue": "^2.5.13"    
+  },  
+  "author": "xiaohai.xi@jyblife.com",
   "license": "MIT"
 }
