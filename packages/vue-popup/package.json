@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-popup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -31,8 +31,8 @@
   "devDependencies": {
     "@jyb/h5_ui_css": "^0.1.17",
     "@jyb/ui-vue-overlay": "^0.1.1",
-    "vue": "^2.5.13"    
-  },  
+    "vue": "^2.5.13"
+  },
   "author": "xiaohai.xi@jyblife.com",
   "license": "MIT"
 }
