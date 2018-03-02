@@ -20,6 +20,10 @@ export default {
   bodyOverflow: '',
   htmlOverflow: '',
 
+  // cache scroll top
+  htmlScrollTop: 0,
+  bodyScrollTop: 0,
+
   open(instance) {
     if (!instance || this.instances.indexOf(instance) !== -1) {
       return;
@@ -113,10 +117,14 @@ export default {
       return;
     }
 
-    // const container = document.querySelector('#container');
     // 保存html和body的overflow属性
     this.bodyOverflow = this.body.style.overflow;
     this.htmlOverflow = this.html.style.overflow;
+
+    // 保存滚动条高度
+    this.bodyScrollTop = this.body.scrollTop;
+    this.htmlScrollTop = this.html.scrollTop;
+
     // 禁止滚动
     this.body.style.overflow = 'hidden';
     this.html.style.overflow = 'hidden';
@@ -127,9 +135,13 @@ export default {
   allowScrolling() {
     this.body.style.overflow = this.bodyOverflow;
     this.html.style.overflow = this.htmlOverflow;
+    this.body.scrollTop = this.bodyScrollTop;
+    this.html.scrollTop = this.htmlScrollTop;
 
     this.bodyOverflow = '';
     this.htmlOverflow = '';
+    this.bodyScrollTop = 0;
+    this.htmlScrollTop = 0;
     this.locked = false;
   }
 };

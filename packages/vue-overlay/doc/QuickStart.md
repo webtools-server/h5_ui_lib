@@ -18,6 +18,19 @@ export default {
 }
 ```
 
+引入单个组件的样式
+```scss
+@import '~@jyb/h5_ui_css/src/style/widget/overlay';
+```
+
+引入所有ui规范
+```html
+  <link href="path/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
+```
+或者在scss中引入
+```scss
+@import '~@jyb/h5_ui_css/dist/style/ui;
+
 ## 例子
 
 ```html
