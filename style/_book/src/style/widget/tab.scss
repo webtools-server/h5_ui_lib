@@ -1,0 +1,116 @@
+@import '../base/fn';
+
+.ui-tab__bar {
+  display: flex;
+  width: 100%;  
+  background: $color-white;
+}
+
+.ui-tab__scrollwrap {
+  padding-right: 80Px;
+  box-sizing: border-box;
+  background-color: $color-white;
+  position: relative;  
+}
+
+.ui-tab__bar--scroll {
+  position: relative;  
+  font-size: 0;
+  white-space: nowrap;
+  transition: all .2s ease;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ui-tab__tab-item {
+  min-width: 25%;
+  flex: 1;
+  $height: 108Px;
+  height: $height;
+  line-height: $height;
+  font-size: $fontSizeLarge;
+  text-align: center;
+  color: $color-light;
+}
+
+.ui-tab__tab-item--active {
+  position: relative;
+  color: $color-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 24Px;
+    right: 50%;
+    
+    width: 56px;
+    height: 4Px;
+    border-radius: 15px;
+    box-sizing: border-box;
+
+    background-color: $color-primary;              
+    transform: translateX(50%);
+  }
+}
+
+.ui-tab__arrow {
+  position: absolute;
+  width: 80Px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  
+  perspective: 30Px;
+  cursor: pointer;
+  transition: all .5s ease;
+  text-align: center;
+  font-size: 0;
+  -webkit-tap-highlight-color: $color-white;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 40Px;
+    height: 40Px;
+    position: relative;
+    background: url('/img/arrow-down.png') 0 0 no-repeat;
+    background-size: 100% auto;
+    vertical-align: middle;
+  }  
+}
+
+.ui-tab__arrow--expanded {
+  transform: rotateX(180deg);
+}
+
+.ui-more-category {
+  width: 100%;
+  background-color: rgba(0, 0, 0, .3);  
+  z-index: 8888;
+  position: absolute;
+  transition: all .3s linear;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.ui-more-category__list {
+  background-color: $color-white;
+  overflow: hidden;
+}
+
+.ui-more-category__list-item {
+  width: 25%;
+  text-align: center;
+  padding: 20Px 0;
+  float: left;
+}

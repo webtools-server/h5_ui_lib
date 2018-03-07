@@ -1,0 +1,104 @@
+@import '../base/fn';
+
+// .mod-pwd {
+//   .pwd-box{
+//     width:480px;
+//     position: relative;
+//   }
+//   .pwd-box input[type="tel"]{
+//     appearance: none;
+//     width: 99%;
+//     height: 80Px;
+//     color: transparent;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     border: none;
+//     font-size: 18px;
+//     opacity: 0;
+//     z-index: 1;
+//     letter-spacing: 35px;
+//     border-radius: 0;
+//   }
+
+//   .fake-box  {
+//     display: -webkit-box;
+
+//     .box {
+//       position: relative;
+//       @include setRounded1pxBorder($color-border, after);
+//     }
+  
+//     input{    
+//       appearance: none;
+//       width: 79px;
+//       height: 80px;
+//       border: none;
+//       text-align: center;
+//       font-size: 30Px;
+//       border-radius: 0;
+//     }
+     
+//     .box:nth-last-child(1) {
+//       &:after {
+//         content: none;
+//       }
+//     }
+//   }
+// }
+
+.ui-pwd {
+  overflow:hidden;
+  width: 480px; 
+}
+
+.ui-pwd-box {
+  position: absolute;
+  width: 480px; 
+}
+
+.ui-pwd-box__input {
+  width: 99%;
+  height: 80Px;
+  color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  font-size: $fontSizeXXLarge;
+  opacity: 0;
+  z-index: 1;
+  letter-spacing: 35px;
+  border-radius: 0; 
+  appearance: none; 
+
+  &:focus {
+    left:-1000Px;
+    top: -100Px;    
+  }
+}
+
+.ui-pwd-fake {
+  display: -webkit-box;
+}
+
+.ui-pwd-fake__box {
+  position: relative;
+  @include setRounded1pxBorder($color-border, after);
+
+  // &:nth-last-child(1) {
+  //   &:after {
+  //     content: none;
+  //   }
+  // }
+}
+
+.ui-pwd-fake_input {  
+  width: 79px;
+  height: 80px;
+  border: none;
+  text-align: center;
+  font-size: 30Px;
+  border-radius: 0;
+  appearance: none; 
+}

@@ -1,0 +1,133 @@
+@import '../base/fn';
+@import '../base/variable/button';
+
+.ui-btn {
+  position: relative;
+  display: block;  
+
+  width: 100%;
+  $height: 100Px;
+  height: $height;
+  line-height: $height;
+  
+  font-size: 34Px;
+  text-align: center;
+  color: $color-dark-gray;
+  background-color: $color-white;  
+  border-radius: 6px;
+  box-sizing: border-box;
+  border: 1px solid $color-gray;
+  // @include setRounded1pxBorder($color-gray, after);
+  // &::after {
+  //   border-radius: 6px;
+  // }
+
+  &:active {
+    background-color: $btn-active-default;
+  }
+}
+
+.ui-btn--primary {
+  color: $color-white;
+  background-color: $color-primary;  
+  border: 0;
+  // &:after {
+  //   border-color: $color-primary;
+  // }
+
+  &:active {
+    background-color: $btn-active-primary;
+  }
+}
+
+.ui-btn--transparent {
+  color: $color-primary;
+  background-color: transparent;
+  // &::after {
+  //   color: $color-primary;
+  // }
+  border-color: $color-primary;
+  // @include setRounded1pxBorder($color-primary, after);
+}
+
+.ui-btn--disabled {
+  color: $color-white;
+  background-color: $color-gray;
+  border: 0;
+  // &:after {
+  //   border-color: $color-gray;
+  // }
+
+  &:active {
+    background-color: $color-gray;
+  }  
+}
+
+.ui-btn--large {
+  width: 690px;
+}
+
+.ui-btn--small {
+  width: 332px;
+}
+
+.ui-btn--xsmall {
+  width: 106px;
+  font-size: 20Px;
+  $height: 40Px;
+  height: $height;
+  line-height: $height; 
+  border-radius: 0;
+}
+
+.ui-btn--xlarge {
+  $height: 112Px; 
+  height: $height;
+  line-height: $height;
+  border-radius: 0;  
+}
+
+.ui-btn--norounded {
+  border-radius: 0;
+}
+
+.ui-btn--noborder {
+  border: 0;
+  // &:after {
+  //   content: none;
+  // }
+}
+
+.ui-btn-group {
+  display: -webkit-box;
+}
+
+.ui-btn-group--top-border {
+  position: relative;
+  &::before {
+    z-index: 1000;
+  }
+  
+  @include elementBorder($color-border, before, top);
+}
+
+.ui-btn-group__item {
+  -webkit-box-flex: 1;
+  &:first-child {
+    text-align: left;
+    padding-left: 30px;
+  }
+
+  &:last-child {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+.ui-btn-group__item--flex-2 {
+  -webkit-box-flex: 2;
+}
+
+.ui-btn-group__item--flex-3 {
+  -webkit-box-flex: 3;
+}

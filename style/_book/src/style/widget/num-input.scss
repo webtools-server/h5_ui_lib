@@ -1,0 +1,84 @@
+@import '../base/fn';
+
+.ui-num-input {
+  position: relative;
+  display: inline-block;
+
+  $height: 60Px; 
+  height: $height;
+  line-height: $height;
+
+  font-size: 0;
+  text-align: center;
+  
+  @include setRounded1pxBorder($color-light, after);
+  &:after {
+    @include rounded(4Px);
+  }
+}
+
+.ui-num-input__btn {
+  position: relative;  
+  display: inherit;
+  width: 80Px;
+  height: 100%;
+  vertical-align: middle;
+  color: $color-gray;
+  font-size: 0;
+  background-color: $color-white;  
+}
+
+.ui-num-input__btn--enable {
+  .ui-icon-minus, .ui-icon-plus:before, .ui-icon-plus:after  {
+    background-color: $color-dark;
+  }
+}
+
+.ui-num-input__btn--minus {
+  @include elementBorder($color-light, after, right);
+}
+
+.ui-num-input__btn--plus {
+  @include elementBorder($color-light, after, left);
+}
+
+.ui-num-input__input {
+  @include appearance(none);
+  outline: none;
+  border: 0;
+  width: 90Px;
+  height: 100%;
+  font-size: 30Px;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 0;
+}
+
+.ui-icon-minus {
+  display: inline-block;
+  width: 28Px;
+  height: 4Px;  
+  vertical-align: middle;
+  background-color:$color-light;
+  border-radius: 6px;
+}
+
+.ui-icon-plus {
+  &:before, &:after{
+    content:'';
+    height: 4Px;
+    width: 28Px;
+    display:block;
+    background:$color-light;
+    @include rounded(10Px);
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:after {
+    height: 28Px; 
+    width: 3Px; 
+  }
+}

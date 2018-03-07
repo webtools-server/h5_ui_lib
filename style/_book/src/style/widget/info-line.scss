@@ -1,0 +1,77 @@
+@import '../base/fn';
+
+.ui-info-line {
+  background-color: #fff;  
+  position: relative;
+  font-size: 30Px;
+  line-height: normal;
+}
+
+.ui-info-line--border {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ui-info-item {
+  position: relative;
+  width: 100%;
+  height: 104Px;
+
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+  padding-left: 30px;
+  box-sizing: border-box;
+  @include elementBorder($color-border, after, bottom);
+
+  &:last-child {
+    &:after {
+      content: none;
+    }
+  }
+}
+
+.ui-info-item--full-border {
+  @include elementBorder($color-border, before, top);
+}
+
+.ui-info-item--large {
+  height: 130Px;
+}
+
+.ui-info-item--xlarge {
+  height: 156Px;
+}
+
+.ui-info-item__text {
+  vertical-align: middle;
+  color: $color-light;
+}
+
+.ui-info-item__desc-left {
+  display: block;
+  width: 25%;
+  position: relative;  
+}
+
+.ui-info-item__desc-right {
+  -webkit-box-flex: 1;
+  padding-right: 30px;
+  text-align: right;
+}
+
+.ui-icon-wrap {
+  @include vt-middle();
+}
+
+.ui-icon-wrap__icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 48Px;
+  height: 48Px;
+  overflow: hidden;  
+}
+
+.ui-icon-wrap__text {
+  margin-left: 20px;
+}

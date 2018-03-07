@@ -1,0 +1,42 @@
+@import '../base/fn';
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: $color-gray;
+}
+
+.ui-input {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-left: 0;
+
+  // 解决红米3等手机输入框文字偏上的问题
+  padding: 2Px 0;
+  line-height: 1.6;
+
+  color: $color-dark;
+  font-size: 30Px;
+
+  border: 0;  
+  box-sizing: border-box;
+  outline: none;
+
+  @include appearance();
+}
+
+.ui-smscode-btn {
+  @include rounded(3px);
+  @include vt-middle();
+
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);  
+  height: 80%;  
+  background-color: $color-white;  
+  text-align: center;
+  color: $color-primary;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}

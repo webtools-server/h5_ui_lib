@@ -1,0 +1,270 @@
+<div class="page article-1">
+    <div class="page-hd">
+      <h1 class="page-hd-desc">选择器</h1>
+    </div>
+    <div class="page-bd">      
+      <div onclick="showRegionPopup()" class="ui-btn ui-mb-40">省市区选择器</div>
+      <div onclick="showDatepicker()" class="ui-btn ui-mb-40">日期选择器</div>
+      <div onclick="showPicker()" class="ui-btn ui-mb-40">单项选择器</div>
+      <div onclick="showLicenseSelect()" class="ui-btn ui-mb-40">车牌选择器</div> 
+      <div onclick="showBankSelect()" class="ui-btn ui-mb-40">选择银行卡</div>
+      <div onclick="showCoupons()" class="ui-btn ui-mb-40">选择红包</div>
+    </div>
+    <div class="page-ft"></div>
+  </div>
+  
+  <script type="text/javascript">
+    function transformRegionMap() {
+      var regionMap = $getRegionMap();
+      
+      function transform(i) {
+        return {
+          label: i.name,
+          value: i.id,
+          children: regionMap[i.id] && regionMap[i.id].addressList.map(transform)
+        }
+      }
+
+      return regionMap[0].addressList.map(transform);
+    }
+    
+    var regionSelect = new UI.RegionSelect({
+      data: transformRegionMap(),
+      title: '地区选择器',
+      onChange: function(i) {
+        console.log('change', i)
+      },
+      getLevelData: function(level, item, cb) {
+        var data = []
+        if (level > 0 && level < 3) {
+          var len = ~~(Math.random() * 10)
+          for (var i = 0; i < len; i++) {
+            var id = (~~(Math.random() * 10000))
+            data.push({
+              label: '地址' + id,
+              value: id,
+            })
+          }
+        }
+
+        console.log('getLevelData', level, item, data)
+        cb(data);
+      }
+    });
+
+    function showRegionPopup () {
+      regionSelect.show();
+    }
+
+    var datepicker = new UI.Datepicker({
+      title: '日期选择器',
+      start: '2000-01-01',
+      end: '2020-12-31',
+      // defaultValue: [2017, 11, 24],
+      onChange: function(i) { console.log('change', i)},
+      onConfirm: function(i) { console.log('confirm', i)},       
+    })
+
+    function showDatepicker () {
+      datepicker.show();
+    }
+
+    var pickerData = [
+      { name:"汽车用品", id: 1 },
+      { name:"生活超市", id: 2 },
+      { name:"手机通讯", id: 3 },
+      { name:"数码影音", id: 4 },
+      { name:"家用电器", id: 5 },
+      { name:"电脑平板", id: 6  },
+      { name:"丽人美妆", id: 7 },
+      { name:"网易严选", id: 8  },
+      { name:"居家常备", id: 9  },
+      { name:"精选母婴", id: 10 },
+      { name:"个人护理", id: 11 },
+      { name:"大牌轻奢", id: 12 },
+      { name:"礼品专区", id: 13 },
+      { name:"轻松白拿", id: 14 },
+      { name:"其他", id: -1 },
+    ]
+
+    var picker = new UI.Picker({
+      data: pickerData,
+      title: '单项选择器',
+      selectedIndex: 1,
+      onChange: function(i) { console.log('change', i)},
+      onConfirm: function(i) { console.log('confirm', i)},      
+    })
+
+    function showPicker () {
+      picker.show();
+    }
+
+    var provinces = [
+        { full:'河北', abbr:'冀',},
+        { full:'山西', abbr:'晋',},
+        { full:'辽宁', abbr:'辽',},
+        { full:'吉林', abbr:'吉',},
+        { full:'黑龙', abbr:'黑',},
+        { full:'江苏', abbr:'苏',},
+        { full:'浙江', abbr:'浙',},
+        { full:'安徽', abbr:'皖',},
+        { full:'福建', abbr:'闽',},
+        { full:'江西', abbr:'赣',},
+        { full:'山东', abbr:'鲁',},
+        { full:'河南', abbr:'豫',},
+        { full:'湖北', abbr:'鄂',},
+        { full:'湖南', abbr:'湘',},
+        { full:'广东', abbr:'粤',},
+        { full:'海南', abbr:'琼',},
+        { full:'四川', abbr:'川',},
+        { full:'贵州', abbr:'黔',},
+        { full:'云南', abbr:'滇',},
+        { full:'陕西', abbr:'陕',},
+        { full:'甘肃', abbr:'甘',},
+        { full:'青海', abbr:'青',},
+        { full:'台湾', abbr:'台',},
+      ].map((i, idx) => { i.val =idx; return i;})
+             
+    var licenseSelect = new UI.LicenseSelect({
+      data: provinces,
+      selectedVal: 1,
+      onChange: function(i) {
+        console.log(i);
+      },
+    });
+
+    function showLicenseSelect () {
+      licenseSelect.show()
+    }
+
+    var banks = [
+      {
+        bankImg: './img/光大银行.png',
+        bankCode: 1,
+        text1: '招商银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },
+      {
+        bankImg: './img/中信银行.png',
+        bankCode: 2,
+        text1: '中信银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },
+      {
+        bankImg: './img/平安银行.png',
+        bankCode: 3,
+        text1: '平安银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },
+      {
+        bankImg: './img/招商银行.png',
+        bankCode: 4,
+        text1: '招商银行(尾号9286)',
+        text2: '单笔限额5万元',
+        disabled: true,
+      },
+      {
+        bankImg: './img/浦发银行.png',
+        bankCode: 5,
+        text1: '浦发银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },                        
+    ];
+    var bankSelect = new UI.BankSelect({
+      data: banks,
+      selectedVal: 2,
+      onChange: function(i) {
+        console.log(i)
+      },
+      onAddCard: function() {
+        console.log('添加银行卡')
+      }
+    });
+
+    function showBankSelect() {
+      bankSelect.show();
+    }
+
+    var coupons =  [ 
+      { 
+        "name": '测试红包',
+        "cid": "62835663150308884481", 
+        "amount": "200000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "200000"
+      },
+      { 
+        "name": '测试红包2',
+        "cid": "62835663150308884482", 
+        "amount": "2000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "2000",
+        "type_id": "5",
+        "detail": {
+          "value" : "90",
+          "total_max_cnt": "1000",
+          "total_remain_cnt": "499",      
+        }
+      },
+      { 
+        "name": '测试红包3',
+        "cid": "62835663150308884483", 
+        "amount": "2000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "2000",
+        "type_id": "4",
+        "detail": {
+          "remain_amt": 18000,
+          "total_amt": 36000
+        }
+      }, 
+      { 
+        "name": '测试红包',
+        "cid": "6283566315030888448", 
+        "amount": "2000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "2000"
+      },                   
+    ] 
+  
+    var couponSelect = new UI.CouponSelect({
+      data: coupons,
+      selectedVal: '6283566315030888448',
+      isShowHelp: true,
+      onChange: function(i) {
+        console.log(i);
+      },
+      onHelp: function() {
+        console.log('help')
+      }
+    });
+
+    function showCoupons() {
+      couponSelect.show();
+    }
+
+  </script>
