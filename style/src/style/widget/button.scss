@@ -16,11 +16,11 @@
   background-color: $color-white;  
   border-radius: 6px;
   box-sizing: border-box;
-  border: 1px solid $color-gray;
-  // @include setRounded1pxBorder($color-gray, after);
-  // &::after {
-  //   border-radius: 6px;
-  // }
+  // border: 1px solid $color-gray;
+  @include setRounded1pxBorder($color-gray, after);
+  &::after {
+    border-radius: 6px;
+  }
 
   &:active {
     background-color: $btn-active-default;
@@ -30,10 +30,11 @@
 .ui-btn--primary {
   color: $color-white;
   background-color: $color-primary;  
-  border: 0;
-  // &:after {
-  //   border-color: $color-primary;
-  // }
+  // border: 0;
+  &:after {
+    content: none;
+    // border-color: $color-primary;
+  }
 
   &:active {
     background-color: $btn-active-primary;
@@ -43,9 +44,9 @@
 .ui-btn--transparent {
   color: $color-primary;
   background-color: transparent;
-  // &::after {
-  //   color: $color-primary;
-  // }
+  &::after {
+    color: $color-primary;
+  }
   border-color: $color-primary;
   // @include setRounded1pxBorder($color-primary, after);
 }
@@ -53,10 +54,11 @@
 .ui-btn--disabled {
   color: $color-white;
   background-color: $color-gray;
-  border: 0;
-  // &:after {
-  //   border-color: $color-gray;
-  // }
+  // border: 0;
+  &:after {
+    content: none;
+    // border-color: $color-gray;
+  }
 
   &:active {
     background-color: $color-gray;
@@ -93,9 +95,9 @@
 
 .ui-btn--noborder {
   border: 0;
-  // &:after {
-  //   content: none;
-  // }
+  &:after {
+    content: none;
+  }
 }
 
 .ui-btn-group {
