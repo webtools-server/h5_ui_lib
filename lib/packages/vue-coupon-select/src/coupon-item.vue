@@ -13,7 +13,7 @@
     <div class="ui-cutting-line"></div>
     <div class="ui-coupon-item__down">
       <p class="ui-coupon-item__valid">有效期至{{ expired_time }}
-        <span v-if="disabled" class="ui-fl-r color-f60 f-22">不满足使用条件</span>
+        <span v-if="disabled" class="ui-fl-r color-f60 f-22">{{ disableInfo }}</span>
       </p>
       <i v-if="!disabled" class="ui-coupon-item__icon ui-icon-agree--unchecked" :class="{'ui-icon-agree--checked':selected}"></i>
     </div>
@@ -90,7 +90,7 @@ export default {
     disabled: {
       type: Boolean,
       default: true,
-    }
+    }  
   },
   data() {
     return {
@@ -113,7 +113,18 @@ export default {
     },
     useInfo() {
       return this.currentValue.useInfo.call(this)
-    },  
+    },
+    disableInfo() {
+      if (this.is_period_use == 0 && this.type_id == 5) {
+        if (this.detail.period == 1) {
+          return `一周只能使用${this.detail.period_max_cnt}次`;
+        } else if (i.detail.period == 2) {
+          return `一个月只能使用${this.detail.period_max_cnt}次`;
+        }
+      }
+
+      return '不满足使用条件'
+    }
   },
 }
 </script>

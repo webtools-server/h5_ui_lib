@@ -1,31 +1,22 @@
 # API
 
-```javascript
-import Demo from '@jyb/lib-demo'
-```
+## ui-coupon-select
 
-## 初始化
+### props
 
-### new Demo(options);
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :----| :---| :----| :-----| :------|
+| show| 是否显示，可以使用sync修饰符| Boolean | | false |
+| title| 对话框标题 | String | | 选择红包/折扣券 |
+| notUseDesc| 不使用按钮的文案 | String | | 不使用，就是任性 |
+| list | 红包列表 | Array | |[] |
+| cid | 选中的红包id | String | | 0 、
 
-```jsdoc
-@param {Object} options
-```
 
-## 选项
+### 事件
 
-### debug
-- Type: `Boolean`
-- Default: false
+| 名称 | 参数类型 | 说明 |
+| :--- | :--- | :--- |
+| update:show | Boolean| 表示红包列表此时是否应该展示 |
+| update:cid | String | 表示当前选中了哪个红包 | 
 
-是否为调试模式，为`true`时，会有日志输出
-
-## 实例方法
-
-### start()
-
-启动上报
-
-```javascript
-instance.start();
-```
