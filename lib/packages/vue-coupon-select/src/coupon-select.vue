@@ -83,7 +83,7 @@ export default {
                 return 
             }
 
-            this.$emit('update:cid', item.cid)
+            this.$emit('update:cid', item.cid || 0)
             this.closecoupon()
         }
     }   
