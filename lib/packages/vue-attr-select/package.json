@@ -1,7 +1,7 @@
 {
-  "name": "@jyb/ui-vue-overlay",
-  "version": "0.1.6",
-  "description": "",
+  "name": "@jyb/ui-vue-attr-select",
+  "version": "0.1.1",
+  "description": "属性选择器",
   "main": "dist/bundle.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node ../../scripts/build.js",
@@ -19,14 +19,19 @@
     "url": ""
   },
   "keywords": [
-    "ui",
-    "vue"
+    "common",
+    "lib"
   ],
   "libDefine": {
-    "moduleName": "UIVueOverlay",
+    "moduleName": "UIVueAttrSelect",
     "devDest": "dist/bundle.dev.js",
     "minDest": "dist/bundle.min.js",
     "prodDest": "dist/bundle.js"
+  },
+  "devDependencies": {
+    "@jyb/h5_ui_css": "^0.1.16",
+    "@jyb/ui-vue-overlay": "^0.1.6",
+    "vue": "^2.5.13"
   },
   "author": "xiaohai.xi@jyblife.com",
   "license": "MIT"
