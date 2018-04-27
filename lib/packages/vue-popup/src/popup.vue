@@ -46,6 +46,10 @@ export default {
     titleBorder: {
       type: Boolean,
       default: true,
+    },
+    reCaculateContentHeight: {
+      type: Boolean,
+      default: true,
     }
   },
   created() {
@@ -60,10 +64,14 @@ export default {
   },
   mounted() {
     this.resetContentHeight();
-    window.addEventListener('resize', this.resetContentHeight)
+    if (this.reCaculateContentHeight) {
+      window.addEventListener('resize', this.resetContentHeight)
+    }    
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.resetContentHeight)
+    if (this.reCaculateContentHeight) {
+      window.removeEventListener('resize', this.resetContentHeight)
+    }
   },
   methods: {
     resetContentHeight() {

@@ -12,6 +12,7 @@
 | contentClass | content容器的class | Array | | |
 | footerClass | footer容器的class | Array | | |
 | titleBorder | title底部是否显示边框 | Boolean | | false | 
+| reCaculateContentHeight | 窗口大小改变时是否重新计算内容高度 | Boolean | | true|
 
 ### slots
 
