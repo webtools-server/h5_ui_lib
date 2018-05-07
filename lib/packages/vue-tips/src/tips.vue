@@ -5,7 +5,7 @@
         <span v-show="isLoading"
           class="ui-spinner__icon"
           :class="iconClass"></span>
-        <p class="ui-toast__text">{{ msg }}</p>
+        <p class="ui-toast__text" v-html="msg"></p>
       </div>
     </div>
   </div>
