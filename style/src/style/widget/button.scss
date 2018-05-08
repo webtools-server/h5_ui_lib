@@ -17,10 +17,10 @@
   border-radius: 6px;
   box-sizing: border-box;
   // border: 1px solid $color-gray;
-  @include setRounded1pxBorder($color-gray, after);
-  &::after {
-    border-radius: 6px;
-  }
+  @include setRounded1pxBorder($color-gray, after, 6px);
+  // &::after {
+  //   border-radius: 6px;
+  // }
 
   &:active {
     background-color: $btn-active-default;
