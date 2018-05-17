@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "@jyb/h5_ui_css": "^0.1.16",
-    "@jyb/ui-vue-overlay": "^0.1.6",
     "vue": "^2.5.13"
   },
   "author": "xiaohai.xi@jyblife.com",
