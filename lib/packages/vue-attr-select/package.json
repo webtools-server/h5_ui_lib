@@ -29,7 +29,7 @@
     "prodDest": "dist/bundle.js"
   },
   "devDependencies": {
-    "@jyb/h5_ui_css": "^0.1.16",
+    "@jyb/h5_ui_css": "^0.1.19",
     "vue": "^2.5.13"
   },
   "author": "xiaohai.xi@jyblife.com",

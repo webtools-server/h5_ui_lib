@@ -10,7 +10,7 @@
 | title| 对话框标题 | String | | 选择红包/折扣券 |
 | notUseDesc| 不使用按钮的文案 | String | | 不使用，就是任性 |
 | list | 红包列表 | Array | |[] |
-| cid | 选中的红包id | String | | 0 、
+| cid | 选中的红包id | String | | 0 |
 
 
 ### 事件
