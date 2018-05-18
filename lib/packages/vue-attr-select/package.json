@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-attr-select",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "属性选择器",
   "main": "dist/bundle.js",
   "scripts": {
