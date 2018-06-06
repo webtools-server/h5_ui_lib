@@ -40,6 +40,7 @@ new Vue({
 
 ## 例子
 <a href="../demo/index.html" target="_blank">demo</a>
+
 ```html
   <div id="container">    
     <ui-tab>
@@ -69,7 +70,7 @@ new Vue({
       },
     })
   </script>
-```html
+```
 
 
 
