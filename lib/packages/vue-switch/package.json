@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-switch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "switch开关",
   "main": "dist/bundle.js",
   "scripts": {

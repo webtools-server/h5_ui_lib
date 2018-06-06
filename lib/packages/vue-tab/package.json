@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-tab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vue tab组件",
   "main": "dist/bundle.js",
   "scripts": {
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@jyb/h5_ui_css": "^0.1.16",
     "vue": "^2.5.13"
-  },  
+  },
   "author": "xiaohai.xi@jyblife.com",
   "license": "MIT"
 }
