@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-tab",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "vue tab组件",
   "main": "dist/bundle.js",
   "scripts": {
