@@ -9,7 +9,7 @@
 | ui-text--xxsmall| 20px    | 默认 ||
 | ui-text--small  | 24px    | 默认 ||
 | ui-text--large  | 30px    | 默认 ||
-| ui-text--xlarge | 30px    | 默认 ||
+| ui-text--xlarge | 34px    | 默认 ||
 | ui-text--xxlarge| 36px    | 默认 ||
 | ui-text--title  | 默认    | #333 | 一级文字 |
 | ui-text--secondary| 默认  | #999 | 二级文字 |

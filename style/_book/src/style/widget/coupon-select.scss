@@ -145,3 +145,33 @@
   // }
 }
 
+.ui-coupon-item--disabled {
+  .ui-coupon-item__up-left,  
+  .ui-coupon-item__title, 
+  .ui-coupon-item__useinfo, 
+  .ui-coupon-item__usage,
+  .ui-coupon-item__valid {
+    color: $color-gray;
+  }
+}
+
+.ui-coupon-select__empty {
+  padding: 50Px 0 170Px 0;
+}
+
+.ui-coupon-select__empty-img {
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 240px;
+  height: 240px;
+
+  background: url(/img/coupon_empty.png) 0 0 no-repeat;
+  background-size: cover;
+}
+
+.ui-coupon-select__empty-text {
+  text-align: center;
+  color: #999;
+  margin-top: 10Px;
+}

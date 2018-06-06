@@ -67,3 +67,7 @@
   -webkit-box-align: center;
   -webkit-box-pack: justify;  
 }
+
+.ui-slide-up {
+  transform: translate3d(0, 100%, 0);
+}

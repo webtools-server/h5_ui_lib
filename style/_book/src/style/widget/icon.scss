@@ -5,6 +5,9 @@
   width: 40px;
   height: 40px;
   
+  &::before {
+    content: '\3000';
+  }
   vertical-align: middle;
 }
 
@@ -85,6 +88,12 @@
 .ui-icon-checked {
   @extend .ui-icon;
   background: url(/img/checked.png) no-repeat 0 0 ;
+  background-size: cover;  
+}
+
+.ui-icon-check--disabled {
+  @extend .ui-icon;
+  background: url(/img/checkbox_disabled.png) no-repeat 0 0 ;
   background-size: cover;  
 }
 

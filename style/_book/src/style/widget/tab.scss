@@ -23,6 +23,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.ui-tab-bar--border {
+  position: relative;
+  @include elementBorder($color-border, after, bottom);
+}
+
 .ui-tab__tab-item {
   min-width: 25%;
   flex: 1;

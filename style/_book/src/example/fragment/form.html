@@ -194,7 +194,7 @@
           <div class="ui-info-item__desc-left">手机号</div>
           <div class="ui-info-item__desc-right">
             <input class="ui-input" type="text" placeholder='请输入手机号'/>
-            <div class="ui-smscode-btn">获取验证码</div>
+            <div class="ui-smscode-btn ui-smscode-btn--disabled">获取验证码</div>
           </div>
         </div>
         <div class="ui-info-item">
@@ -217,7 +217,7 @@
         </div>
       </div>
       <div class="comm-padding ui-mt-30">
-        <i class="ui-icon-checked"></i>
+        <i class="ui-check-box ui-icon-checked"></i>
         <span class="ui-ml-10">同意</span>
         <a class="ui-link" href="javascript:;">《服务协议》</a>
         <span class="ui-fl-r color-999">详情描述的文案</span>
@@ -296,4 +296,12 @@
     }
   })
 
+  $('.ui-check-box').on('click', function() {
+    var $this = $(this);
+    if ($this.hasClass('ui-icon-checked')) {
+      $(this).removeClass('ui-icon-checked').addClass('ui-icon-unchecked');
+    } else {
+      $(this).removeClass('ui-icon-unchecked').addClass('ui-icon-checked');
+    }    
+  })
 </script>

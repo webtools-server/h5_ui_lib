@@ -40,3 +40,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   padding-right: 10px;
   box-sizing: border-box;
 }
+
+.ui-smscode-btn--disabled {
+  color: $color-gray;
+}

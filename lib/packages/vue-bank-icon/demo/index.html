@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UIVueBankIcon</title>
+  <link href="../node_modules/@jyb/h5_ui_css/dist/style/ui.min.css" rel="stylesheet"></link>
+  <script>
+    (function(doc, win) {
+      var basicWidth = window.basicWidth || 750;
+      var minWidth = 320;
+      var htmlElement = doc.documentElement;
+      var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+      var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          window.rootFontSize = 100 * (clientWidth / basicWidth);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+      };
+      recalc();
+      if (!win.addEventListener) return;
+      win.addEventListener('resize', recalc, false);
+    })(document, window);
+  </script>   
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <style>#container { padding: .3rem; } </style>
+</head>
+
+<body>
+  <div id="container">  
+    <ui-bank-icon :bank-code="bankCode"></ui-bank-icon>
+  </div>
+  <script src="../dist/bundle.dev.js"></script>
+  <script>
+    Vue.component(UIVueBankIcon.name, UIVueBankIcon);
+    var app = new Vue({
+      el: '#container',
+      data: {
+        bankCode: 'cmb'
+      }
+    })
+  </script>
+</body>
+
+</html>

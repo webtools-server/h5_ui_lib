@@ -10,6 +10,10 @@
   z-index: 8888;  
 }
 
+.ui-toast--no-overlay {
+  background: none;
+}
+
 .ui-toast__content {
   position: fixed;
   z-index: 9999;
