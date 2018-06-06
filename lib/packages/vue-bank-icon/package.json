@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-bank-icon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "银行卡图标",
   "main": "dist/bundle.js",
   "scripts": {
