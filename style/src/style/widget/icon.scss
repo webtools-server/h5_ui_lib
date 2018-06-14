@@ -63,22 +63,6 @@
   background-size: cover;  
 }
 
-.ui-icon-success {
-  @extend .ui-icon;
-  background: url(https://images.jyblife.com/ui_icon/success.png) no-repeat 0 0 ;
-  background-size: cover;  
-  width: 214px;
-  height: 214px;
-}
-
-.ui-icon-fail {
-  @extend .ui-icon;
-  background: url(https://images.jyblife.com/ui_icon/fail.png) no-repeat 0 0 ;
-  background-size: cover;  
-  width: 214px;
-  height: 214px;
-}
-
 .ui-icon-unchecked {
   @extend .ui-icon;
   background: url(/img/unchecked.png) no-repeat 0 0 ;
@@ -133,12 +117,6 @@
   background-size: cover;    
 }
 
-.ui-icon-edit {
-  @extend .ui-icon;
-  background: url(/img/edit.png) no-repeat 0 0 ;
-  background-size: cover;
-}
-
 .ui-icon-location {
   @extend .ui-icon;
   background: url(/img/location.png) no-repeat 0 0 ;
@@ -185,4 +163,20 @@
   height: 48px;
   background: url(/img/sort.png) no-repeat 0 0 ;
   background-size: cover;
+}
+
+.ui-icon-success {
+  @extend .ui-icon;
+  background: url('../img/success.png') no-repeat 0 0 ;
+  background-size: cover;  
+  width: 214px;
+  height: 214px;
+}
+
+.ui-icon-fail {
+  @extend .ui-icon;
+  background: url('../img/fail.png') no-repeat 0 0 ;
+  background-size: cover;  
+  width: 214px;
+  height: 214px;
 }

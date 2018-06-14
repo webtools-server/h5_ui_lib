@@ -229,3 +229,27 @@
     background-size: 100% auto;
   }
 }
+
+.ui-bank-icon--bob {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/bob.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }  
+}
+
+.ui-bank-icon--bosc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/bosc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--cgb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/cgb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}

@@ -47,7 +47,7 @@ new Vue({
     var app = new Vue({
       el: '#container',
       data: {
-        bankCode: 'cmb'
+        bankCode: '866900'
       }
     })
   </script>
