@@ -1,5 +1,7 @@
 @import '../base/fn.scss';
 
+$imgFolder: '../../img/' !default;
+
 .ui-icon {
   display: inline-block;
   width: 40px;
@@ -13,19 +15,19 @@
 
 .ui-icon-arrow-down {
   @extend .ui-icon;
-  background: url(/img/arrow-down.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'arrow-down.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-arrow-up {
   @extend .ui-icon;
-  background: url(/img/arrow-up.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'arrow-up.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-arrow-right {
   @extend .ui-icon;
-  background: url(/img/arrow-right.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'arrow-right.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
@@ -33,13 +35,13 @@
   @extend .ui-icon;
   width: 30px;
   height: 30px;
-  background: url(/img/arrow-right-sm.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'arrow-right-sm.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-help {
   @extend .ui-icon;
-  background: url(/img/help.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'help.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
@@ -47,97 +49,97 @@
   @extend .ui-icon;
   width: 60px;
   height: 60px;
-  background: url(/img/close.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'close.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-close--small {
   @extend .ui-icon;
-  background: url(/img/close-sm.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'close-sm.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-close--del {
   @extend .ui-icon;
-  background: url(/img/form-del.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'form-del.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-unchecked {
   @extend .ui-icon;
-  background: url(/img/unchecked.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'unchecked.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-checked {
   @extend .ui-icon;
-  background: url(/img/checked.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'checked.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-check--disabled {
   @extend .ui-icon;
-  background: url(/img/checkbox_disabled.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'checkbox_disabled.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-info--primary {
   @extend .ui-icon;
-  background: url(/img/info-primary.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'info-primary.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-info--default {
   @extend .ui-icon;
-  background: url(/img/info-default.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'info-default.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-info--reverse {
   @extend .ui-icon;
-  background: url(/img/info-reverse.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'info-reverse.png') no-repeat 0 0 ;
   background-size: cover;  
 }
 
 .ui-icon-eye {
   @extend .ui-icon;
-  background: url(/img/eye.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'eye.png') no-repeat 0 0 ;
   background-size: cover;    
 }
 
 .ui-icon-eye--hidden {
   @extend .ui-icon;
-  background: url(/img/eye-hidden.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'eye-hidden.png') no-repeat 0 0 ;
   background-size: cover;    
 }
 
 .ui-icon-edit {
   @extend .ui-icon;
-  background: url(/img/edit.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'edit.png') no-repeat 0 0 ;
   background-size: cover;    
 }
 
 .ui-icon-location {
   @extend .ui-icon;
-  background: url(/img/location.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'location.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-add {
   @extend .ui-icon;
-  background: url(/img/add.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'add.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-add--white {
   @extend .ui-icon;
-  background: url(/img/add-white.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'add-white.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-agree--unchecked {
   @extend .ui-icon;
-  background: url(/img/agree-unchecked.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'agree-unchecked.png') no-repeat 0 0 ;
   background-size: cover;
   width: 48px;
   height: 48px;
@@ -145,7 +147,7 @@
 
 .ui-icon-agree--checked {
   @extend .ui-icon;
-  background: url(/img/agree-checked.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'agree-checked.png') no-repeat 0 0 ;
   background-size: cover;
   width: 48px;
   height: 48px;
@@ -153,7 +155,7 @@
 
 .ui-icon-selected {
   @extend .ui-icon;
-  background: url(/img/selected.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'selected.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
@@ -161,13 +163,13 @@
   @extend .ui-icon;
   width: 48px;
   height: 48px;
-  background: url(/img/sort.png) no-repeat 0 0 ;
+  background: url($imgFolder + 'sort.png') no-repeat 0 0 ;
   background-size: cover;
 }
 
 .ui-icon-success {
   @extend .ui-icon;
-  background: url('../img/success.png') no-repeat 0 0 ;
+  background: url($imgFolder + 'success.png') no-repeat 0 0 ;
   background-size: cover;  
   width: 214px;
   height: 214px;
@@ -175,7 +177,7 @@
 
 .ui-icon-fail {
   @extend .ui-icon;
-  background: url('../img/fail.png') no-repeat 0 0 ;
+  background: url($imgFolder + 'fail.png') no-repeat 0 0 ;
   background-size: cover;  
   width: 214px;
   height: 214px;

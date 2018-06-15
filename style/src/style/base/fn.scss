@@ -6,6 +6,9 @@
 @import './variable/color';
 @import './variable/font';
 
+// 图片站点
+$imageSite: 'https://images.jyblife.com/ui_icon/';
+
 %border-top {
   @include elementBorder($color-border, before, top);
 }

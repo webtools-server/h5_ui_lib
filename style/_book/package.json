@@ -1,6 +1,6 @@
 {
   "name": "@jyb/h5_ui_css",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "前端ui库css",
   "main": "dist/style/ui.min.css",
   "scripts": {
