@@ -9,7 +9,7 @@
     "doc:pre": "jfet doc --install",
     "doc:serve": "node ./scripts/doc.js && jfet doc --serve",
     "doc": "node ./scripts/doc.js && jfet doc --build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "npm": "echo \"Error: no test specified\" && exit 1",
     "build:entry": "node ./scripts/build --entry"
   },
   "files": [
