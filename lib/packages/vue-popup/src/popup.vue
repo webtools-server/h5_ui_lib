@@ -22,7 +22,7 @@ const noborderClass = 'ui-popup__title--noborder';
 
 // 浮层高度由内容决定，最高时距离屏幕顶端296px，标题高度为104px
 function calcContentHeight() {
-  return `${window.innerHeight - ((296 + 104) / 2)}px`;
+  return `${document.documentElement.clientHeight - ((296 + 104) / 2)}px`;
 }
 
 export default {
