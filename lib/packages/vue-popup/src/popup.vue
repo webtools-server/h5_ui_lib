@@ -63,7 +63,10 @@ export default {
     }
   },
   mounted() {
-    this.resetContentHeight();
+    setTimeout(() => {
+      this.resetContentHeight();
+    }, 100);
+
     if (this.reCaculateContentHeight) {
       window.addEventListener('resize', this.resetContentHeight)
     }    
