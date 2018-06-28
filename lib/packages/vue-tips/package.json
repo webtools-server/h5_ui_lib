@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-tips",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@jyb/h5_ui_css": "^0.1.17",
-    "@jyb/ui-vue-overlay": "^0.1.7",
+    "@jyb/ui-vue-overlay": "^0.1.8",
     "vue": "^2.5.13"
   },
   "author": "xiaohai.xi@jyblife.com",
