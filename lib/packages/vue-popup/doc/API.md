@@ -13,6 +13,7 @@
 | footerClass | footer容器的class | Array | | |
 | titleBorder | title底部是否显示边框 | Boolean | | false | 
 | reCaculateContentHeight | 窗口大小改变时是否重新计算内容高度 | Boolean | | true|
+| preventBackScroll | 浮层显示时是否禁止页面背景滚动 | Boolean | | false |
 
 ### slots
 

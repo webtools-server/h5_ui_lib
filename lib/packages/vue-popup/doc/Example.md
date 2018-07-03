@@ -1,4 +1,6 @@
 # 例子
+
+```html
 <div id="container">
   <div class="ui-btn" @click="isShowPopup = true">点我</div>
   <popup 
@@ -24,3 +26,4 @@
     }
   })
 </script>
+```html

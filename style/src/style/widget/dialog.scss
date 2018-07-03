@@ -2,7 +2,7 @@
 
 .ui-dialog {
   position: fixed;
-  top: 25%;
+  top: 50%;
   left: 50%;
 
   width: 560px;
@@ -11,7 +11,7 @@
   background-color: #fafafa;
   color: $text-color-first;  
 
-  transform: translateX(-50%);
+  transform: translate3d(-50%, -50%, 0);
   border-radius: 6px;
   z-index: 8888;
   overflow: hidden;
