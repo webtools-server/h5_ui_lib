@@ -20,3 +20,4 @@
 | update:show | Boolean| 表示红包列表此时是否应该展示 |
 | update:cid | String | 表示当前选中了哪个红包 | 
 
+

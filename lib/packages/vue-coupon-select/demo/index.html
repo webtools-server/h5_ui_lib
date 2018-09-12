@@ -40,12 +40,11 @@
       :not-use-desc="'就不用'"
       ></coupon-select>
     <coupon-select
-      :show.sync="isShowCouponSelect2"
-      :list="coupons2"
+      :show.sync="isShowCouponSelect2"      
       :cid.sync="currentCid2"
       :title="'请选择红包'"
       :not-use-desc="'就不用'"
-      ></coupon-select>      
+      ><div v-for="c in coupons" @click="currentCid2 = c.cid">{{c.name}}</div></coupon-select>      
   </div>
   <script src="../dist/bundle.dev.js"></script>
   <script>
@@ -129,6 +128,12 @@
         currentCid2: 0,
         coupons,
         coupons2,
+      },
+      watch: {
+        currentCid2(val) {
+          console.log(val);
+          this.isShowCouponSelect2 = false;
+        }
       }
     })
     

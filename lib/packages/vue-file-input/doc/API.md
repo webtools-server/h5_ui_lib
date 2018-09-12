@@ -1,31 +1,17 @@
 # API
 
-```javascript
-import Demo from '@jyb/lib-demo'
-```
+## ui-file-input 
 
-## 初始化
+### props
 
-### new Demo(options);
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :----| :---| :----| :-----| :------|
+| type| 限定文件类型 | String | image, video | image |
+| multiple| 是否允许多选 | Boolean | | false |
 
-```jsdoc
-@param {Object} options
-```
+### 事件
 
-## 选项
+| 名称 | 参数类型 | 说明 |
+| :--- | :--- | :--- |
+| change | Event| 原生event |
 
-### debug
-- Type: `Boolean`
-- Default: false
-
-是否为调试模式，为`true`时，会有日志输出
-
-## 实例方法
-
-### start()
-
-启动上报
-
-```javascript
-instance.start();
-```

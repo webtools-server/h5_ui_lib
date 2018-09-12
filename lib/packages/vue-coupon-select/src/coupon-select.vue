@@ -13,23 +13,29 @@
     <div 
       slot="content" 
       class="ui-coupon-select__list">
-      
-      <template v-if="list && list.length > 0">
-        <coupon-item             
-            v-for="item, idx in list" 
-            :key="item.cid"
-            v-bind="item"
-            :selected="item.cid == cid"
-            @click="changecoupon(item)">                
-        </coupon-item>
+      <template v-if="!list">
+          <slot></slot>
+            <div class="ui-btn ui-coupon-select__notuse"
+                @click="changecoupon('')">{{ notUseDesc }}</div>          
+      </template>      
+        <template v-else>
+            <template v-if="list.length > 0">
+                <coupon-item             
+                    v-for="item, idx in list" 
+                    :key="item.cid"
+                    v-bind="item"
+                    :selected="item.cid == cid"
+                    @click="changecoupon(item)">                
+                </coupon-item>
 
-        <div class="ui-btn ui-coupon-select__notuse"
-            @click="changecoupon('')">{{ notUseDesc }}</div>
-      </template>
-      <div v-else class="ui-coupon-select__empty">
-        <div class="ui-coupon-select__empty-img"></div>    
-        <p class="ui-coupon-select__empty-text">您还没有可用红包哦~</p>
-      </div>      
+                <div class="ui-btn ui-coupon-select__notuse"
+                    @click="changecoupon('')">{{ notUseDesc }}</div>
+            </template>
+            <div v-else class="ui-coupon-select__empty">
+                <div class="ui-coupon-select__empty-img"></div>    
+                <p class="ui-coupon-select__empty-text">您还没有可用红包哦~</p>
+            </div>
+        </template>
     </div>
   </popup>
 </div>
@@ -53,8 +59,8 @@ export default {
         },
         list: {
             type: Array,
-            required: true,
-            default: []
+            // required: true,
+            // default: []
         },
         cid: {
             type: [String, Number],

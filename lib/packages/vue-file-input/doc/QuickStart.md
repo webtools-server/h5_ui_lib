@@ -3,7 +3,7 @@
 ## 安装
 
 ```shell
-npm install @jyb/lib-demo --save
+npm install @jyb/ui-file-input --save
 ```
 
 ## 使用
@@ -11,7 +11,7 @@ npm install @jyb/lib-demo --save
 ### 引入
 
 ```javascript
-import Demo from '@jyb/lib-demo'
+import FileInput from '@jyb/ui-file-input'
 ```
 
 ## 例子
