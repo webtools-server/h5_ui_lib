@@ -15,7 +15,11 @@
       class="ui-coupon-select__list">
       <template v-if="!list">
           <slot></slot>
-            <div class="ui-btn ui-coupon-select__notuse"
+            <div v-if="!hasSlot" class="ui-coupon-select__empty">
+                <div class="ui-coupon-select__empty-img"></div>    
+                <p class="ui-coupon-select__empty-text">您还没有可用红包哦~</p>
+            </div>
+            <div v-else class="ui-btn ui-coupon-select__notuse"
                 @click="changecoupon('')">{{ notUseDesc }}</div>          
       </template>      
         <template v-else>
@@ -73,6 +77,11 @@ export default {
         notUseDesc: {
             type: String,
             default: '不使用，就是任性'
+        }
+    },
+    computed: {
+        hasSlot() {
+            return this.$slots && this.$slots.default.length; 
         }
     },
     methods: {
