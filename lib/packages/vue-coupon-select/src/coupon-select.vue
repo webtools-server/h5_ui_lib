@@ -81,7 +81,7 @@ export default {
     },
     computed: {
         hasSlot() {
-            return this.$slots && this.$slots.default.length; 
+            return this.$slots && this.$slots.default && this.$slots.default.length; 
         }
     },
     methods: {
