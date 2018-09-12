@@ -44,7 +44,8 @@
       :cid.sync="currentCid2"
       :title="'请选择红包'"
       :not-use-desc="'就不用'"
-      ><div v-for="c in []" @click="currentCid2 = c.cid">{{c.name}}</div></coupon-select>      
+      :has-slot='coupons2.length'
+      ><div v-for="c in coupons2" @click="currentCid2 = c.cid">{{c.name}}</div></coupon-select>      
   </div>
   <script src="../dist/bundle.dev.js"></script>
   <script>

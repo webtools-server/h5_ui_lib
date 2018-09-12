@@ -77,12 +77,11 @@ export default {
         notUseDesc: {
             type: String,
             default: '不使用，就是任性'
-        }
-    },
-    computed: {
-        hasSlot() {
-            return this.$slots && this.$slots.default && this.$slots.default.length; 
-        }
+        },
+        hasSlot: {
+            type: [Boolean, Number],
+            default: false,
+        }        
     },
     methods: {
         onOpenUpdate(val) {
