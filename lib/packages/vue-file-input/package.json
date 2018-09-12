@@ -1,6 +1,6 @@
 {
   "name": "@jyb/ui-vue-file-input",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "文件选择组件",
   "main": "dist/bundle.js",
   "scripts": {
