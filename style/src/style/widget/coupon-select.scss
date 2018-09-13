@@ -24,10 +24,10 @@
 
 .ui-coupon-select__notuse {
   margin-top: 70Px;
-  border-color: $color-gray;
-  // &::after {
-  //   border-color: $color-gray;
-  // }
+  // border-color: $color-gray;
+  &::after {
+    border-color: $color-gray;
+  }
 }
 
 .ui-coupon-item {
