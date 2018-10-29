@@ -1,5 +1,5 @@
 {
-  "name": "@jyb/vie-region-select",
+  "name": "@jyb/vue-region-select",
   "version": "0.1.1",
   "description": "地区选择器vue",
   "main": "dist/bundle.js",
