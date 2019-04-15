@@ -1,10 +1,6 @@
 {
   "presets": [
-    ["latest", {
-      "es2015": {
-        "modules": false
-      }
-    }]
+    ["@babel/preset-env"]
   ],
-  "plugins": ["external-helpers", "transform-object-assign"]
+  "plugins": ["transform-object-assign"]
 }

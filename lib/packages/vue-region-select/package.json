@@ -29,5 +29,9 @@
     "prodDest": "dist/bundle.js"
   },
   "author": "xiaohaix.xi@jyblife.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@jyb/lib-ajax": "^1.0.14"
+  },
+  "devDependencies": {}
 }
