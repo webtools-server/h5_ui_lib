@@ -1,6 +1,6 @@
 {
   "name": "@jyb/vue-region-select",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "地区选择器vue",
   "main": "dist/bundle.js",
   "scripts": {
@@ -32,6 +32,5 @@
   "license": "MIT",
   "dependencies": {
     "@jyb/lib-ajax": "^1.0.14"
-  },
-  "devDependencies": {}
+  }
 }
