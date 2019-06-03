@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>h5-UI</title>    
+    <link rel="stylesheet" href="../style/ui.css"/>
+    <link rel="stylesheet" href="./example.css"/>
+    <script>
+      (function(doc, win) {
+        var basicWidth = window.basicWidth || 750;
+        var minWidth = 320;
+        var htmlElement = doc.documentElement;
+        var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+        var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+        };
+        recalc();
+        if (!win.addEventListener) return;
+        win.addEventListener('resize', recalc, false);
+      })(document, window);      
+    </script>
+</head>
+<body>
+    <div class="container" id="container"></div>
+
+    <script type="text/html" id="tpl_home">
+<div class="page">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">h5-UI</h1>
+  </div>
+  <div class="page-bd comm-padding">
+    <ul>
+      <li>
+        <div class="ui-flex js-category">
+          <p class="ui-flex-item">文字模板类</p>
+        </div>
+        <div class="mod-category js-category-wrap">
+          <div class="ui-cells category-content">
+            <a class="ui-cell js-item" data-id="article" href="javascript:;">
+              <div class="cell-bd">
+                <p>说明介绍页规范1</p>
+              </div>
+              <div class="cell-ft"></div>
+            </a>
+            <a class="ui-cell js-item" data-id="article-2" href="javascript:;">
+              <div class="cell-bd">
+                <p>说明介绍页规范2</p>
+              </div>
+              <div class="cell-ft"></div>
+            </a>
+            <a class="ui-cell js-item" data-id="article-3" href="javascript:;">
+              <div class="cell-bd">
+                <p>服务协议须知类</p>
+              </div>
+              <div class="cell-ft"></div>
+            </a>          
+          </div>
+        </div>        
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="tab">
+          <p class="ui-flex-item">Tab 切换</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="dialog">
+          <p class="ui-flex-item">反馈类</p>
+        </div>
+      </li>
+      <li>
+          <div class="ui-flex js-item" data-id="msg">
+            <p class="ui-flex-item">结果页</p>
+          </div>
+        </li>
+      <li>
+        <div class="ui-flex js-item" data-id="icon">
+          <p class="ui-flex-item">icon</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="picker">
+          <p class="ui-flex-item">选择器</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="list">
+          <p class="ui-flex-item">列表</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="form">
+          <p class="ui-flex-item">表单</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="button">
+          <p class="ui-flex-item">按钮</p>
+        </div>
+      </li>                 
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+      var winH = $(window).height();
+      var categorySpace = 10;
+
+      $('.js-item').on('click', function(){
+          var id = $(this).data('id');
+          window.pageManager.go(id);
+      });
+      $('.js-category').on('click', function(){
+          var $this = $(this),
+              $inner = $this.next('.js-category-wrap'),
+              $page = $this.parents('.page'),
+              $parent = $(this).parent('li');
+          var innerH = $inner.data('height');
+          bear = $page;
+
+          if(!innerH){
+            $inner.css('height', 'auto');
+            innerH = $inner.height();
+            $inner.removeAttr('style');
+            $inner.data('height', innerH);
+          }
+
+          if($parent.hasClass('js-show')){
+            $parent.removeClass('js-show');
+          }else{
+            $parent.siblings().removeClass('js-show');
+
+            $parent.addClass('js-show');
+            if(this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH){
+                var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+                if(scrollTop > this.offsetTop){
+                    scrollTop = this.offsetTop - categorySpace;
+                }
+
+                $page.scrollTop(scrollTop);
+            }
+          }
+      });
+  });
+</script>
+</script>
+    <script type="text/html" id="tpl_article">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">说明介绍页</h1>
+  </div>
+  <div class="page-bd">
+    <div class="ui-article">
+      <h1 class="ui-article__title ui-article__title--primary">文字模版的大标题</h1>
+      <p class="ui-article__text">模版正文模版，正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文。模版正文模版正文模版正文，模版正文，<span class="ui-artilce__text--em">重点展示的文字</span>正文模版正文模版正文。模版正文模版正文模版正文模版正文，模版正文模版正文，模版正文模版正文模版正文。</p>
+      <p class="ui-article__text">分段空行模版正文分段空行模版正，文分段空行模版正文分段空行模版正文分段空行模版正文分段空行模版正文，分段空行模版正文分段空行模版正文分段空行模版正文。</p>
+      <table class="ui-artilce__table">
+        <thead>
+          <tr>
+            <th>表格</th>
+            <th>表格</th>
+            <th>表格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>都是根据表格内容扩大</td>
+          </tr>
+          <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>都是根据表格内容扩大</td>
+          </tr>
+          <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>都是根据表格内容扩大</td>
+          </tr>
+          <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>都是根据表格内容扩大</td>
+          </tr>
+          <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>都是根据表格内容扩大</td>
+          </tr>                                        
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ui-article">
+      <h1 class="ui-article__title ui-article__title--primary">文字模版2的大标题</h1>
+      <p class="ui-article__text">模版正文模版，正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文。模版正文模版正文模版正文，模版正文，<span class="ui-text-em">重点展示的文字</span>正文模版正文模版正文。模版正文模版正文模版正文模版正文，模版正文模版正文，模版正文模版正文模版正文。</p>
+
+      <section>
+        <h2 class="ui-article__title ui-article__title--small">小标题文字</h2>
+        <p class="ui-article__text">小标题文字下的正文小标题文字下的正文小标题文字下的正文小标题文字下的正文。</p>
+      </section>
+
+      <section>
+        <h2 class="ui-article__title ui-article__title--small">小标题文字</h2>
+        <p class="ui-article__text">小标题文字下的正文<span class="ui-artilce__text--em">重点展示的文字</span>小标题文字下的正文小标题文字下的正文。</p>
+      </section>
+    </div>
+
+    <div class="ui-info-line">
+      <div class="ui-info-item">
+        <div>描述描述描述</div>
+        <div class="ui-info-item__desc-right">
+          <span class="ui-info-item__text">描述描述描述</span>
+          <i class="ui-icon-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-ft"></div>
+</div>
+</script>
+    <script type="text/html" id="tpl_article-2">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">文字模板2</h1>
+  </div>
+  <div class="page-bd">
+    <div class="ui-article">
+      <h1 class="ui-article__title ui-article__title--primary">文字+图片模版的大标题</h1>
+      <section>
+        <p class="ui-article__text">模版正文模版，正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文模版正文。</p>
+      </section>
+      <img class="ui-article__img ui-article__img--nomb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAFyCAYAAACqUV9vAAAWRElEQVR4Xu3W0QkAIAxDQd1/te6k4BQ+uE4QLv3InpmzHAECBAgQIECAAAECXwtsw/3rfoQjQIAAAQIECBAg8AQMd49AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIELi115sXT8dUpAAAAAElFTkSuQmCC">
+    </div>
+
+    <div class="ui-article">
+      <h1 class="ui-article__title ui-article__title--primary">图标+文字模版1的大标题</h1>
+      <section>
+        <div class="ui-media">
+          <div class="ui-media__left">
+            <img class="ui-media__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAYAAACKAxD9AAACoklEQVR4Xu3XsQ0CQRQDUa7/1rYnkEiQToCczyN24vGI+3udc54PvzyBiwh5B94AiMADInDgQ8A/Ahv8I3DAPwIHbgR8Gijh08ABnwYO+DRw4BsBNwIv3AgccCNwwI3AATcCB34ScCySw7HIAcciBxyLHHAscsCxyIH/BLwaGOLVwAGvBg54NXDAq4EDXg0c8GrgwEDA83GAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSIvYPe42K9B5ZsAAAAASUVORK5CYII=">
+          </div>
+          <div class="ui-media__body">
+            <p>多行文字的情况多行文字的情况多行文字的情况多行文字的情况多行文字的情况多行文字的情况多行文字的情况多行文字的情况多行文字的情况多行文字的情况</p>
+          </div>
+        </div>        
+        <div class="ui-media">
+          <div class="ui-media__left">
+            <img class="ui-media__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAYAAACKAxD9AAACoklEQVR4Xu3XsQ0CQRQDUa7/1rYnkEiQToCczyN24vGI+3udc54PvzyBiwh5B94AiMADInDgQ8A/Ahv8I3DAPwIHbgR8Gijh08ABnwYO+DRw4BsBNwIv3AgccCNwwI3AATcCB34ScCySw7HIAcciBxyLHHAscsCxyIH/BLwaGOLVwAGvBg54NXDAq4EDXg0c8GrgwEDA83GAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSIvYPe42K9B5ZsAAAAASUVORK5CYII=">
+          </div>
+          <div class="ui-media__body">
+            <p>三行文字的情况三行文字的情况三行文字的情况三行文字的情况三行文字的情况</p>
+          </div>
+        </div>
+        <div class="ui-media">
+          <div class="ui-media__left">
+            <img class="ui-media__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAYAAACKAxD9AAACoklEQVR4Xu3XsQ0CQRQDUa7/1rYnkEiQToCczyN24vGI+3udc54PvzyBiwh5B94AiMADInDgQ8A/Ahv8I3DAPwIHbgR8Gijh08ABnwYO+DRw4BsBNwIv3AgccCNwwI3AATcCB34ScCySw7HIAcciBxyLHHAscsCxyIH/BLwaGOLVwAGvBg54NXDAq4EDXg0c8GrgwEDA83GAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSIvYPe42K9B5ZsAAAAASUVORK5CYII=">
+          </div>
+          <div class="ui-media__body">
+            <p>两行文字的情况两行文字的情况两行文字的情况两行文字的情况</p>
+          </div>
+        </div>
+        <div class="ui-media">
+          <div class="ui-media__left">
+            <img class="ui-media__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAYAAACKAxD9AAACoklEQVR4Xu3XsQ0CQRQDUa7/1rYnkEiQToCczyN24vGI+3udc54PvzyBiwh5B94AiMADInDgQ8A/Ahv8I3DAPwIHbgR8Gijh08ABnwYO+DRw4BsBNwIv3AgccCNwwI3AATcCB34ScCySw7HIAcciBxyLHHAscsCxyIH/BLwaGOLVwAGvBg54NXDAq4EDXg0c8GrgwEDA83GAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSIvYPe42K9B5ZsAAAAASUVORK5CYII=">
+          </div>
+          <div class="ui-media__body">
+            <p>一行文字的情况一行文字的情况</p>
+          </div>
+        </div>            
+        <div class="ui-media">
+          <div class="ui-media__left">
+            <img class="ui-media__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAYAAACKAxD9AAACoklEQVR4Xu3XsQ0CQRQDUa7/1rYnkEiQToCczyN24vGI+3udc54PvzyBiwh5B94AiMADInDgQ8A/Ahv8I3DAPwIHbgR8Gijh08ABnwYO+DRw4BsBNwIv3AgccCNwwI3AATcCB34ScCySw7HIAcciBxyLHHAscsCxyIH/BLwaGOLVwAGvBg54NXDAq4EDXg0c8GrgwEDA83GAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSJEKKw8dCTCAKkQIUJh5aEjEQZIhQgRCisPHYkwQCpEiFBYeehIhAFSIUKEwspDRyIMkAoRIhRWHjoSYYBUiBChsPLQkQgDpEKECIWVh45EGCAVIkQorDx0JMIAqRAhQmHloSMRBkiFCBEKKw8diTBAKkSIUFh56EiEAVIhQoTCykNHIgyQChEiFFYeOhJhgFSIEKGw8tCRCAOkQoQIhZWHjkQYIBUiRCisPHQkwgCpECFCYeWhIxEGSIUIEQorDx2JMEAqRIhQWHnoSIQBUiFChMLKQ0ciDJAKESIUVh46EmGAVIgQobDy0JEIA6RChAiFlYeORBggFSIvYPe42K9B5ZsAAAAASUVORK5CYII=">
+          </div>
+          <div class="ui-media__body">
+            <p>一行文字的情况一行文字的情况</p>
+            <a class="ui-media__link" href="https://jyb.jyblife.com">链接文字的情况</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="page-ft"></div>
+</div>
+</script>
+    <script type="text/html" id="tpl_article-3">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">服务协议、须知类</h1>
+  </div>
+  <div class="page-bd">
+    <div class="ui-article">
+      <h1 class="ui-article__title ui-article__title--primary">第几条 某某规定</h1>
+      <section>
+        <p class="ui-article__text">2.1 协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文</p>
+        <figure>
+          <img class="ui-article__img ui-article__img--figure" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAFyCAYAAACqUV9vAAAWRElEQVR4Xu3W0QkAIAxDQd1/te6k4BQ+uE4QLv3InpmzHAECBAgQIECAAAECXwtsw/3rfoQjQIAAAQIECBAg8AQMd49AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIEDHc/QIAAAQIECBAgQCAgYLgHShKRAAECBAgQIECAgOHuBwgQIECAAAECBAgEBAz3QEkiEiBAgAABAgQIEDDc/QABAgQIECBAgACBgIDhHihJRAIECBAgQIAAAQKGux8gQIAAAQIECBAgEBAw3AMliUiAAAECBAgQIEDAcPcDBAgQIECAAAECBAIChnugJBEJECBAgAABAgQIGO5+gAABAgQIECBAgEBAwHAPlCQiAQIECBAgQIAAAcPdDxAgQIAAAQIECBAICBjugZJEJECAAAECBAgQIGC4+wECBAgQIECAAAECAQHDPVCSiAQIECBAgAABAgQMdz9AgAABAgQIECBAICBguAdKEpEAAQIECBAgQICA4e4HCBAgQIAAAQIECAQEDPdASSISIECAAAECBAgQMNz9AAECBAgQIECAAIGAgOEeKElEAgQIECBAgAABAoa7HyBAgAABAgQIECAQEDDcAyWJSIAAAQIECBAgQMBw9wMECBAgQIAAAQIEAgKGe6AkEQkQIECAAAECBAgY7n6AAAECBAgQIECAQEDAcA+UJCIBAgQIECBAgAABw90PECBAgAABAgQIEAgIGO6BkkQkQIAAAQIECBAgYLj7AQIECBAgQIAAAQIBAcM9UJKIBAgQIECAAAECBAx3P0CAAAECBAgQIEAgIGC4B0oSkQABAgQIECBAgIDh7gcIECBAgAABAgQIBAQM90BJIhIgQIAAAQIECBAw3P0AAQIECBAgQIAAgYCA4R4oSUQCBAgQIECAAAEChrsfIECAAAECBAgQIBAQMNwDJYlIgAABAgQIECBAwHD3AwQIECBAgAABAgQCAoZ7oCQRCRAgQIAAAQIECBjufoAAAQIECBAgQIBAQMBwD5QkIgECBAgQIECAAAHD3Q8QIECAAAECBAgQCAgY7oGSRCRAgAABAgQIECBguPsBAgQIECBAgAABAgEBwz1QkogECBAgQIAAAQIELi115sXT8dUpAAAAAElFTkSuQmCC">
+          <figcaption class="ui-article__figcaption">上方图的名字描述</figcaption>          
+        </figure>
+        <p class="ui-article__text">2.2 协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文</p>
+      </section>
+
+      <h1 class="ui-article__title ui-article__title--primary">一级标题样式</h1>
+      <section>
+        <h2 class="ui-article__title ui-article__title--small">一、二级标题样式</h2>
+        <p class="ui-article__text">1、协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文。</p>
+        <p class="ui-article__text">2、协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文。</p>
+      </section>
+      <section>
+        <h2 class="ui-article__title ui-article__title--small">二、二级标题样式</h2>
+        <p class="ui-article__text">1.1 协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文协议内容正文</p>        
+        <h3 class="ui-article__title ui-article__title--xsmall">1.2 三级标题样式：</h3>
+        <p>(1) 小标题文字小标题文字小标题文字小标题文字小标题文字小标题文字；</p>
+        <p>(2) 小标题文字小标题文字小标题文字小标题文字小标题文字；</p>
+        <p>(3) 小标题文字小标题文字；</p>
+        <p>(4) 小标题文字小标题文字小标题文字小标题文字小标题文字小标题文字；</p>
+      </section>      
+    </div>
+  </div>
+  <div class="page-ft"></div>
+</div>
+</script>
+    <script type="text/html" id="tpl_tab">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">Tab 切换</h1>
+  </div>
+  <div class="page-bd">
+    <div class="ui-tab__bar ui-mb-40">
+      <div class="ui-tab__tab-item ui-tab__tab-item--active">标题一</div>
+      <div class="ui-tab__tab-item">标题二</div>
+    </div>
+
+    <div class="ui-tab__bar ui-mb-40">
+      <div class="ui-tab__tab-item ui-tab__tab-item--active">标题一</div>
+      <div class="ui-tab__tab-item">标题二</div>
+      <div class="ui-tab__tab-item">标题三</div>
+    </div>
+
+    <div class="ui-tab__bar ui-mb-40">
+      <div class="ui-tab__tab-item ui-tab__tab-item--active">标题一</div>
+      <div class="ui-tab__tab-item">标题二</div>
+      <div class="ui-tab__tab-item">标题三</div>
+      <div class="ui-tab__tab-item">标题四</div>
+    </div>
+
+    <!-- <div class="ui-tab__scrollwrap ui-mb-40">
+      <div class="ui-tab__bar ui-tab__bar--scroll">
+        <div class="ui-tab__tab-item">标题一</div>
+        <div class="ui-tab__tab-item">标题二</div>
+        <div class="ui-tab__tab-item">标题三</div>
+        <div class="ui-tab__tab-item">标题四</div>
+        <div class="ui-tab__tab-item">标题五</div>
+        <div class="ui-tab__tab-item">标题六</div>
+        <div class="ui-tab__tab-item">标题七</div>
+      </div>
+      <div class="ui-tab__arrow"></div>
+      <div class="ui-more-category">
+        <div class="ui-more-category__list">
+          <div class="ui-more-category__list-item">标题一</div>
+          <div class="ui-more-category__list-item">标题二</div>
+          <div class="ui-more-category__list-item">标题三</div>
+          <div class="ui-more-category__list-item">标题四</div>
+          <div class="ui-more-category__list-item">标题五</div>
+          <div class="ui-more-category__list-item">标题六</div>
+          <div class="ui-more-category__list-item">标题七</div>
+        </div>
+      </div>
+    </div> -->
+    <div id="tab"></div>
+  </div>
+  <div class="page-ft"></div>
+</div>
+
+<script type="text/javascript">
+var data = [
+  { value: "3",   label: "汽车用品" },
+  { value: "116", label: "生活超市" },
+  { value: "2",   label: "手机通讯" },
+  { value: "7",   label: "数码影音" },
+  { value: "9",   label: "家用电器" },
+  { value: "15",  label: "电脑平板" },
+  { value: "11",  label: "丽人美妆" },
+  { value: "54",  label: "网易严选" },
+  { value: "10",  label: "居家常备" },
+  { value: "64",  label: "精选母婴" },
+  { value: "12",  label: "个人护理" },
+  { value: "13",  label: "大牌轻奢" },
+  { value: "65",  label: "礼品专区" },
+  { value: "115", label: "轻松白拿" },
+];
+
+var category = new UI.MoreCategory({
+  el: '#tab',
+  data: data,
+  selectedVal: "115",
+  onChange: function(val, idx) {
+    console.log(val, idx);
+  },
+});
+</script>
+
+</script>
+    <script type="text/html" id="tpl_dialog">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">对话框、提示框</h1>
+  </div>
+  <div class="page-bd">
+    
+    <div onclick="showDialog1()" class="ui-btn ui-mb-40">获取验证码</div>
+    <div onclick="showDialog2()" class="ui-btn ui-mb-40">弹窗内容最多</div>
+    <div onclick="showDialog3()" class="ui-btn ui-mb-40">没有标题一行文字</div>
+    <div onclick="showDialog4()" class="ui-btn ui-mb-40">没有标题多行文字</div> 
+    <div onclick="showDialog5()" class="ui-btn ui-mb-40">按钮最多字数</div>
+    <div onclick="showDialog6()" class="ui-btn ui-mb-40">请输入支付密码</div>
+    <div onclick="showToast()" class="ui-btn ui-mb-40">toast</div>
+    <!-- <div handler="showPopup" class="mod-btn btn-default ui-mb-40"></div> -->
+  </div>
+  <div class="page-ft"></div>
+</div>
+
+<script type="text/javascript">
+  var dialogHtml_1 = '<p>注意文字大小（17px和13px为主），颜色（主要有#ff6e34, #333333, #999999, #cccccc），段落文字的行间距, 不同区块之间的间距</p>'
+                   + '<div class="ui-info-line ui-mt-20">'
+                   +   '<div class="ui-info-item ui-dialog__info-item">'
+                   +     '<div class="ui-info-item__desc-right">'
+                   +       '<input class="ui-input f-26" placeholder="请输入验证码"/>'
+                   +     '</div>'
+                   +     '<div class="ui-smscode-btn">获取验证码</div>'
+                   +   '</div>'
+                   + '</div>';
+
+  var dialogHtml_2 = '<p>这个是弹窗内容最多的状态，内容超过这种情况就采用底部浮层</p>'
+                   + '<p>这个是弹窗内容最多的状态，内容超过这种情况不许配！</p>';
+
+  var dialogHtml_3 = '<p class="ui-ta-c">没有标题一行文字</p>';
+
+  var dialogHtml_4 = '<p>没有标题多行文字，三行最多，字号和标题字号一样，超过三行不许配！</p>';
+
+  var dialogHtml_5 = '<p>确认将选中的1笔套餐自动续购到新套餐：69天年化8.5%</p>'
+                   + '<p>如打开循环续购，续购的新套餐默认也是续购的状态。</p>';
+
+  var dialogHtml_6 = '<div class="ui-ta-c">'
+                   + '<p class="color-999 ui-mt-20 ui-lh-1">- 支付 -</p>'
+                   + '<p class="f-50 ui-mt-20 ui-lh-1">¥2680.00</p>'
+                   + '<div class="ui-pwd ui-mt-38">'
+                   + '<div class="ui-pwd-box"><input class="ui-pwd-box__input" type="tel" /></div>'
+                   + '<div class="ui-pwd-fake">'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '</div></div>'
+                   + '<p class="ui-mt-30"><a class="ui-link ui-fl-r">忘记密码</a></p>'
+                   + '</div>';
+
+  $(function () {
+    var evtHandler = {
+      showAuthDialog: function () {
+        dialog.show({
+          titleBorder: false,     // 是否显示标题边线
+          title: '<p>弹窗标题</p><span class="ui-dialog__fn-wrap"><i class="ui-icon-help"></i></span>', 
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_1, // 显示的内容
+          btnFn: [ 
+            { text: '确定', callback: function () { dialog.close() } },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })
+      },
+      showDialog2: function () {
+        dialog.show({
+          titleBorder: false,     // 是否显示标题边线
+          title: "弹窗标题",              // 标题内容
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_2, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+            { text: '确定', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong' },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })        
+      },
+      showDialog3: function () {
+        dialog.show({
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_3, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })
+      },
+      showDialog4: function () {
+        dialog.show({
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_4, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })        
+      },
+      showDialog5: function () {
+        dialog.show({
+          title: "弹窗标题",              // 标题内容          
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_5, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+            { text: '最多是六个字', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong ' },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })             
+      },
+      showDialog6: function () {
+        dialog.show({
+          title: '请输入支付密码<span class="ui-dialog__fn-wrap ui-dialog__fn-wrap--left" et="click:closeDialog"><i class="ui-icon-close"></i></span>',              // 标题内容          
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_6, // 显示的内容
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })  
+      },
+      showToast: function() {
+        tips.showTips({          
+          msg: '两边距40px字26px框最宽480px',
+          isLoading: false,
+          autoHide: true,
+        })
+      }
+    }
+
+    $('.article-1 .ui-btn').on('click', function(e) {
+      var $node = $(this);
+      var handler = evtHandler[$node.attr('handler')]
+      handler && handler($node, e)    
+    })
+
+
+  })
+
+  function showDialog1() {
+      var title = '<p>弹窗标题</p><span class="ui-dialog__fn-wrap"><i et="click:help" class="ui-icon-help"></i></span>';
+      var content = '<p>注意文字大小（17px和13px为主），颜色（主要有#ff6e34, #333333, #999999, #cccccc），段落文字的行间距, 不同区块之间的间距</p>'
+                   + '<div class="ui-info-line ui-mt-20">'
+                   +   '<div class="ui-info-item ui-dialog__info-item">'
+                   +     '<div class="ui-info-item__desc-right">'
+                   +       '<input class="ui-input f-26" placeholder="请输入验证码"/>'
+                   +     '</div>'
+                   +     '<div class="ui-smscode-btn">获取验证码</div>'
+                   +   '</div>'
+                   + '</div>';
+
+      var dialog = new UI.Dialog({
+        title: title, 
+        visible: true, 
+        showClose: false,
+        content: content, 
+        btns: [{ 
+          text: '确定',
+          callback() {
+            dialog.close();
+            console.log('确定');
+          }
+        }]
+      });
+
+      dialog.registerHandler('help', function() {
+        console.log('click help')
+      })
+    }
+
+  function showDialog2() {
+    var content = '<p>这个是弹窗内容最多的状态，内容超过这种情况就采用底部浮层</p>'
+                + '<p>这个是弹窗内容最多的状态，内容超过这种情况不许配！</p>';
+
+    var dialog = new UI.Dialog({
+      title: "弹窗标题", 
+      showClose: false,
+      visible: true, 
+      content: content, 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+        { text: '确定', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong' },
+      ]
+    })
+  }
+
+  function showDialog3() {
+    var dialog = new UI.Dialog({
+      showClose: false,
+      visible: true, 
+      content: '<p class="ui-ta-c">没有标题一行文字</p>', 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+      ]
+    })
+  }
+
+  function showDialog4() {
+    var content = '<p>没有标题多行文字，三行最多，字号和标题字号一样，超过三行不许配！</p>';
+
+    var dialog = new UI.Dialog({
+      showClose: false,
+      visible: true, 
+      content: content, 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+      ]
+    })
+  }
+
+  function showDialog5() {
+    var content = '<p>确认将选中的1笔套餐自动续购到新套餐：69天年化8.5%</p>'
+                + '<p>如打开循环续购，续购的新套餐默认也是续购的状态。</p>';
+
+    var dialog = new UI.Dialog({
+      title: "弹窗标题",
+      showClose: false,
+      visible: true, 
+      content: content, 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+        { text: '最多是六个字', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong ' },
+      ]
+    })
+  }
+
+  function showDialog6() {
+    var content = '<div class="ui-ta-c">'
+                + '<p class="color-999 ui-mt-20 ui-lh-1">- 支付 -</p>'
+                + '<p class="f-50 ui-mt-20 ui-lh-1">¥2680.00</p>'
+                + '<div class="ui-pwd ui-mt-38">'
+                + '<div class="ui-pwd-box"><input class="ui-pwd-box__input" type="tel" /></div>'
+                + '<div class="ui-pwd-fake">'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '</div></div>'
+                + '<p et="click:forget" class="ui-mt-30"><a class="ui-link ui-fl-r">忘记密码</a></p>'
+                + '</div>';
+
+    var dialog = new UI.Dialog({
+      title: '<span class="ui-dialog__fn-wrap ui-dialog__fn-wrap--left" et="click:closeDialog"><i class="ui-icon-close"></i></span>请输入支付密码',
+      showClose: false,
+      visible: true, 
+      content: content,
+      onShow: function() {
+        var $input = $('.ui-pwd-fake_input');
+        $('.ui-pwd-box__input').on('input', function() {
+          var pwd = $(this).val().trim();
+          var len = pwd.length;
+          for (var i = 0; i < len; i++) {
+            $input.eq(i).val(pwd[i]);
+          }
+
+          $input.each(function() {
+            var index = $(this).parent().index();
+            console.log(index, len)
+            if (index >= len) {
+              $(this).val('')
+            }
+          });
+
+          if (len === 6) {
+            UI.Tips.showError('密码:'+ pwd)
+          }
+        })
+
+        // $('.ui-pwd-box__input').on('focus', function() {
+        //   $(this).css('transform', 'translate3d(100%, 0, 0)')
+        // }).on('blur', function () {
+        //   $(this).css('transform', 'translate3d(0, 0, 0)')
+        // })
+      },
+      onClose: function() {
+
+      }
+    })    
+
+    dialog.registerHandler('forget', function() {
+      console.log('forget');
+    })
+  }
+
+  function showToast() {
+    UI.Tips.showError('两边距40px字26px框最宽480px')
+  }
+</script>
+</script>
+    <script type="text/html" id="tpl_msg">
+<div class="page msg">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">结果页面</h1>
+  </div>
+  <div class="page-bd">
+    <!-- <a href="#msg-success" class="mod-btn btn-default">成功页</a>
+    <a href="#msg-fail" class="mod-btn btn-default ui-mt-30">失败页</a> -->
+    <a href="#msg-success" class="ui-btn">成功页</a>
+    <a href="#msg-fail" class="ui-btn ui-mt-30">失败页</a>
+  </div>
+  <div class="page-ft"></div>
+</div>
+
+</script>
+    <script type="text/html" id="tpl_msg-success">
+<div class="page">
+  <!-- <div class="mod-msg">
+    <div class="msg-icon-area"><i class="ui-icon-success"></i></div>
+    <div class="msg-text-area">
+      <h2 class="msg-title">您的油卡充值套餐购买成功！</h2>
+      <p class="msg-desc">油卡充值 300元</p>
+    </div>
+    <div class="msg-opr-area">
+      <p class="ui-btn-area">
+        <a href="javascript:history.back();" class="mod-btn btn-primary">点击查看返还详情</a>
+      </p>
+    </div>
+  </div> -->
+  <div class="ui-msg">
+    <div class="ui-msg__icon-area"><i class="ui-icon-success"></i></div>
+    <div class="ui-msg__text-area">
+      <h2 class="ui-msg__title">您的油卡充值套餐购买成功！</h2>
+      <p class="ui-msg__desc">油卡充值 300元</p>
+    </div>
+    <div class="ui-msg__opr-area">
+      <p class="ui-msg__btn-area">
+        <a href="javascript:history.back();" class="ui-btn ui-btn--primary">点击查看返还详情</a>
+      </p>
+    </div>
+  </div>  
+</div>
+</script>
+    <script type="text/html" id="tpl_msg-fail">
+<div class="page">
+  <!-- <div class="mod-msg">
+    <div class="msg-icon-area"><i class="ui-icon-fail"></i></div>
+    <div class="msg-text-area">
+      <h2 class="msg-title">支付失败</h2>
+      <p class="msg-desc">交易失败：余额不足</p>
+    </div>
+    <div class="msg-opr-area">
+      <p class="ui-btn-area">
+        <a href="javascript:history.back();" class="mod-btn btn-primary">重新支付</a>
+      </p>
+    </div>
+  </div> -->
+  <div class="ui-msg">
+    <div class="ui-msg__icon-area"><i class="ui-icon-fail"></i></div>
+    <div class="ui-msg__text-area">
+      <h2 class="ui-msg__title">支付失败</h2>
+      <p class="ui-msg__desc">交易失败：余额不足</p>
+    </div>
+    <div class="ui-msg__opr-area">
+      <p class="ui-msg__btn-area">
+        <a href="javascript:history.back();" class="ui-btn ui-btn--primary">重新支付</a>
+      </p>
+    </div>
+  </div>  
+</div>
+</script>
+    <script type="text/html" id="tpl_icon">
+<div class="page article-1">
+    <div class="page-hd">
+      <h1 class="page-hd-desc">icon</h1>
+    </div>
+    <div class="page-bd comm-padding">
+      <div>
+        <i class="ui-icon-success"></i>
+        <span>成功</span>
+      </div>
+      <div>
+        <i class="ui-icon-fail"></i>
+        <span>失败</span>        
+      </div>
+      <div>
+        <i class="ui-icon-selected"></i>
+        <i class="ui-icon-unchecked"></i>
+        <i class="ui-icon-checked"></i>
+        <i class="ui-icon-info--primary"></i>
+        <i class="ui-icon-info--reverse"></i>
+        <i class="ui-icon-info--default"></i>
+        <i class="ui-icon-close--small"></i>
+        <i class="ui-icon-arrow-down"></i>
+        <i class="ui-icon-arrow-up"></i>
+        <i class="ui-icon-arrow-right"></i>
+        <i class="ui-icon-arrow-right--small"></i>
+        <i class="ui-icon-close"></i>
+        <i class="ui-icon-eye--hidden"></i>
+        <i class="ui-icon-eye"></i>
+        <i class="ui-icon-edit"></i>
+        <i class="ui-icon-del"></i>
+        <i class="ui-icon-location"></i>
+        <i class="ui-icon-add--white"></i>
+        <i class="ui-icon-add"></i>
+        <i class="ui-icon-close--del"></i>
+        <i class="ui-icon-agree--checked"></i>
+        <i class="ui-icon-agree--unchecked"></i>
+      </div>
+      <div class="ui-mt-20">
+        <div>银行图标</div>
+        <i class="ui-bank-icon--abc"></i>
+        <i class="ui-bank-icon--alipay"></i>
+        <i class="ui-bank-icon--baidu"></i>
+        <i class="ui-bank-icon--bank"></i>
+        <i class="ui-bank-icon--baofoo"></i>
+        <i class="ui-bank-icon--boc"></i>
+        <i class="ui-bank-icon--bocom"></i>
+        <i class="ui-bank-icon--ccb"></i>
+        <i class="ui-bank-icon--ceb"></i>
+        <i class="ui-bank-icon--cgb"></i>
+        <i class="ui-bank-icon--change"></i>
+        <i class="ui-bank-icon--cib"></i>
+        <i class="ui-bank-icon--citic"></i>
+        <i class="ui-bank-icon--cmb"></i>
+        <i class="ui-bank-icon--cmbc"></i>
+        <i class="ui-bank-icon--grcb"></i>
+        <i class="ui-bank-icon--gzcb"></i>
+        <i class="ui-bank-icon--hxb"></i>
+        <i class="ui-bank-icon--icbc"></i>
+        <i class="ui-bank-icon--jd"></i>
+        <i class="ui-bank-icon--pc"></i>
+        <i class="ui-bank-icon--pingan"></i>
+        <i class="ui-bank-icon--psbc"></i>
+        <i class="ui-bank-icon--qq"></i>
+        <i class="ui-bank-icon--shenfazhan"></i>
+        <i class="ui-bank-icon--spdb"></i>
+        <i class="ui-bank-icon--transfer"></i>
+        <i class="ui-bank-icon--unionpay"></i>
+        <i class="ui-bank-icon--wechat"></i>
+        <i class="ui-bank-icon--yeepay"></i>
+        <i class="ui-bank-icon--bob"></i>
+        <i class="ui-bank-icon--bosc"></i>
+        <i class="ui-bank-icon--cgb"></i>        
+      </div>
+      <!--
+      <div class="ui-mt-20 ui-icon-wrap--vt-m">
+        <i class="ui-icon-info--primary"></i>
+        <div>文字图标垂直居中</div>        
+      </div>
+    </div>
+    -->
+    <div class="page-ft"></div>
+  </div>
+</script>
+    <script type="text/html" id="tpl_picker">
+<div class="page article-1">
+    <div class="page-hd">
+      <h1 class="page-hd-desc">选择器</h1>
+    </div>
+    <div class="page-bd">      
+      <div onclick="showRegionPopup()" class="ui-btn ui-mb-40">省市区选择器</div>
+      <div onclick="showDatepicker()" class="ui-btn ui-mb-40">日期选择器</div>
+      <div onclick="showPicker()" class="ui-btn ui-mb-40">单项选择器</div>
+      <div onclick="showLicenseSelect()" class="ui-btn ui-mb-40">车牌选择器</div> 
+      <div onclick="showBankSelect()" class="ui-btn ui-mb-40">选择银行卡</div>
+      <div onclick="showCoupons()" class="ui-btn ui-mb-40">选择红包</div>
+    </div>
+    <div class="page-ft"></div>
+  </div>
+  
+  <script type="text/javascript">
+    function transformRegionMap() {
+      var regionMap = $getRegionMap();
+      
+      function transform(i) {
+        return {
+          label: i.name,
+          value: i.id,
+          children: regionMap[i.id] && regionMap[i.id].addressList.map(transform)
+        }
+      }
+
+      return regionMap[0].addressList.map(transform);
+    }
+    
+    var regionSelect = new UI.RegionSelect({
+      data: transformRegionMap(),
+      title: '地区选择器',
+      onChange: function(i) {
+        console.log('change', i)
+      },
+      getLevelData: function(level, item, cb) {
+        var data = []
+        if (level > 0 && level < 3) {
+          var len = ~~(Math.random() * 10)
+          for (var i = 0; i < len; i++) {
+            var id = (~~(Math.random() * 10000))
+            data.push({
+              label: '地址' + id,
+              value: id,
+            })
+          }
+        }
+
+        console.log('getLevelData', level, item, data)
+        cb(data);
+      }
+    });
+
+    function showRegionPopup () {
+      regionSelect.show();
+    }
+
+    var datepicker = new UI.Datepicker({
+      title: '日期选择器',
+      start: '2000-01-01',
+      end: '2020-12-31',
+      // defaultValue: [2017, 11, 24],
+      onChange: function(i) { console.log('change', i)},
+      onConfirm: function(i) { console.log('confirm', i)},       
+    })
+
+    function showDatepicker () {
+      datepicker.show();
+    }
+
+    var pickerData = [
+      { name:"汽车用品", id: 1 },
+      { name:"生活超市", id: 2 },
+      { name:"手机通讯", id: 3 },
+      { name:"数码影音", id: 4 },
+      { name:"家用电器", id: 5 },
+      { name:"电脑平板", id: 6  },
+      { name:"丽人美妆", id: 7 },
+      { name:"网易严选", id: 8  },
+      { name:"居家常备", id: 9  },
+      { name:"精选母婴", id: 10 },
+      { name:"个人护理", id: 11 },
+      { name:"大牌轻奢", id: 12 },
+      { name:"礼品专区", id: 13 },
+      { name:"轻松白拿", id: 14 },
+      { name:"其他", id: -1 },
+    ]
+
+    var picker = new UI.Picker({
+      data: pickerData,
+      title: '单项选择器',
+      selectedIndex: 1,
+      onChange: function(i) { console.log('change', i)},
+      onConfirm: function(i) { console.log('confirm', i)},      
+    })
+
+    function showPicker () {
+      picker.show();
+    }
+
+    var provinces = [
+        { full:'河北', abbr:'冀',},
+        { full:'山西', abbr:'晋',},
+        { full:'辽宁', abbr:'辽',},
+        { full:'吉林', abbr:'吉',},
+        { full:'黑龙', abbr:'黑',},
+        { full:'江苏', abbr:'苏',},
+        { full:'浙江', abbr:'浙',},
+        { full:'安徽', abbr:'皖',},
+        { full:'福建', abbr:'闽',},
+        { full:'江西', abbr:'赣',},
+        { full:'山东', abbr:'鲁',},
+        { full:'河南', abbr:'豫',},
+        { full:'湖北', abbr:'鄂',},
+        { full:'湖南', abbr:'湘',},
+        { full:'广东', abbr:'粤',},
+        { full:'海南', abbr:'琼',},
+        { full:'四川', abbr:'川',},
+        { full:'贵州', abbr:'黔',},
+        { full:'云南', abbr:'滇',},
+        { full:'陕西', abbr:'陕',},
+        { full:'甘肃', abbr:'甘',},
+        { full:'青海', abbr:'青',},
+        { full:'台湾', abbr:'台',},
+      ].map((i, idx) => { i.val =idx; return i;})
+             
+    var licenseSelect = new UI.LicenseSelect({
+      data: provinces,
+      selectedVal: 1,
+      onChange: function(i) {
+        console.log(i);
+      },
+    });
+
+    function showLicenseSelect () {
+      licenseSelect.show()
+    }
+
+    var banks = [
+      {
+        bankImg: './img/光大银行.png',
+        bankCode: 1,
+        text1: '招商银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },
+      {
+        bankImg: './img/中信银行.png',
+        bankCode: 2,
+        text1: '中信银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },
+      {
+        bankImg: './img/平安银行.png',
+        bankCode: 3,
+        text1: '平安银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },
+      {
+        bankImg: './img/招商银行.png',
+        bankCode: 4,
+        text1: '招商银行(尾号9286)',
+        text2: '单笔限额5万元',
+        disabled: true,
+      },
+      {
+        bankImg: './img/浦发银行.png',
+        bankCode: 5,
+        text1: '浦发银行(尾号9286)',
+        text2: '单笔限额5万元'
+      },                        
+    ];
+    var bankSelect = new UI.BankSelect({
+      data: banks,
+      selectedVal: 2,
+      onChange: function(i) {
+        console.log(i)
+      },
+      onAddCard: function() {
+        console.log('添加银行卡')
+      }
+    });
+
+    function showBankSelect() {
+      bankSelect.show();
+    }
+
+    var coupons =  [ 
+      { 
+        "name": '测试红包',
+        "cid": "62835663150308884481", 
+        "amount": "200000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "200000"
+      },
+      { 
+        "name": '测试红包2',
+        "cid": "62835663150308884482", 
+        "amount": "2000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "2000",
+        "type_id": "5",
+        "detail": {
+          "value" : "90",
+          "total_max_cnt": "1000",
+          "total_remain_cnt": "499",      
+        }
+      },
+      { 
+        "name": '测试红包3',
+        "cid": "62835663150308884483", 
+        "amount": "2000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "2000",
+        "type_id": "4",
+        "detail": {
+          "remain_amt": 18000,
+          "total_amt": 36000
+        }
+      }, 
+      { 
+        "name": '测试红包',
+        "cid": "6283566315030888448", 
+        "amount": "2000", 
+        "cdesc": "零钱充值红包", 
+        "usage": "使用红包，支付70充零钱99", 
+        "expired_time": "2017-07-01 23:59:59", 
+        "status": "0", 
+        "url": "http://dev.branch.jtjr.com:8901/haiyang/branch/h5_static_branch_10/act/tx/hf/bind_account.shtml?url=%3Fcid%3D6283566315030888448&tel=15818619756", 
+        "is_auto_use": 0, 
+        "prd_id": "",
+        "amountVal" : "2000"
+      },                   
+    ] 
+  
+    var couponSelect = new UI.CouponSelect({
+      data: coupons,
+      selectedVal: '6283566315030888448',
+      isShowHelp: true,
+      onChange: function(i) {
+        console.log(i);
+      },
+      onHelp: function() {
+        console.log('help')
+      }
+    });
+
+    function showCoupons() {
+      couponSelect.show();
+    }
+
+  </script>
+</script>
+    <script type="text/html" id="tpl_list">
+<div class="page list">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">列表项</h1>
+  </div>
+  <div class="page-bd">
+    <div class="comm-padding color-999 ui-mb-10">带说明的列表项</div>
+
+    <div class="ui-info-line">
+      <div class="ui-info-item">
+        <div class="ui-info-item__desc-left">标题文字</div>
+        <div class="ui-info-item__desc-right color-999">说明文字</div>
+      </div>
+    </div>
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mt-10 ui-mb-10">带图标、说明的列表项</div>
+    <div class="ui-info-line ui-mb-10">
+      <div class="ui-info-item">
+          <div class="ui-icon-wrap">
+            <span class="ui-icon-wrap__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAiElEQVRoQ+3SwQkAIRAEQc0/tc1Jg6iHCH3/WbDr9syc9fG3e8BjvQQeA6wEEsAC/UIYkOcJcEI8kAAG5HkCnBAPJIABeZ4AJ8QDCWBAnifACfFAAhiQ5wlwQjyQAAbkeQKcEA8kgAF5ngAnxAMJYECeJ8AJ8UACGJDnCXBCPJAABuR5ApwQD1xK46LBIZ1n2gAAAABJRU5ErkJggg=="></span>
+            <span class="ui-ml-10">标题文字</span>
+          </div>          
+          <div class="ui-info-item__desc-right color-999">说明文字</div>
+      </div>
+      <div class="ui-info-item">
+        <div class="ui-icon-wrap">
+          <span class="ui-icon-wrap__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAiElEQVRoQ+3SwQkAIRAEQc0/tc1Jg6iHCH3/WbDr9syc9fG3e8BjvQQeA6wEEsAC/UIYkOcJcEI8kAAG5HkCnBAPJIABeZ4AJ8QDCWBAnifACfFAAhiQ5wlwQjyQAAbkeQKcEA8kgAF5ngAnxAMJYECeJ8AJ8UACGJDnCXBCPJAABuR5ApwQD1xK46LBIZ1n2gAAAABJRU5ErkJggg=="></span>
+          <span class="ui-ml-10">电子合同</span>
+        </div>
+        <div class="ui-info-item__desc-right color-999">说明文字</div>
+      </div>      
+    </div>
+
+    <div class="ui-info-line">
+      <div class="ui-info-item ui-info-item--large">
+        <div>
+          <p>首行文字15px</p>
+          <p class="color-999 f-26 ui-mt-14">2017-05-02 15:48:20</p>
+        </div>
+        <div class="ui-info-item__desc-right">
+          <p>15px</p>
+          <p class="color-999 f-26 ui-mt-14">次行13px</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">带跳转的列表项</div>
+    <div class="ui-info-line">
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">标题文字</div>
+          <div class="ui-info-item__desc-right color-999"><i class="ui-icon-arrow-right"></i></div>
+        </div>
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">标题文字</div>
+          <div class="ui-info-item__desc-right color-999"><i class="ui-icon-arrow-right"></i></div>
+        </div>      
+      </div>
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">带说明、跳转的列表项</div>
+    <div class="ui-info-line">
+      <div class="ui-info-item">
+        <div class="ui-icon-wrap">
+          <span class="ui-icon-wrap__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAiElEQVRoQ+3SwQkAIRAEQc0/tc1Jg6iHCH3/WbDr9syc9fG3e8BjvQQeA6wEEsAC/UIYkOcJcEI8kAAG5HkCnBAPJIABeZ4AJ8QDCWBAnifACfFAAhiQ5wlwQjyQAAbkeQKcEA8kgAF5ngAnxAMJYECeJ8AJ8UACGJDnCXBCPJAABuR5ApwQD1xK46LBIZ1n2gAAAABJRU5ErkJggg=="></span>
+          <span class="ui-ml-10">标题文字</span>
+        </div>
+        <div class="ui-info-item__desc-right color-999"><i class="ui-icon-arrow-right"></i></div>
+      </div>
+      <div class="ui-info-item">
+        <div class="ui-icon-wrap">
+          <span class="ui-icon-wrap__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAiElEQVRoQ+3SwQkAIRAEQc0/tc1Jg6iHCH3/WbDr9syc9fG3e8BjvQQeA6wEEsAC/UIYkOcJcEI8kAAG5HkCnBAPJIABeZ4AJ8QDCWBAnifACfFAAhiQ5wlwQjyQAAbkeQKcEA8kgAF5ngAnxAMJYECeJ8AJ8UACGJDnCXBCPJAABuR5ApwQD1xK46LBIZ1n2gAAAABJRU5ErkJggg=="></span>
+          <span class="ui-ml-10">电子合同</span>
+        </div>
+        <div class="ui-info-item__desc-right color-999"><i class="ui-icon-arrow-right"></i></div>
+      </div>      
+    </div>    
+    
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">双行带图标、说明、跳转的列表项</div>
+    <div class="ui-info-line">
+      <div class="ui-info-item ui-info-item--xlarge">
+        <div class="ui-icon-wrap">
+          <span class="ui-icon-wrap__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAiElEQVRoQ+3SwQkAIRAEQc0/tc1Jg6iHCH3/WbDr9syc9fG3e8BjvQQeA6wEEsAC/UIYkOcJcEI8kAAG5HkCnBAPJIABeZ4AJ8QDCWBAnifACfFAAhiQ5wlwQjyQAAbkeQKcEA8kgAF5ngAnxAMJYECeJ8AJ8UACGJDnCXBCPJAABuR5ApwQD1xK46LBIZ1n2gAAAABJRU5ErkJggg=="></span>
+          <div class="ui-ml-20">
+            <p>招商银行(尾号9286)</p>
+            <p class="color-999 f-26 ui-mt-14">单词限额20万元，单日不限额</p>
+          </div>
+        </div>
+        <div class="ui-info-item__desc-right color-999"><i class="ui-icon-arrow-right"></i></div>
+      </div>
+      <div class="ui-info-item ui-info-item--xlarge">
+        <div class="ui-icon-wrap">
+          <span class="ui-icon-wrap__icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAiElEQVRoQ+3SwQkAIRAEQc0/tc1Jg6iHCH3/WbDr9syc9fG3e8BjvQQeA6wEEsAC/UIYkOcJcEI8kAAG5HkCnBAPJIABeZ4AJ8QDCWBAnifACfFAAhiQ5wlwQjyQAAbkeQKcEA8kgAF5ngAnxAMJYECeJ8AJ8UACGJDnCXBCPJAABuR5ApwQD1xK46LBIZ1n2gAAAABJRU5ErkJggg=="></span>          
+          <div class="ui-ml-20">
+            <p>招商银行(尾号9286)</p>
+            <p class="color-999 f-26 ui-mt-14">单次限额20万元，单日不限额</p>
+          </div>
+        </div>
+        <div class="ui-info-item__desc-right"><i class="ui-icon-arrow-right"></i></div>
+      </div>      
+    </div>    
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">开关</div>
+    <div class="ui-info-line">
+      <div class="ui-info-item">
+        <div class="ui-info-item__desc-left">标题文字</div>
+        <div class="ui-info-item__desc-right"><span class="ui-switch-btn"></span></div>
+      </div>
+      <div class="ui-info-item">
+        <div class="ui-info-item__desc-left">标题文字</div>
+        <div class="ui-info-item__desc-right"><span class="ui-switch-btn ui-switch-btn--close"></span></div>
+      </div>     
+    </div>        
+  </div>
+  <div class="page-ft"></div>
+</div>
+<script>
+  $('.ui-switch-btn').on('click', function() {
+    var $this = $(this);
+    $this.toggleClass('ui-switch-btn--close');
+  })
+</script>
+</script>
+    <script type="text/html" id="tpl_form">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">表单元素</h1>
+  </div>
+  <div class="page-bd ui-pb-40">
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">单选列表项</div>
+
+    <div class="ui-info-line">
+      <div class="ui-info-item ui-radio-button">
+        <div class="ui-info-item__desc-left">单元格</div>
+        <div class="ui-info-item__desc-right"><i></i></div>
+      </div>
+      <div class="ui-info-item ui-radio-button">
+        <div class="ui-info-item__desc-left">单元格</div>
+        <div class="ui-info-item__desc-right"><i class="ui-icon-selected"></i></div>
+      </div>
+      <div class="ui-info-item">
+        <div class="ui-info-item__desc-right">
+          <div class="ui-num-input">
+            <span class="ui-num-input__btn ui-num-input__btn--minus"><i class="ui-icon-minus"></i></span>
+            <input value="1" readonly class="ui-num-input__input" type="tel" />
+            <span class="ui-num-input__btn ui-num-input__btn--plus ui-num-input__btn--enable"><i class="ui-icon-plus"></i></span>
+          </div>
+        </div>
+      </div>      
+    </div>
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10"></div>
+
+    <div class="ui-info-line ui-pb-20 ui-pt-30">
+      <div class="ui-chose-list">
+        <div class="ui-chose-list__line">
+          <div class="ui-chose-list__item">标签</div>
+          <div class="ui-chose-list__item">五个字标签</div>
+          <div class="ui-chose-list__item ui-chose-list__item--cur">黑色</div>
+        </div>
+        <div class="ui-chose-list__line">
+          <div class="ui-chose-list__item">三个字</div>
+          <div class="ui-chose-list__item ui-chose-list__item--disabled">红色特别版</div>
+        </div>
+        <div class="ui-chose-list__line">
+          <div class="ui-chose-list__item">四字标签</div>
+          <div class="ui-chose-list__item">六个字的标签</div>
+        </div>
+      </div>
+    </div>    
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10"></div>
+    <div class="ui-panel">
+      <p class="color-999 ui-ta-c ui-mb-40">- 请选择折扣 -</p>
+      <div class="ui-card">
+        <div class="ui-card__item ui-card__item--selected">
+          <div class="ui-card__text">9.9折</div>
+          <div class="ui-card__text--sub">即时充值</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">9.8折</div>
+          <div class="ui-card__text--sub">分3个月充值</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">9.6折</div>
+          <div class="ui-card__text--sub">分7个月充值</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">9.4折</div>
+          <div class="ui-card__text--sub">分10个月充值</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">9.2折</div>
+          <div class="ui-card__text--sub">分13个月充值</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">8.8折</div>
+          <div class="ui-card__text--sub">分25个月充值</div>
+        </div>
+      </div>      
+    </div>
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10"></div>
+    <div class="ui-panel">
+      <p class="color-999 ui-ta-c ui-mb-40">- 请选择充值面额 -</p>
+      <div class="ui-card">
+        <div class="ui-card__item ui-card__item--small">
+          <div class="ui-card__text">100元</div>
+        </div>
+        <div class="ui-card__item ui-card__item--small">
+          <div class="ui-card__text">200元</div>
+        </div>
+        <div class="ui-card__item ui-card__item--small ui-card__item--selected">
+          <div class="ui-card__text">500元</div>
+        </div>
+        <div class="ui-card__item ui-card__item--small">
+          <div class="ui-card__text">1000元</div>
+        </div>
+      </div>
+    </div>    
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10"></div>
+    <div class="ui-panel">
+      <p class="color-999 ui-ta-c ui-mb-40">- 请选择续投产品 -</p>
+      <div class="ui-card">
+        <div class="ui-card__item">
+          <div class="ui-card__text">6.0%</div>
+          <div class="ui-card__text--sub">30天理财</div>
+        </div>
+        <div class="ui-card__item ui-card__item--selected-hl">
+          <div class="ui-card__text">7.0<span class="ui-text">+0.25%</span></div>
+          <div class="ui-card__text--sub">60天理财</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">8.0<span class="ui-text">+0.5%</span></div>
+          <div class="ui-card__text--sub">90天理财</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">9.0<span class="ui-text">+0.6%</span></div>
+          <div class="ui-card__text--sub">180天理财</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">10.0<span class="ui-text">+0.8%</span></div>
+          <div class="ui-card__text--sub">360天理财</div>
+        </div>
+        <div class="ui-card__item">
+          <div class="ui-card__text">11.25<span class="ui-text">+1.25%</span></div>
+          <div class="ui-card__text--sub">720天理财</div>
+        </div>           
+      </div>
+    </div>
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">复选列表项</div>
+    <div class="ui-info-line">
+      <div class="ui-info-item ui-check-box">
+        <div class="ui-icon-wrap">
+          <i class="ui-icon-checked"></i>
+          <span class="ui-ml-10 ui-v-m">符合你的选项</span>
+        </div>
+      </div>
+      <div class="ui-info-item ui-check-box">
+        <div class="ui-icon-wrap">
+          <i class="ui-icon-unchecked"></i>
+          <span class="ui-ml-10 ui-v-m">不符合你的选项</span>
+        </div>
+      </div>
+    </div> 
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">表单</div>
+
+    <div>
+      <div class="ui-info-line">
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">标题</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入文字'/>
+          </div>
+        </div>
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">手机号</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入手机号'/>
+            <div class="ui-smscode-btn">获取验证码</div>
+          </div>
+        </div>
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">验证码</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入手机验证码'/>          
+          </div>
+        </div>            
+      </div>
+      <div class="ui-pl-30 ui-mt-20 color-999">底部说明文字底部说明文字</div>
+    </div>
+
+    <div class="comm-padding color-999 ui-mt-10 ui-mb-10">表单报错</div>
+    <div>
+      <div class="ui-info-line">
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">验证码</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入手机验证码'/>
+          </div>
+        </div>
+      </div>
+      <div class="ui-error">验证码错误</div>
+    </div>    
+
+    <div class="ui-mt-40">
+      <div class="ui-info-line">
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">标题</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入文字'/>
+          </div>
+        </div>
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">手机号</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入手机号'/>
+            <div class="ui-smscode-btn ui-smscode-btn--disabled">获取验证码</div>
+          </div>
+        </div>
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">验证码</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入手机验证码'/>          
+          </div>
+        </div>            
+      </div>
+      <div class="ui-error ui-pl-30 ui-mt-20">验证码错误</div>
+    </div>
+
+    <div class="ui-mt-40">
+      <div class="ui-info-line">
+        <div class="ui-info-item">
+          <div class="ui-info-item__desc-left">验证码</div>
+          <div class="ui-info-item__desc-right">
+            <input class="ui-input" type="text" placeholder='请输入手机验证码'/>
+          </div>
+        </div>
+      </div>
+      <div class="comm-padding ui-mt-30">
+        <i class="ui-check-box ui-icon-checked"></i>
+        <span class="ui-ml-10">同意</span>
+        <a class="ui-link" href="javascript:;">《服务协议》</a>
+        <span class="ui-fl-r color-999">详情描述的文案</span>
+      </div>
+    </div>    
+  </div>
+  <div class="page-ft"></div>
+</div>
+
+<script>
+  // 单选
+  $('.ui-radio-button').on('click', function() {
+    $(this).find('i').addClass('ui-icon-selected')
+    $(this).siblings('.ui-radio-button').find('i').removeClass('ui-icon-selected')
+  })
+
+  // 数量选择
+  $('.ui-num-input .ui-num-input__btn').on('click', function() {
+    var $this = $(this);
+    var numInput = $('.ui-num-input .ui-num-input__input');
+    var val = +numInput.val();
+    if ($this.hasClass('ui-num-input__btn--minus')) {      
+      if (val <= 2) {
+        $this.removeClass('ui-num-input__btn--enable')
+      }
+
+      numInput.val(val - 1 >= 1 ? val - 1: 1);
+    }
+    else if ($this.hasClass('ui-num-input__btn--plus')) {
+      $('.ui-num-input__btn--minus').addClass('ui-num-input__btn--enable')
+      numInput.val(val + 1);
+    }
+  })
+
+  // 标签
+  $('.ui-chose-list .ui-chose-list__item').on('click', function() {
+    var $this = $(this);
+    if ($this.hasClass('ui-chose-list__item--disabled')) {
+      return 
+    }
+    else if ($this.hasClass('ui-chose-list__item--cur')) {
+      $this.removeClass('ui-chose-list__item--cur')
+    }
+    else {
+      $this.addClass('ui-chose-list__item--cur').siblings().removeClass('ui-chose-list__item--cur');
+    }
+  })
+
+  // card 
+  $('.ui-card .ui-card__item').on('click', function() {
+    var $this = $(this);
+    var activeClass = 'ui-card__item--selected'; 
+    $this.parent().children().each(function() {
+      if ($(this).hasClass('ui-card__item--selected-hl')) {
+        activeClass = 'ui-card__item--selected-hl';
+      }      
+    });
+
+    if ($this.hasClass(activeClass)) {
+      return 
+    }
+    else {
+      $this.addClass(activeClass).siblings().removeClass(activeClass);
+    }    
+  })
+
+  // checkbox 
+  $('.ui-check-box').on('click', function() {
+    var $this = $(this);
+    var icon = $this.find('i');
+    if (icon.hasClass('ui-icon-checked')) {
+      icon.addClass('ui-icon-unchecked').removeClass('ui-icon-checked')
+    }
+    else {
+      icon.addClass('ui-icon-checked').removeClass('ui-icon-unchecked')
+    }
+  })
+
+  $('.ui-check-box').on('click', function() {
+    var $this = $(this);
+    if ($this.hasClass('ui-icon-checked')) {
+      $(this).removeClass('ui-icon-checked').addClass('ui-icon-unchecked');
+    } else {
+      $(this).removeClass('ui-icon-unchecked').addClass('ui-icon-checked');
+    }    
+  })
+</script>
+</script>
+    <script type="text/html" id="tpl_button">
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">按钮</h1>
+  </div>
+  <div class="page-bd">
+
+    <div class="comm-padding">
+      <div class="ui-btn ui-btn--primary">默认按钮</div>
+      <div class="ui-btn ui-mt-80">次要按钮</div>
+      <div class="ui-btn ui-btn--disabled ui-mt-80">不可点</div>
+    </div>
+
+    <div class="ui-mt-40 ui-pl-30 ui-pr-30">
+      <div class="ui-btn-group">
+        <div class="ui-btn-group__item ui-btn ui-mr-20">组合按钮</div>
+        <div class="ui-btn-group__item ui-btn ui-btn--primary">组合按钮</div>
+      </div>
+    </div>
+
+    <div class="ui-mt-80">
+      <div class="ui-btn ui-btn--transparent ui-btn--xsmall hz-c">立即使用</div>
+    </div>
+
+    <div class="ui-btn ui-btn--primary ui-btn--xlarge ui-mt-40">置底悬浮按钮</div>
+
+    <div class="ui-btn-group ui-mt-40">
+      <div class="ui-btn-group__item ui-btn ui-btn--xlarge ui-btn-group__item--flex-2 ui-btn--noborder">置底悬浮按钮</div>
+      <div class="ui-btn-group__item ui-btn ui-btn--primary ui-btn--xlarge ui-btn-group__item--flex-3 ui-btn--noborder">悬浮按钮</div>
+    </div>
+  </div>
+  <div class="page-ft"></div>
+</div>
+</script>
+    <script src="./fastclick.js"></script>
+    <script src="./zepto.min.js"></script>
+    <script src="./dialog.js"></script>
+    <script src="./tips.js"></script>
+    <script src="./popup.js"></script>
+    <script src="./index.js"></script>
+    <script src="./ui.js"></script>
+    <script src="https://cdn.jyblife.com/static/js/data/regionData_jd.js"></script>
+</body>
+</html>

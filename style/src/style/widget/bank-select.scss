@@ -1,0 +1,37 @@
+@import '../base/fn';
+
+.ui-bank-select {
+
+}
+
+.ui-bank-select__title {
+  color: $color-dark;
+  font-size: $fontSizeXLarge;
+}
+
+.ui-bank-select__content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ui-bank-select__list {
+
+}
+
+.ui-bank-select__list-item {
+  // @extend %border-bottom;
+  @include elementBorder($color-border, after, bottom);
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;        
+  padding:0 30px;
+  height: 156Px;
+}
+
+.ui-bank-select__list-item--disabled {
+  opacity: 0.75;
+  background-color: $color-white;
+
+  color: $color-gray !important;
+}

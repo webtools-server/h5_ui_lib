@@ -1,0 +1,119 @@
+<div class="page">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">h5-UI</h1>
+  </div>
+  <div class="page-bd comm-padding">
+    <ul>
+      <li>
+        <div class="ui-flex js-category">
+          <p class="ui-flex-item">文字模板类</p>
+        </div>
+        <div class="mod-category js-category-wrap">
+          <div class="ui-cells category-content">
+            <a class="ui-cell js-item" data-id="article" href="javascript:;">
+              <div class="cell-bd">
+                <p>说明介绍页规范1</p>
+              </div>
+              <div class="cell-ft"></div>
+            </a>
+            <a class="ui-cell js-item" data-id="article-2" href="javascript:;">
+              <div class="cell-bd">
+                <p>说明介绍页规范2</p>
+              </div>
+              <div class="cell-ft"></div>
+            </a>
+            <a class="ui-cell js-item" data-id="article-3" href="javascript:;">
+              <div class="cell-bd">
+                <p>服务协议须知类</p>
+              </div>
+              <div class="cell-ft"></div>
+            </a>          
+          </div>
+        </div>        
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="tab">
+          <p class="ui-flex-item">Tab 切换</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="dialog">
+          <p class="ui-flex-item">反馈类</p>
+        </div>
+      </li>
+      <li>
+          <div class="ui-flex js-item" data-id="msg">
+            <p class="ui-flex-item">结果页</p>
+          </div>
+        </li>
+      <li>
+        <div class="ui-flex js-item" data-id="icon">
+          <p class="ui-flex-item">icon</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="picker">
+          <p class="ui-flex-item">选择器</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="list">
+          <p class="ui-flex-item">列表</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="form">
+          <p class="ui-flex-item">表单</p>
+        </div>
+      </li>
+      <li>
+        <div class="ui-flex js-item" data-id="button">
+          <p class="ui-flex-item">按钮</p>
+        </div>
+      </li>                 
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+      var winH = $(window).height();
+      var categorySpace = 10;
+
+      $('.js-item').on('click', function(){
+          var id = $(this).data('id');
+          window.pageManager.go(id);
+      });
+      $('.js-category').on('click', function(){
+          var $this = $(this),
+              $inner = $this.next('.js-category-wrap'),
+              $page = $this.parents('.page'),
+              $parent = $(this).parent('li');
+          var innerH = $inner.data('height');
+          bear = $page;
+
+          if(!innerH){
+            $inner.css('height', 'auto');
+            innerH = $inner.height();
+            $inner.removeAttr('style');
+            $inner.data('height', innerH);
+          }
+
+          if($parent.hasClass('js-show')){
+            $parent.removeClass('js-show');
+          }else{
+            $parent.siblings().removeClass('js-show');
+
+            $parent.addClass('js-show');
+            if(this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH){
+                var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+                if(scrollTop > this.offsetTop){
+                    scrollTop = this.offsetTop - categorySpace;
+                }
+
+                $page.scrollTop(scrollTop);
+            }
+          }
+      });
+  });
+</script>

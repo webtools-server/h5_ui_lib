@@ -1,0 +1,58 @@
+@import '../base/fn';
+
+.ui-text {
+  font-size: $fontSizePrimary;
+  color: $text-color-primary
+}
+
+.ui-text--large {
+  font-size: $fontSizeLarge;
+}
+
+.ui-text--xlarge {
+  font-size: $fontSizeXLarge;
+}
+
+.ui-text--xxlarge {
+  font-size: $fontSizeXXLarge;
+}
+
+.ui-text--small {
+  font-size: $fontSizeSmall;
+}
+
+.ui-text--xsmall {
+  font-size: $fontSizeXSmall;
+}
+
+.ui-text--xxsmall {
+  font-size: $fontSizeXXSmall;
+}
+
+.ui-text--title {
+  color: $text-color-first;
+}
+
+.ui-text--secondary {
+  color: $text-color-secondary;
+}
+
+.ui-text--intro {
+  color: $text-color-intro; 
+}
+
+.ui-text--reverse {
+  color: $text-color-reverse;
+}
+
+.ui-text--nav {
+  color: $text-color-nav;
+}
+
+.ui-text--em {
+  color: $color-primary;
+}
+
+.ui-text--bold {
+  font-weight: 700;
+}

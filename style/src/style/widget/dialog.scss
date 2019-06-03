@@ -1,0 +1,124 @@
+@import '../base/fn';
+
+.ui-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 560px;
+  font-size: 30Px;
+
+  background-color: #fafafa;
+  color: $text-color-first;  
+
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 6px;
+  z-index: 8888;
+  overflow: hidden;
+}
+
+.ui-dialog__title {
+  position: relative;
+  padding-top: 34Px;
+  text-align: center;  
+  font-size: 34Px;
+  line-height: 1;
+}
+
+.ui-dialog__content {
+  padding: 30Px 40px;
+  box-sizing: border-box;
+  overflow: hidden;  
+}
+
+.ui-dialog__content--large {
+  font-size: 34Px;
+}
+
+.ui-dialog__footer {
+  @include box-justify();  
+  @include elementBorder($color-border, before, top);
+  position: relative;
+  text-align: center;
+}
+
+.ui-dialog__btn {
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 0;
+  -webkit-box-flex: 1;
+  height: 100Px;
+  line-height: 100Px;
+  font-size: 34Px;
+
+  &:first-child {    
+    border-bottom-left-radius: 6px;
+    // border-right: 1px solid $color-border;
+    @include elementBorder($color-border, after, right);
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 6px;
+    // border-right: 0;
+    &::after {
+      content: none;
+    }
+  }
+}
+
+.ui-dialog__btn--strong {
+  color: $color-primary;
+}
+
+.ui-dialog__btn--disabled {
+  background-color: $color-gray;
+  color: $color-light;
+}
+
+.ui-dialog__fn-wrap {
+  width: 100Px;
+  height: 100Px;
+  position: absolute;
+  top:0;
+  right: 0;
+  color: $color-gray;
+  @include vt-middle();
+}
+
+.ui-dialog__fn-wrap--left {
+  left: 0;
+  right: auto;
+}
+
+.ui-dialog__info-item {
+  font-size: 26Px;
+  height: 70Px;
+}
+
+.ui-dialog__fn-wrap--close {
+  text-indent: -9999cm;
+  &::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    
+    background: url(/img/close-sm.png) no-repeat 0 0 ;
+    background-size: cover;  
+  }
+}
+
+.ui-dialog__fn-wrap--help {
+  &::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    
+    background: url(/img/help.png) no-repeat 0 0 ;
+    background-size: cover;
+  }  
+}
+
+

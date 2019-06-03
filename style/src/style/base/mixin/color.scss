@@ -1,0 +1,12 @@
+@mixin generateCommColors($textColors) {
+  @if length($textColors) > 0 {
+    @each $color in $textColors {
+      .color-#{$color} {
+        color: unquote("#" + $color);
+      }
+    }
+  }
+  @else {
+    @warn "common color is empty!";
+  }
+}

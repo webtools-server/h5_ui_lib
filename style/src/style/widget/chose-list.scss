@@ -1,0 +1,44 @@
+@import '../base/fn';
+
+.ui-chose-list {
+  font-size: $fontSizePrimary;
+}
+
+.ui-chose-list__line {
+  display: block;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    clear: left;
+  }
+}
+
+.ui-chose-list__item {
+  min-width: 140Px;
+  padding: 15Px 15px;
+  @include rounded(4px);
+  text-align: center;
+  float: left;
+  position: relative;
+  margin-left: 30px;
+  margin-top: 20Px;
+  margin-bottom: 2Px;
+  @include setRounded1pxBorder($color-light, after, 4px);
+}
+
+.ui-chose-list__item--cur {
+  &:after {
+    border-color: $color-primary;
+  }
+
+  color: $color-primary;
+}
+
+.ui-chose-list__item--disabled {
+  color: $color-gray;
+
+  &:after {
+    border-style: dashed;
+  }
+}

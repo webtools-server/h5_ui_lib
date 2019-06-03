@@ -1,0 +1,43 @@
+// mixin
+@import '~@jyb/common-sass/import-lib-mixins-rem';
+@import '~@jyb/common-sass/import-lib-ui-mixins';
+@import './mixin/text.scss';
+// variable
+@import './variable/color';
+@import './variable/font';
+
+// 图片站点
+$imageSite: 'https://images.jyblife.com/ui_icon/';
+
+%border-top {
+  @include elementBorder($color-border, before, top);
+}
+
+%border-bottom {
+  @include elementBorder($color-border, after, bottom);
+}
+
+%border-left {
+  @include elementBorder($color-border, before, left);
+}
+
+%border-right {
+  @include elementBorder($color-border, after, right);
+}
+
+%border-full {
+  @include setRounded1pxBorder($color-border, after);
+}
+
+@mixin clearfix() {
+  &:before {
+    content: '';
+    display: block;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

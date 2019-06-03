@@ -1,0 +1,10 @@
+<div class="ui-picker__content">
+  <div class="ui-picker__group">
+    <div class="ui-picker__mask"></div>
+    <div class="ui-picker__list">
+      {{~it.list :item:index}}
+        <div class="ui-picker__list-item" data-id="{{=item.id}}">{{=item.name}}</div>
+      {{~}}
+    </div>
+  </div>
+</div>

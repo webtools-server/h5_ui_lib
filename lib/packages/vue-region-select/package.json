@@ -1,0 +1,36 @@
+{
+  "name": "@jyb/vue-region-select",
+  "version": "0.1.2",
+  "description": "地区选择器vue",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev node ../../scripts/build.js",
+    "build": "cross-env NODE_ENV=production node ../../scripts/build.js",
+    "build:min": "cross-env NODE_ENV=min node ../../scripts/build.js",
+    "test": "node ../../scripts/test.js",
+    "test:cover": "cross-env NODE_ENV=cover node ../../scripts/test.js"
+  },
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "common",
+    "lib"
+  ],
+  "libDefine": {
+    "moduleName": "UIVueRegionSelect",
+    "devDest": "dist/bundle.dev.js",
+    "minDest": "dist/bundle.min.js",
+    "prodDest": "dist/bundle.js"
+  },
+  "author": "xiaohaix.xi@jyblife.com",
+  "license": "MIT",
+  "dependencies": {
+    "@jyb/lib-ajax": "^1.0.14"
+  }
+}

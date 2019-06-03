@@ -1,0 +1,9 @@
+@import '../base/fn';
+
+.ui-link {
+  color: $color-blue;
+}
+
+.ui-link--underline {
+  text-decoration: underline;
+}

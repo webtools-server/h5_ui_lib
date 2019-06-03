@@ -1,0 +1,42 @@
+{
+  "name": "@jyb/h5_ui_css",
+  "version": "0.1.22",
+  "description": "前端ui库css",
+  "main": "dist/style/ui.min.css",
+  "scripts": {
+    "dev": "gulp -ws",
+    "build": "gulp release",
+    "doc": "node ./scripts/doc.js && jfet doc --build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.jtjr.com/h5_webtools_grp/h5_ui_lib_web.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "files": [
+    "src",
+    "dist"
+  ],
+  "devDependencies": {
+    "@jyb/common-sass": "^1.0.2",
+    "@jyb/h5_ui_lib": "^0.1.0",
+    "@jyb/jfet-doc": "^1.3.4",
+    "autoprefixer": "^6.3.1",
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-base64": "^0.1.3",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-header": "^1.8.9",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.3.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-tap": "^0.1.3",
+    "postcss-discard-comments": "^2.0.4",
+    "postcss-pxtorem": "^4.0.1",
+    "yargs": "^1.3.3"
+  }
+}

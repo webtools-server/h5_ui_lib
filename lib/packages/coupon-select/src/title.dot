@@ -1,0 +1,4 @@
+{{?it.isShowHelp}}
+<div class="ui-popup__fn-button ui-popup__fn-button--left" et="click:help"><i class="ui-icon-help"></i></div>
+{{?}}
+<div>{{=it.title}}</div>

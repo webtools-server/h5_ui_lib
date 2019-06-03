@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>h5-UI</title>    
+    <link rel="stylesheet" href="../style/ui.css"/>
+    <link rel="stylesheet" href="./example.css"/>
+    <script>
+      (function(doc, win) {
+        var basicWidth = window.basicWidth || 750;
+        var minWidth = 320;
+        var htmlElement = doc.documentElement;
+        var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+        var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+        };
+        recalc();
+        if (!win.addEventListener) return;
+        win.addEventListener('resize', recalc, false);
+      })(document, window);      
+    </script>
+</head>
+<body>
+    <div class="container" id="container"></div>
+
+    <link rel="import" href="./fragment/home.html">
+    <link rel="import" href="./fragment/article.html">
+    <link rel="import" href="./fragment/article-2.html">
+    <link rel="import" href="./fragment/article-3.html">
+    <link rel="import" href="./fragment/tab.html">
+    <link rel="import" href="./fragment/dialog.html">
+    <link rel="import" href="./fragment/msg.html">
+    <link rel="import" href="./fragment/msg-success.html">
+    <link rel="import" href="./fragment/msg-fail.html">
+    <link rel="import" href="./fragment/icon.html">
+    <link rel="import" href="./fragment/picker.html">
+    <link rel="import" href="./fragment/list.html">
+    <link rel="import" href="./fragment/form.html">
+    <link rel="import" href="./fragment/button.html">
+    <script src="./fastclick.js"></script>
+    <script src="./zepto.min.js"></script>
+    <script src="./dialog.js"></script>
+    <script src="./tips.js"></script>
+    <script src="./popup.js"></script>
+    <script src="./index.js"></script>
+    <script src="./ui.js"></script>
+    <script src="https://cdn.jyblife.com/static/js/data/regionData_jd.js"></script>
+</body>
+</html>

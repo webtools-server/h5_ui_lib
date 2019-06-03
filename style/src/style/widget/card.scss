@@ -1,0 +1,73 @@
+@import '../base/fn';
+
+.ui-card {
+  margin-right: -30px;
+  @include clearfix;  
+  // @extend %clearfix;
+  // overflow: hidden;
+}
+
+.ui-card__item {
+  margin: 0 20px 20px 0;
+  float: left;
+  min-width: 216px;
+  height: 128px;
+  padding: 26px 0 30px 0;
+  background: $color-white;
+  box-shadow: 0 6px 20px 0 rgba(133,120,111,0.15);
+
+  box-sizing: border-box;
+  border-radius: 6px;
+  text-align: center;
+
+  .ui-text {
+    color: $color-dark;
+  }
+}
+
+.ui-card__text {
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.ui-card__text--sub {
+  font-size: 22px;
+  color: $color-light;
+  margin-top: 16px;
+  line-height: 20px;
+}
+
+.ui-card__item--small {
+  margin-right: 20px;
+  min-width: 156px;
+  padding: 30px 0 30px 0;
+  box-shadow: 0 4px 16px 0 rgba(133,120,111,0.15);
+  height: 90px;
+
+  .ui-card__text {
+    font-size: 30px;
+  }
+}
+
+.ui-card__item--selected {
+  color: $color-primary;
+
+  .ui-card__text--sub {
+    color: $color-primary;
+  } 
+}
+
+.ui-card__item--selected-hl {
+  color: $color-white;
+  background: rgba(255,110,52,0.90);
+  box-shadow: 0 6px 20px 0 rgba(255,110,52,0.53);
+
+  .ui-card__text--sub {
+    color: $color-white;
+  }
+
+  .ui-text {
+    color: $color-white;
+  }
+}

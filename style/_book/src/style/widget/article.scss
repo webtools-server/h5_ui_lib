@@ -1,0 +1,179 @@
+@import '../base/fn.scss';
+
+.ui-article {
+  background-color: $color-white;
+  padding: 60Px 30px;
+  font-size: $fontSizeLarge;
+  line-height: 1.5;
+  color: $text-color-primary;
+  margin-bottom: 20Px;
+}
+
+.ui-article__title {
+  font-size: 100%;
+  font-weight: 600;
+  color: $text-color-first;
+}
+
+.ui-article__title--primary {
+  font-size: 34Px;
+  text-align: center;
+  margin-bottom: 40Px;
+  margin-top: 60Px; 
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.ui-article__title--small {
+  font-size: 30Px;
+  margin-bottom: 15Px;
+}
+
+.ui-article__title--xsmall {
+  @extend .ui-article__title--small;
+  font-weight: 400;
+}
+
+.ui-article__title--nobold {
+  font-weight: 400;
+}
+
+.ui-article__title--left {
+  text-align: left;
+}
+
+.ui-article__title--center {
+  text-align: left;
+}
+
+.ui-article__title--right {
+  text-align: left;
+}
+
+.ui-article__title--em {
+  color: $color-primary;
+}
+
+.ui-article__text {
+  margin-bottom: 40Px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ui-artilce__text--em {
+  color: $color-primary;
+}
+
+.ui-article__text--sub {
+  color: $text-color-secondary;
+}
+
+.ui-article__img {
+  width: 100%;
+  vertical-align: bottom;
+  margin-bottom: 40Px;
+}
+
+.ui-article__img--figure {
+  margin-bottom: 15Px;
+}
+
+.ui-article__img--nomb {
+  margin-bottom: 0;
+}
+
+.ui-article__figcaption {
+  margin-bottom: 40Px;
+  text-align: center;
+  color: $text-color-secondary;  
+}
+
+.ui-article__list {
+  margin-bottom: 40Px;
+}
+
+.ui-article__list-item--dot {
+  &::before {
+    content: '\2022';
+  }
+}
+
+.ui-artilce__table {
+  position: relative;
+  width: 100%;
+  font-size: $fontSizePrimary;
+  border-collapse: collapse;
+
+  @include elementBorder($color-gray, after, right);
+
+  tbody {
+    @include elementBorder($color-gray, after, bottom);
+  }
+
+  th {
+    background: $color-bg;
+  }
+
+  th, td {
+    position: relative;
+    font-weight: 400;
+    color: $color-dark-gray;
+    padding: 16Px 30px;
+    text-align: left;
+    // border: 1px solid $color-gray;
+    @include setRounded1pxBorder($color-gray, after);
+    &:after {
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+}
+
+.ui-media {
+  display: -webkit-box;
+  // -webkit-box-align: center;
+
+  padding: 35Px 0;
+  min-height: 200Px;
+  box-sizing: border-box;  
+
+  $border-color:#BEDBFF;
+  border-top: 1px dashed $border-color;
+  &:last-child {
+    border-bottom: 1px dashed $border-color;
+  }
+}
+
+.ui-media__left {
+  width: 130Px;
+  min-height: 130Px;
+  overflow: hidden;
+}
+
+.ui-media__body {
+  margin-left: 45px;
+  width: 485px;
+  min-height: 130Px;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ui-media__img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.ui-media__link {
+  color: $color-blue;
+  text-decoration: underline;
+}
+
+// .ui-media__text {
+//   margin: 0;
+// }

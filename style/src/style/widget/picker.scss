@@ -1,0 +1,160 @@
+@import '../base/fn';
+
+// .mod-picker {
+//   .mask {
+//     position: absolute; 
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     margin: 0 auto;
+//     z-index: 3;
+//     background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+//     background-position: top, bottom;
+//     background-size: 100% 180Px;
+//     background-repeat: no-repeat;
+//     transform: translateZ(0);    
+//   }
+
+//   .mod-popup-wrap {
+//     .title {
+//       .close {
+//         position: absolute;
+//         left: 0;
+//         width: 1rem;
+//         text-align: center;
+//       }
+    
+//       .confirm {
+//         position: absolute;
+//         width: 1rem;
+//         right: .3rem;
+//         text-align: center;
+//         color: $color-primary;
+//       }
+//     }    
+
+//     .content {
+//       position: relative;
+//       font-size: 15px;
+//       height: 424Px;
+//       padding-bottom: 50Px;
+//       overflow: hidden;
+//       -webkit-overflow-scrolling: touch;
+      
+//       .picker-content {
+//         position: relative;
+//       }
+
+//     }
+//   }
+
+//   .list {
+//     text-align: center;
+
+//     .list-item {
+//       color: $color-dark;
+//       $height: 80Px;
+//       height: $height;
+//       line-height: $height; 
+//     }
+//   }
+// }
+
+.ui-picker {
+
+}
+
+.ui-picker__title {
+
+}
+
+// .ui-picker__cancel {
+
+// }
+
+// .ui-picker__confirm {
+//   color: $color-primary;
+//   right: 30px;
+// }
+
+.ui-picker__content-wrap {
+  position: relative;
+  font-size: $fontSizeLarge;
+  height: 424Px;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;  
+}
+
+.ui-picker__content-wrap--large {
+  height: 560Px;
+
+  .ui-picker__mask {
+    background-size: 100% 250Px;
+  }
+}
+
+.ui-picker__content {
+  position: relative;
+  display: -webkit-box;
+  height: 100%;
+}
+
+.ui-picker__group {
+  position: relative;
+  text-align: center;
+  -webkit-box-flex: 1;
+  overflow: hidden;
+}
+
+.ui-picker__list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.ui-picker__list-item {
+  color: $color-dark;
+  $height: 80Px;
+  height: $height;
+  line-height: $height; 
+}
+
+.ui-picker__mask {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 3;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  background-position: top, bottom;
+  background-size: 100% 180Px;
+  background-repeat: no-repeat;
+  transform: translateZ(0);
+}
+
+// .mod-datepicker {
+//   @extend .mod-picker;
+//   .mod-popup-wrap {
+//     .content {      
+//       height: 560Px;
+//       padding-bottom: 50Px;
+
+//       .picker-content {
+//         display: -webkit-box;
+//         position: relative;
+//       }
+
+//       .mask {
+//         background-size: 100% 250Px;
+//       }
+
+//       .list {
+//         -webkit-box-flex: 1;
+//       }
+//     }
+//   }
+// }

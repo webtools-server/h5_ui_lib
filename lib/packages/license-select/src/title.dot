@@ -1,0 +1,3 @@
+<div et="click:close" class="ui-popup__fn-button ui-popup__fn-button--left"><i class="ui-icon-close"></i></div>
+<div>选择车牌号</div>
+<div et="click:confirm" class="ui-popup__fn-button ui-popup__fn-button--hl">确定</div>

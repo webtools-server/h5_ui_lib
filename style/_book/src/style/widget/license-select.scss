@@ -1,0 +1,50 @@
+@import '../base/fn';
+
+.ui-license-select {
+
+}
+
+.ui-license-select__title {
+  color: $color-light;
+}
+
+.ui-license-select__content {
+  padding: 30Px 0 40Px 20px;
+}
+
+.ui-license-select__list {
+  overflow: hidden;
+}
+
+.ui-license-select__list-item {
+  position: relative;
+  float: left;
+  margin: 0 8px 20Px 0;
+  @include vt-middle();
+  @include setRounded1pxBorder($color-gray, after);
+  
+  width: 3.73em;
+  height: 72Px; 
+  font-size: $fontSizeLarge;
+
+  &:after {
+    border-radius: 6px;
+  }
+}
+
+.ui-license-select__sub-text {
+  font-size: $fontSizeSmall;
+  color: $color-light;
+  margin-left: 4px;
+}
+
+.ui-license-select__list-item--selected {
+  color: $color-primary;
+  &:after {
+    border-color: $color-primary;
+  }
+
+  .ui-license-select__sub-text {
+    color: $color-primary;
+  }
+}

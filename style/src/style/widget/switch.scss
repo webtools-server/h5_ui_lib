@@ -1,0 +1,40 @@
+@import '../base/fn';
+
+$width: 80px;
+$height: 48px;
+
+.ui-switch-btn {
+  @include rounded(50px);
+  position: absolute;
+  right: 30px;
+  top: 50%;
+
+  width: $width;
+  transform: translateY(-50%);
+  font-size: 0;
+  text-align: right;
+  padding: 4px;
+  transition: all .2s ease;  
+  background-color: $color-primary;
+
+  &:after {
+    @include rounded(50%);
+    @include icon-vt-middle();
+
+    content: "";
+    position: relative;
+    right: 0;   
+    width: $height;
+    height: $height;
+
+    background-color: #fff;
+    transition: all 0.15s ease; 
+  }
+}
+
+.ui-switch-btn--close {
+  background-color: $color-gray;
+  &:after {
+    right: $width - $height;
+  }
+}

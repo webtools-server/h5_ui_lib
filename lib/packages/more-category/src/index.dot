@@ -1,0 +1,17 @@
+<div class="ui-tab">
+  <div class="ui-tab__scrollwrap">
+    <ul class="ui-tab__bar ui-tab__bar--scroll">
+      {{~it.list :item:index}}
+      <li cid="{{=item.value}}" et="click:select" class="ui-tab__tab-item">{{=item.label}}</li>
+      {{~}}
+    </ul>
+    <div class="ui-tab__arrow" et="click:toggle"></div>
+    <div class="ui-more-category">
+      <ul class="ui-more-category__list">
+        {{~it.list :item:index}}
+        <li class="ui-more-category__list-item" et="click:selectCategory" cid="{{=item.value}}">{{=item.label}}</li>
+        {{~}}
+      </ul>
+    </div>
+  </div>
+</div>

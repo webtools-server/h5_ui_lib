@@ -1,0 +1,13 @@
+@import '~@jyb/common-sass/import-lib-mixins-rem';
+@import '../mixin/space';
+@import '../mixin/color';
+@import './font.scss';
+
+@include generateCommSpaces(4 10 14 16 20 30 36 38 40 50);
+@include generateCommColors(ccc 666 fff 333 999);
+// @include setFontSizeSinglepx($fontSizes);
+
+.comm-padding {
+  padding-left: 30px;
+  padding-right: 30px;
+}

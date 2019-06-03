@@ -1,0 +1,255 @@
+@import '../base/fn.scss';
+
+.ui-bank-icon {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+  }
+  // vertical-align: middle;
+}
+
+.ui-bank-icon--abc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/abc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--alipay {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/alipay.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--baidu {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/baidu.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--baofoo {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/baofoo.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--boc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/boc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--bocom {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/bocom.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--ccb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/ccb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--ceb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/ceb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--change {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/change.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--cib {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/cib.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--citic {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/citic.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--cmb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/cmb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--cmbc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/cmbc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--gzcb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/gzcb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--hxb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/hxb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--icbc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/icbc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--jd {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/jd.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--pc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/pc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--pingan {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/pingan.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--psbc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/psbc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--qq {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/qq.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--shenfazhan {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/shenfazhan.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--spdb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/spdb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--transfer {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/transfer.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--unionpay {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/unionpay.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--wechat {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/wechat.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--yeepay {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/yeepay.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--bob {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/bob.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }  
+}
+
+.ui-bank-icon--bosc {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/bosc.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+.ui-bank-icon--cgb {
+  @extend .ui-bank-icon;
+  &::before {
+    background: url(/img/bank/cgb.png) 0 0 no-repeat;
+    background-size: 100% auto;
+  }
+}

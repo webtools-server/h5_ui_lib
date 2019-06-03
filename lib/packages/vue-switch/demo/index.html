@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UIVueSwitch</title>
+  <link href="./ui.min.css" rel="stylesheet"></link>
+  <script>
+    (function(doc, win) {
+      var basicWidth = window.basicWidth || 750;
+      var minWidth = 320;
+      var htmlElement = doc.documentElement;
+      var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+      var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          window.rootFontSize = 100 * (clientWidth / basicWidth);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+      };
+      recalc();
+      if (!win.addEventListener) return;
+      win.addEventListener('resize', recalc, false);
+    })(document, window);
+  </script>   
+  <script src="./vue.js"></script>
+  <style>#container { padding: .3rem; } .switch-wrap { position: relative;}</style>
+</head>
+
+<body>
+  <div id="container">    
+    <div class="switch-wrap">
+      <ui-switch :on.sync="on"></ui-switch>
+      <span>{{ txt }}</span>
+    </div>
+  </div>
+  <script src="../dist/bundle.dev.js"></script>
+  <script>
+    Vue.component(UIVueSwitch.name, UIVueSwitch);
+    var app = new Vue({
+      el: '#container',
+      data: {
+        on: 1
+      },
+      computed: {
+        txt() {
+          return this.on == 1 ? '开' : '关';
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

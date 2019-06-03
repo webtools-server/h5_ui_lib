@@ -1,0 +1,309 @@
+<div class="page article-1">
+  <div class="page-hd">
+    <h1 class="page-hd-desc">对话框、提示框</h1>
+  </div>
+  <div class="page-bd">
+    
+    <div onclick="showDialog1()" class="ui-btn ui-mb-40">获取验证码</div>
+    <div onclick="showDialog2()" class="ui-btn ui-mb-40">弹窗内容最多</div>
+    <div onclick="showDialog3()" class="ui-btn ui-mb-40">没有标题一行文字</div>
+    <div onclick="showDialog4()" class="ui-btn ui-mb-40">没有标题多行文字</div> 
+    <div onclick="showDialog5()" class="ui-btn ui-mb-40">按钮最多字数</div>
+    <div onclick="showDialog6()" class="ui-btn ui-mb-40">请输入支付密码</div>
+    <div onclick="showToast()" class="ui-btn ui-mb-40">toast</div>
+    <!-- <div handler="showPopup" class="mod-btn btn-default ui-mb-40"></div> -->
+  </div>
+  <div class="page-ft"></div>
+</div>
+
+<script type="text/javascript">
+  var dialogHtml_1 = '<p>注意文字大小（17px和13px为主），颜色（主要有#ff6e34, #333333, #999999, #cccccc），段落文字的行间距, 不同区块之间的间距</p>'
+                   + '<div class="ui-info-line ui-mt-20">'
+                   +   '<div class="ui-info-item ui-dialog__info-item">'
+                   +     '<div class="ui-info-item__desc-right">'
+                   +       '<input class="ui-input f-26" placeholder="请输入验证码"/>'
+                   +     '</div>'
+                   +     '<div class="ui-smscode-btn">获取验证码</div>'
+                   +   '</div>'
+                   + '</div>';
+
+  var dialogHtml_2 = '<p>这个是弹窗内容最多的状态，内容超过这种情况就采用底部浮层</p>'
+                   + '<p>这个是弹窗内容最多的状态，内容超过这种情况不许配！</p>';
+
+  var dialogHtml_3 = '<p class="ui-ta-c">没有标题一行文字</p>';
+
+  var dialogHtml_4 = '<p>没有标题多行文字，三行最多，字号和标题字号一样，超过三行不许配！</p>';
+
+  var dialogHtml_5 = '<p>确认将选中的1笔套餐自动续购到新套餐：69天年化8.5%</p>'
+                   + '<p>如打开循环续购，续购的新套餐默认也是续购的状态。</p>';
+
+  var dialogHtml_6 = '<div class="ui-ta-c">'
+                   + '<p class="color-999 ui-mt-20 ui-lh-1">- 支付 -</p>'
+                   + '<p class="f-50 ui-mt-20 ui-lh-1">¥2680.00</p>'
+                   + '<div class="ui-pwd ui-mt-38">'
+                   + '<div class="ui-pwd-box"><input class="ui-pwd-box__input" type="tel" /></div>'
+                   + '<div class="ui-pwd-fake">'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                   + '</div></div>'
+                   + '<p class="ui-mt-30"><a class="ui-link ui-fl-r">忘记密码</a></p>'
+                   + '</div>';
+
+  $(function () {
+    var evtHandler = {
+      showAuthDialog: function () {
+        dialog.show({
+          titleBorder: false,     // 是否显示标题边线
+          title: '<p>弹窗标题</p><span class="ui-dialog__fn-wrap"><i class="ui-icon-help"></i></span>', 
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_1, // 显示的内容
+          btnFn: [ 
+            { text: '确定', callback: function () { dialog.close() } },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })
+      },
+      showDialog2: function () {
+        dialog.show({
+          titleBorder: false,     // 是否显示标题边线
+          title: "弹窗标题",              // 标题内容
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_2, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+            { text: '确定', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong' },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })        
+      },
+      showDialog3: function () {
+        dialog.show({
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_3, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })
+      },
+      showDialog4: function () {
+        dialog.show({
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_4, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })        
+      },
+      showDialog5: function () {
+        dialog.show({
+          title: "弹窗标题",              // 标题内容          
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_5, // 显示的内容
+          btnFn: [ 
+            { text: '取消', callback: function () { dialog.close() } },
+            { text: '最多是六个字', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong ' },
+          ],
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })             
+      },
+      showDialog6: function () {
+        dialog.show({
+          title: '请输入支付密码<span class="ui-dialog__fn-wrap ui-dialog__fn-wrap--left" et="click:closeDialog"><i class="ui-icon-close"></i></span>',              // 标题内容          
+          showClose: false,       // 是否显示close按钮
+          content: dialogHtml_6, // 显示的内容
+          mask: true,             // 是否显示mask
+          selfAction: empty,      // 自定义事件
+          onClose: empty,
+          onShow: empty        
+        })  
+      },
+      showToast: function() {
+        tips.showTips({          
+          msg: '两边距40px字26px框最宽480px',
+          isLoading: false,
+          autoHide: true,
+        })
+      }
+    }
+
+    $('.article-1 .ui-btn').on('click', function(e) {
+      var $node = $(this);
+      var handler = evtHandler[$node.attr('handler')]
+      handler && handler($node, e)    
+    })
+
+
+  })
+
+  function showDialog1() {
+      var title = '<p>弹窗标题</p><span class="ui-dialog__fn-wrap"><i et="click:help" class="ui-icon-help"></i></span>';
+      var content = '<p>注意文字大小（17px和13px为主），颜色（主要有#ff6e34, #333333, #999999, #cccccc），段落文字的行间距, 不同区块之间的间距</p>'
+                   + '<div class="ui-info-line ui-mt-20">'
+                   +   '<div class="ui-info-item ui-dialog__info-item">'
+                   +     '<div class="ui-info-item__desc-right">'
+                   +       '<input class="ui-input f-26" placeholder="请输入验证码"/>'
+                   +     '</div>'
+                   +     '<div class="ui-smscode-btn">获取验证码</div>'
+                   +   '</div>'
+                   + '</div>';
+
+      var dialog = new UI.Dialog({
+        title: title, 
+        visible: true, 
+        showClose: false,
+        content: content, 
+        btns: [{ 
+          text: '确定',
+          callback() {
+            dialog.close();
+            console.log('确定');
+          }
+        }]
+      });
+
+      dialog.registerHandler('help', function() {
+        console.log('click help')
+      })
+    }
+
+  function showDialog2() {
+    var content = '<p>这个是弹窗内容最多的状态，内容超过这种情况就采用底部浮层</p>'
+                + '<p>这个是弹窗内容最多的状态，内容超过这种情况不许配！</p>';
+
+    var dialog = new UI.Dialog({
+      title: "弹窗标题", 
+      showClose: false,
+      visible: true, 
+      content: content, 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+        { text: '确定', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong' },
+      ]
+    })
+  }
+
+  function showDialog3() {
+    var dialog = new UI.Dialog({
+      showClose: false,
+      visible: true, 
+      content: '<p class="ui-ta-c">没有标题一行文字</p>', 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+      ]
+    })
+  }
+
+  function showDialog4() {
+    var content = '<p>没有标题多行文字，三行最多，字号和标题字号一样，超过三行不许配！</p>';
+
+    var dialog = new UI.Dialog({
+      showClose: false,
+      visible: true, 
+      content: content, 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+      ]
+    })
+  }
+
+  function showDialog5() {
+    var content = '<p>确认将选中的1笔套餐自动续购到新套餐：69天年化8.5%</p>'
+                + '<p>如打开循环续购，续购的新套餐默认也是续购的状态。</p>';
+
+    var dialog = new UI.Dialog({
+      title: "弹窗标题",
+      showClose: false,
+      visible: true, 
+      content: content, 
+      btns: [
+        { text: '取消', callback: function () { dialog.close() } },
+        { text: '最多是六个字', callback: function () { dialog.close() }, css: 'ui-dialog__btn--strong ' },
+      ]
+    })
+  }
+
+  function showDialog6() {
+    var content = '<div class="ui-ta-c">'
+                + '<p class="color-999 ui-mt-20 ui-lh-1">- 支付 -</p>'
+                + '<p class="f-50 ui-mt-20 ui-lh-1">¥2680.00</p>'
+                + '<div class="ui-pwd ui-mt-38">'
+                + '<div class="ui-pwd-box"><input class="ui-pwd-box__input" type="tel" /></div>'
+                + '<div class="ui-pwd-fake">'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '<div class="ui-pwd-fake__box"><input class="ui-pwd-fake_input" type="password"/></div>'
+                + '</div></div>'
+                + '<p et="click:forget" class="ui-mt-30"><a class="ui-link ui-fl-r">忘记密码</a></p>'
+                + '</div>';
+
+    var dialog = new UI.Dialog({
+      title: '<span class="ui-dialog__fn-wrap ui-dialog__fn-wrap--left" et="click:closeDialog"><i class="ui-icon-close"></i></span>请输入支付密码',
+      showClose: false,
+      visible: true, 
+      content: content,
+      onShow: function() {
+        var $input = $('.ui-pwd-fake_input');
+        $('.ui-pwd-box__input').on('input', function() {
+          var pwd = $(this).val().trim();
+          var len = pwd.length;
+          for (var i = 0; i < len; i++) {
+            $input.eq(i).val(pwd[i]);
+          }
+
+          $input.each(function() {
+            var index = $(this).parent().index();
+            console.log(index, len)
+            if (index >= len) {
+              $(this).val('')
+            }
+          });
+
+          if (len === 6) {
+            UI.Tips.showError('密码:'+ pwd)
+          }
+        })
+
+        // $('.ui-pwd-box__input').on('focus', function() {
+        //   $(this).css('transform', 'translate3d(100%, 0, 0)')
+        // }).on('blur', function () {
+        //   $(this).css('transform', 'translate3d(0, 0, 0)')
+        // })
+      },
+      onClose: function() {
+
+      }
+    })    
+
+    dialog.registerHandler('forget', function() {
+      console.log('forget');
+    })
+  }
+
+  function showToast() {
+    UI.Tips.showError('两边距40px字26px框最宽480px')
+  }
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>datepicker</title>
+  <link href="./ui.min.css" rel="stylesheet"></link>
+  <script>
+    (function(doc, win) {
+      var basicWidth = window.basicWidth || 750;
+      var minWidth = 320;
+      var htmlElement = doc.documentElement;
+      var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+      var recalc = function() {
+          var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
+          window.rootFontSize = 100 * (clientWidth / basicWidth);
+          clientWidth = clientWidth < minWidth? minWidth : clientWidth;
+          htmlElement.style.fontSize = 100 * (clientWidth / basicWidth) + 'px';
+          htmlElement.setAttribute("data-dpi", dpr);
+      };
+      recalc();
+      if (!win.addEventListener) return;
+      win.addEventListener('resize', recalc, false);
+    })(document, window);
+  </script> 
+</head>
+
+<body>
+  <div class="ui-btn" onclick=showSelect()>点我</div>
+  <script src="./zepto.min.js"></script>  
+  <script src="../dist/bundle.js"></script>
+  <script>
+      var data = [
+        { label:'河北', value:'冀', children: [
+          { label: '石家庄', value: '1' },
+          { label: '保定', value: '2' },
+          { label: '邢台', value: '3' },
+          { label: '沧州', value: '4' },
+          { label: '秦皇岛', value: '5' },
+          { label: '北戴河', value: '6' },
+        ]},
+        { label:'山西', value:'晋', children: [
+          { label: '大同', value: '7'},
+          { label: '太原', value: '8', children: [
+            { label: '晋中', value: '8'},
+            { label: '运城', value: '8'},
+            { label: '临汾', value: '8'},  
+          ]},
+          { label: '晋中', value: '8'},
+          { label: '运城', value: '8', children: [
+            { label: '盐湖', value: '9'},
+            { label: '垣曲', value: '10'},
+            { label: '闻喜', value: '11'},
+          ]},
+          { label: '临汾', value: '8'},
+          { label: '吕梁市', value: '8'},
+        ]},
+        { label:'辽宁', value:'辽',},
+        { label:'吉林', value:'吉',},
+        { label:'黑龙', value:'黑',},
+        { label:'江苏', value:'苏',},
+      ];
+             
+      // var picker = new Datepicker({
+      //   data: data,
+      //   title: '地区选择器',
+      //   // selectedIndex: 1,
+      //   onChange: function(i) { console.log('change', i)},
+      //   onConfirm: function(i) { console.log('confirm', i)},
+      //   depth: 3,
+      // });
+      var dp = new Datepicker({
+        title: '日期选择器',
+        defaultValue: [2010, 10, 10],
+        onChange: function(i) { console.log('change', i)},
+        onConfirm: function(i) { console.log('confirm', i)},        
+      })
+      
+    function showSelect() {
+      dp.show()
+    }
+  </script>
+</body>
+
+</html>
