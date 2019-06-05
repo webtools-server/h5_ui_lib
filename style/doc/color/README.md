@@ -18,7 +18,7 @@
 | --------------  | ------- | -----|
 | $color-primary  | #ff6e34 | 主色 |
 | $color-red      | #FF3030 | 辅助色 |
-| $color-blue     | #5CCB0A | 辅助色 |
+| $color-blue     | #0183ff | 辅助色 |
 | $color-green    | #5CCB0A | 辅助色 |
 | $color-bg       | #F5F5F5 | 背景色 |
 | $color-border   | #E6E6E6 | 分割线 |
