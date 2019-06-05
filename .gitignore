@@ -6,3 +6,4 @@ total.config.js
 *.cmd
 .vscode
 package-lock.json
+_book
