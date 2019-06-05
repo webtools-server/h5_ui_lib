@@ -2,9 +2,7 @@ node_modules
 .DS_Store
 *.map
 output
-gulpfile.js
 total.config.js
 *.cmd
-build.js
 .vscode
 package-lock.json
