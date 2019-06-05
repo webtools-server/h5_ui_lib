@@ -3,7 +3,7 @@
   <div class="ui-popup">
     <div class="ui-popup__title {{=it.classes.title}}">{{?it.title}} {{=it.title}} {{?}}
       {{?it.showClose}}
-        <div et="click:close" class="ui-popup__fn-button"><i class="ui-icon-close"></i></div>
+        <div et="click:close" class="ui-popup__fn-button"><i class="{{=it.classes.close}}"></i></div>
       {{?}}
     </div>
     <div class="ui-popup__content {{=it.classes.content}}">{{=it.content}}</div>
