@@ -12,7 +12,7 @@
       var basicWidth = window.basicWidth || 750;
       var minWidth = 320;
       var htmlElement = doc.documentElement;
-      var dpr = parseInt(window.devicePixelRatio || 1, 10); 
+      var dpr = parseInt(window.devicePixelRatio || 1, 10);
       var recalc = function() {
           var clientWidth = htmlElement.clientWidth || (basicWidth / 2);
           window.rootFontSize = 100 * (clientWidth / basicWidth);
@@ -24,19 +24,21 @@
       if (!win.addEventListener) return;
       win.addEventListener('resize', recalc, false);
     })(document, window);
-  </script>    
+  </script>
 </head>
 
 <body>
   <div class="ui-btn" onclick="showPopup()">点我</div>
-  <script src="./zepto.min.js"></script>  
+  <script src="./zepto.min.js"></script>
   <script src="../dist/bundle.js"></script>
   <script>
     var showPopup = function () {
       new Popup({
         showClose: true,
         container: 'body',
-        content: 'test'
+        content: 'test',
+        paddingTop: 500,
+        titleHeight: 300
       }).show();
     }
   </script>
